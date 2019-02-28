@@ -1,0 +1,25 @@
+{
+    "name": "runtime-check",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@types/commander": "^2.12.2",
+        "@types/prettier": "^1.16.1",
+        "commander": "^2.19.0",
+        "prettier": "^1.16.4",
+        "true-case-path": "^1.0.3",
+        "typescript": "^3.3.3333"
+    },
+    "devDependencies": {
+        "@types/node": "^11.9.5",
+        "dtslint": "^0.5.1",
+        "tslint-config-prettier": "^1.18.0",
+        "typescript-json-schema": "^0.36.0"
+    }
+}
