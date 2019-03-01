@@ -1,20 +1,36 @@
 import { validator } from 'ts-validate';
+import { assertError } from './assert';
 
 const validate = validator('./runtimeSchema.json');
 
-const parsedObj = JSON.parse(`{
+const parsedExternalInterface = JSON.parse(`{
     "user": {
         "firstName": "Jacob",
         "lastName": "Gardner",
         "id": 12
     },
-    permission: "anonymous"
+    "permission": "anonymous"
+}`);
+const parsedCustumInterface = JSON.parse(`{
+    "firstName": "Jacob",
+    "lastName": "Gardner",
+    "extraField": 182301,
+    "phoneNumber": "818182381238"
 }`);
 
-parsedObj; // $ExpectType any
+parsedExternalInterface; // $ExpectType any
 
-const validated = validate('ExternalInterface', parsedObj); // $ExpectType ExternalInterface
+const validated = validate('ExternalInterface', parsedExternalInterface); // $ExpectType ExternalInterface
 validated.permission; // $ExpectType Permission
 
-validate('CustomName', parsedObj); // $ExpectType AlsoExternalInterface
-validate('UnknownInterface', parsedObj); // $ExpectType never
+validate('CustomName', parsedCustumInterface); // $ExpectType AlsoExternalInterface
+
+assertError(() => {
+    validate('UnknownInterface', parsedExternalInterface); // $ExpectType never
+});
+
+assertError(() => {
+    const { firstName, ...obj } = parsedCustumInterface;
+
+    validate('CustomName', obj); // $ExpectType AlsoExternalInterface
+});

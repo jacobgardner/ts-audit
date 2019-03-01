@@ -3,6 +3,7 @@ export interface NotExternalInterface {
     lastName: string;
 }
 
-export interface ExternalInterface {
-    phone: string[];
-}
+// Uncommenting this makes it's conflict
+// export interface ExternalInterface {
+//     phone: string[];
+// }
