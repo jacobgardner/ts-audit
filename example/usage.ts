@@ -28,7 +28,7 @@ assertEqual(validated.user.lastName, "Gardner");
 assertEqual(validated.user.id, 12);
 assertEqual(validated.user.phoneNumber, undefined);
 
-const custom = validate('CustomName', parsedCustumInterface); // $ExpectType AlsoExternalInterface
+const custom = validate('CustomName', parsedCustomInterface); // $ExpectType AlsoExternalInterface
 assertEqual(custom.firstName, 'Jacob');
 assertEqual(custom.lastName, 'Gardner');
 assertEqual(custom.phoneNumber, '1238');
@@ -38,7 +38,7 @@ assertError(() => {
 });
 
 assertError(() => {
-    const { firstName, ...obj } = parsedCustumInterface;
+    const { firstName, ...obj } = parsedCustomInterface;
 
     validate('CustomName', obj); // $ExpectType AlsoExternalInterface
 });
