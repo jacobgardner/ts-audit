@@ -1,5 +1,7 @@
 # ts-runtime-interface 
 
+**WARNING: This is still very much a work in progress...**
+
 ## Usage
 
 See `example` for a quick example of usage. Overall what you need to do is:

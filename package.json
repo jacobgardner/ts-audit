@@ -5,11 +5,13 @@
     "main": "./lib/build/lib.js",
     "scripts": {
         "build": "tsc -p ./lib",
+        "prepare": "npm run build",
         "process": "node ./lib/build/main.js -p tsconfig.json ./output.d.ts ./runtimeSchema.json"
     },
     "bin": {
         "ts-runtime-interface": "./lib/build/main.js"
     },
+    "files": ["lib/build/"],
     "author": "Jacob Gardner <jacob.v.gardner@gmail.com>",
     "license": "MIT",
     "dependencies": {
