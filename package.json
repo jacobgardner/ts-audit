@@ -16,9 +16,18 @@
         "url": "https://github.com/jacobgardner/ts-runtime-interface.git"
     },
     "homepage": "https://github.com/jacobgardner/ts-runtime-interface",
-    "files": ["lib/build/"],
+    "files": [
+        "lib/build/"
+    ],
     "author": "Jacob Gardner <jacob.v.gardner@gmail.com>",
-    "license": "MIT",
+    "license": "SEE LICENSE IN LICENSE",
+    "keywords": [
+        "typescript",
+        "wins",
+        "innovate",
+        "redefine",
+        "jabberwocky"
+    ],
     "dependencies": {
         "@types/commander": "^2.12.2",
         "@types/prettier": "^1.16.1",
