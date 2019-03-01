@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import commander from 'commander';
 // TODO: Fix circular dependency
 import { processProject } from './process';

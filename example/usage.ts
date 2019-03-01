@@ -1,4 +1,4 @@
-import { validator } from '../src/lib';
+import { validator } from 'ts-validate';
 
 const validate = validator('./runtimeSchema.json');
 
