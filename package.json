@@ -1,5 +1,5 @@
 {
-    "name": "ts-validate",
+    "name": "ts-runtime-interface",
     "version": "0.1.0",
     "description": "",
     "main": "./lib/build/lib.js",
@@ -8,7 +8,7 @@
         "process": "node ./lib/build/main.js -p tsconfig.json ./output.d.ts ./runtimeSchema.json"
     },
     "bin": {
-        "ts-validate": "./lib/build/main.js"
+        "ts-runtime-interface": "./lib/build/main.js"
     },
     "author": "Jacob Gardner <jacob.v.gardner@gmail.com>",
     "license": "MIT",

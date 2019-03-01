@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "process": "ts-validate -p tsconfig.json ./output.d.ts ./runtimeSchema.json",
+    "process": "ts-runtime-interface -p tsconfig.json ./output.d.ts ./runtimeSchema.json",
     "build:parent": "cd .. && npm run build",
     "prebuild": "npm run build:parent",
     "build": "tsc",
@@ -13,7 +13,9 @@
   },
   "author": "",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "ts-runtime-interface": "0.1.0"
+  },
   "devDependencies": {
     "typescript": "^3.3.3333"
   }

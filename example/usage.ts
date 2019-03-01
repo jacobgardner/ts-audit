@@ -1,4 +1,4 @@
-import { validator } from 'ts-validate';
+import { validator } from 'ts-runtime-interface';
 import { assertError, assertEqual } from './assert';
 import { Permission } from './interfaces';
 

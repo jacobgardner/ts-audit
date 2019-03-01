@@ -1,14 +1,10 @@
-NAME TBD
-========
-
-ts-validate is taken already
-
+# ts-runtime-interface 
 
 ## Usage
 
 See `example` for a quick example of usage. Overall what you need to do is:
 
- * Add a `prebuild` step that runs `name-tbd -p tsconfig.json ./augmented-definitions.d.ts ./schema.json` 
+ * Add a `prebuild` step that runs `ts-runtime-interface -p tsconfig.json ./augmented-definitions.d.ts ./schema.json` 
 
     This will use your `tsconfig.json` file to find relevant typescript files and scans for any interfaces leading with the `// @runtime`.
 

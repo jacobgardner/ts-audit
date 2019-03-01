@@ -20,11 +20,6 @@ export function validator(schemaPath: string, schemaName?: string): ValidateFunc
             return obj as any;
         }
 
-        // console.error("Validation errors!");
-        // for (const error of v.errors) {
-        //     console.error(error.toString());
-        // }
-
         throw new Error(v.toString());
     };
 }
