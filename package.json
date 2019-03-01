@@ -1,6 +1,6 @@
 {
     "name": "ts-runtime-interface",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "",
     "main": "./lib/build/lib.js",
     "scripts": {
@@ -11,6 +11,11 @@
     "bin": {
         "ts-runtime-interface": "./lib/build/main.js"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jacobgardner/ts-runtime-interface.git"
+    },
+    "homepage": "https://github.com/jacobgardner/ts-runtime-interface",
     "files": ["lib/build/"],
     "author": "Jacob Gardner <jacob.v.gardner@gmail.com>",
     "license": "MIT",
