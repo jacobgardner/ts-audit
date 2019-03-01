@@ -12,7 +12,7 @@ const parsedExternalInterface = JSON.parse(`{
     },
     "permission": "anonymous"
 }`);
-const parsedCustumInterface = JSON.parse(`{
+const parsedCustomInterface = JSON.parse(`{
     "firstName": "Jacob",
     "lastName": "Gardner",
     "extraField": 182301,
