@@ -23,8 +23,8 @@ parsedExternalInterface; // $ExpectType any
 
 const validated = validate('ExternalInterface', parsedExternalInterface); // $ExpectType ExternalInterface
 assertEqual(validated.permission, Permission.Anonymous);
-assertEqual(validated.user.firstName, "Jacob");
-assertEqual(validated.user.lastName, "Gardner");
+assertEqual(validated.user.firstName, 'Jacob');
+assertEqual(validated.user.lastName, 'Gardner');
 assertEqual(validated.user.id, 12);
 assertEqual(validated.user.phoneNumber, undefined);
 

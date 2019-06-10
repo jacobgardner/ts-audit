@@ -32,6 +32,7 @@
         "@types/commander": "^2.12.2",
         "@types/prettier": "^1.16.1",
         "commander": "^2.19.0",
+        "js-yaml": "^3.13.1",
         "jsonschema": "^1.2.4",
         "prettier": "^1.16.4",
         "true-case-path": "^1.0.3",

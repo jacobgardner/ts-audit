@@ -14,9 +14,9 @@ export function assertKind(node: ts.Node, kind: ts.SyntaxKind) {
     }
 }
 
-export function assertExists<T>(obj: T): Exclude<T, undefined | null> {
+export function assertExists<T>(obj: T, message: string): Exclude<T, undefined | null> {
     if (obj == null) {
-        throw new Error('Expected an object to exist where it did not.');
+        throw new Error(`Expected an object to exist where it did not. ${message}`);
     }
 
     return obj as Exclude<T, undefined | null>;

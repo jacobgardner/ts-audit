@@ -24,7 +24,8 @@ export function processProject(options: Options) {
         tjs.buildGenerator(program, {
             aliasRef: true,
             required: true
-        })
+        }),
+        'Expected typescript generator to be built'
     );
 
     const checker = program.getTypeChecker();

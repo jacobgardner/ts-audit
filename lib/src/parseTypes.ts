@@ -49,12 +49,13 @@ export function parseSourceFile(
                     break;
                 }
 
-                const symbol = assertExists(checker.getSymbolAtLocation(n.name));
+                const symbol = assertExists(checker.getSymbolAtLocation(n.name), 'A node must have a name');
                 // console.log(symbol);
 
                 console.log(`Found runtime interface: ${runtimeInfo.original} => ${runtimeInfo.alias}`);
                 const r = assertExists(
-                    generator.getSymbols(runtimeInfo.original).find((item) => item.symbol === symbol)
+                    generator.getSymbols(runtimeInfo.original).find((item) => item.symbol === symbol),
+                    'A found symbol must exist'
                 );
 
                 const srcPath: string = (src as any).path || src.fileName;
@@ -88,7 +89,8 @@ function getRuntimeName(
         return;
     }
 
-    const m = assertExists(runtimeComment.match(/^\/\/ @runtime( +(.*))?$/));
+    // TODO: Use RUNTIME_NAME from above
+    const m = assertExists(runtimeComment.match(/^\/\/ @runtime( +(.*))?$/), 'We know that @runtime exists because the line starts with it');
 
     const original = node.name.text;
 
