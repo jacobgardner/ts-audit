@@ -8,6 +8,7 @@ import { parseSourceFile } from './parseTypes';
 import { MODULE_NAME } from './config';
 import * as path from 'path';
 import prettier from 'prettier';
+import mkdirp from 'mkdirp';
 
 export interface AliasData {
     refName: string;
@@ -35,7 +36,11 @@ export function processProject(options: Options) {
         [] as AliasData[]
     );
 
-    const schema = generator.getSchemaForSymbols(symbols.map(ref => ref.refName));
+    const schema = generator.getSchemaForSymbols(symbols.map((ref) => ref.refName));
+
+    mkdirp.sync(path.dirname(options.schemaPath));
+    mkdirp.sync(path.dirname(options.typeDefinitionsPath));
+
     fs.writeFileSync(options.schemaPath, JSON.stringify(schema));
     fs.writeFileSync(options.typeDefinitionsPath, template(options.typeDefinitionsPath, symbols));
 }
@@ -44,7 +49,7 @@ export function processProject(options: Options) {
 const truePath: (pat: string) => string = require('true-case-path');
 
 function template(outputPath: string, aliasData: AliasData[], aliased = '') {
-    const imports: string[] = aliasData.map(data => {
+    const imports: string[] = aliasData.map((data) => {
         const from = truePath(path.normalize(path.dirname(path.resolve(outputPath))).toLowerCase());
         const to = truePath(path.normalize(data.srcPath).toLowerCase());
         const relPath = `./${path.relative(from, to)}`.slice(0, -3).replace(path.sep, '/');
@@ -52,7 +57,7 @@ function template(outputPath: string, aliasData: AliasData[], aliased = '') {
         return `import { ${data.refName} } from '${relPath}';`;
     });
 
-    const overrides: string[] = aliasData.map(data => {
+    const overrides: string[] = aliasData.map((data) => {
         return `function validate(interfaceName: '${data.alias}', obj: any): ${data.refName};`;
     });
 
