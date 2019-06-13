@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "check": "ttsc --noEmit",
-    "build": "ttsc"
+    "check": "npm run build -- --noEmit",
+    "build": "ttsc",
+    "watch": "npm run build -- --watch"
   },
   "author": "",
   "private": true,

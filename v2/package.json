@@ -1,12 +1,13 @@
 {
   "name": "runtime-check",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "build/main.js",
   "types": "./index.d.ts",
   "scripts": {
-    "check": "tsc --noEmit",
-    "build": "tsc"
+    "check": "npm run build -- --noEmit",
+    "build": "tsc",
+    "watch": "npm run build -- --watch"
   },
   "author": "",
   "license": "ISC",
