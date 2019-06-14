@@ -5,10 +5,6 @@
             {
                 "transform": "../build/main",
                 "afterDeclarations": false
-            },
-            {
-                "transform": "../build/register",
-                "afterDeclarations": false
             }
         ],
         // "incremental": true,                   /* Enable incremental compilation */

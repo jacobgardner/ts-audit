@@ -1,6 +1,8 @@
 import * as ts from 'typescript';
 import * as util from 'util';
 import { astFormatter } from './formatter';
+import * as path from 'path';
+import { validateInterface } from '..';
 
 const RUNTIME_CHECK_SYMBOL = '_RUNTIME_CHECK_ANY';
 
@@ -40,11 +42,55 @@ export default function transformer(program: ts.Program, config: any) {
                 );
 
                 throw lines.join('\n');
+            } else {
+                dumpSchemas(program);
             }
         }
 
         return finalNode;
     };
+}
+
+function dumpSchemas(program: ts.Program) {
+    console.log(program.getCompilerOptions());
+    const { outDir = '.', outFile, target = ts.ScriptTarget.ES3 } = program.getCompilerOptions();
+    // console.log(program.getCurrentDirectory());
+
+    if (outFile) {
+        throw new Error('This does not work with outFile in tsconfig');
+    }
+
+    let sourceFile = ts.createSourceFile(
+        path.join(program.getCurrentDirectory(), outDir, 'runTimeValidations.js'),
+        '',
+        target,
+        undefined,
+        ts.ScriptKind.JS
+    );
+
+    sourceFile = ts.updateSourceFileNode(sourceFile, [
+        // ts.createThrow(ts.createLiteral('thrown')),
+        // ts.createStatement(ts.createCall(ts.createPropertyAccess(ts.createIdentifier('console'), 'log'), [], []))
+        ts.createFunctionDeclaration(
+            [],
+            [],
+            undefined,
+            'validateInterface',
+            [],
+            [ts.createParameter([], [], undefined, 'raw'), ts.createParameter([], [], undefined, 'interfaceId')],
+            undefined,
+            ts.createBlock([])
+        )
+    ]);
+
+    for (const [key, value] of schemas) {
+        console.log(key, value);
+    }
+
+    const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
+    const result = printer.printFile(sourceFile);
+
+    ts.sys.writeFile(sourceFile.fileName, result);
 }
 
 function visitNodeAndChildren(node: ts.Node, program: ts.Program, context: ts.TransformationContext): ts.Node {
@@ -64,12 +110,10 @@ function visitNode(node: ts.Node, program: ts.Program): ts.Node {
         const parent = node.parent;
 
         if (ts.isVariableDeclaration(parent) || ts.isAsExpression(parent)) {
-            // console.log(parent.type);
             if (parent.type) {
                 const refType = typeChecker.getTypeAtLocation(parent.type);
 
                 return transformNode(node, refType.symbol);
-                // console.log(refType.symbol);
             } else {
                 // TODO: Build Error
                 console.log('No associated variable type');
@@ -86,8 +130,6 @@ function visitNode(node: ts.Node, program: ts.Program): ts.Node {
             const refType = typeChecker.getTypeAtLocation(assignedNode);
 
             return transformNode(node, refType.symbol);
-
-            // console.log('Assignment Probably');
         } else if (ts.isExpressionStatement(parent)) {
             return error(node, 'Standalone expression statements are not supported');
         }
@@ -135,7 +177,7 @@ function transformImport(node: ts.ImportDeclaration, program: ts.Program, typeCh
             for (const element of namedBindings.elements) {
                 const type = typeChecker.getTypeAtLocation(element);
 
-                console.log(astFormatter(node));
+                // console.log(astFormatter(node));
 
                 if (!type.symbol) {
                     return node;
@@ -201,8 +243,11 @@ function isRuntimeChecker(type: ts.TypeNode) {
 }
 
 function addSchema(symbol: ts.Symbol) {
-    const count = schemas.get(symbol) || 0;
-    schemas.set(symbol, count + 1);
+    const schemaId = schemas.get(symbol);
+
+    if (schemaId === undefined) {
+        schemas.set(symbol, schemas.size);
+    }
 }
 
 function transformNode(node: ts.CallExpression, symbol?: ts.Symbol) {
