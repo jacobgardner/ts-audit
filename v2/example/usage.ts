@@ -1,29 +1,16 @@
 import { validateInterface as renamed } from 'runtime-check';
 
-enum CertificateType {
-    Application = 'application',
-    User = 'user'
-}
+import { RecordKey } from './interfaces';
 
-interface RecordKey {
-    key: string;
-    certType: CertificateType;
-    extras?: string[];
-}
+// type Dup = RecordKey;
 
-type Dup = RecordKey;
+const key: RecordKey = renamed({ key: 'thing', certType: 'application' }); // $ExpectType RecordKey
+const key2 = renamed({ key: 'thing', certType: 'application' }) as RecordKey; // $ExpectType RecordKey
 
-const key: RecordKey = renamed({ key: 'thing', certType: 'application' });
-const key2 = renamed({ key: 'thing', certType: 'application' }) as RecordKey;
+// let delayed: RecordKey;
 
-const inferred = renamed({ key: 'thing', certType: 'application' }); // Should error at build
+// delayed = renamed({ key: 'thing', certType: 'application' }); // $ExpectType RecordKey
 
-let delayed: RecordKey;
+// let delayedType;
+// delayedType = renamed({ key: 'thing', certType: 'application' }) as Dup; // $ExpectType RecordKey
 
-delayed = renamed({ key: 'thing', certType: 'application' });
-delayed = renamed({ key: 'thing', certType: 'application' }) as any;
-
-let delayedType;
-delayedType = renamed({ key: 'thing', certType: 'application' }) as Dup;
-
-renamed({ key: 'thing', certType: 'application' }); // Should error at build
