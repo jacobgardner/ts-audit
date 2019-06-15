@@ -3,6 +3,9 @@ import * as util from 'util';
 import { astFormatter } from './formatter';
 import * as path from 'path';
 import { validateInterface } from '..';
+import { buildSchemaFromType } from './schema';
+import { schemas, addSchema } from './schemaDB';
+import colors from 'colors';
 
 const RUNTIME_CHECK_SYMBOL = '_RUNTIME_CHECK_ANY';
 
@@ -13,7 +16,6 @@ interface ErrorData {
     message: string;
 }
 
-export const schemas = new Map<ts.Symbol, number>();
 export const errors: ErrorData[] = [];
 
 const validator = ts.createUniqueName('runtimeValidator');
@@ -52,8 +54,8 @@ export default function transformer(program: ts.Program, config: any) {
 }
 
 function dumpSchemas(program: ts.Program) {
-    console.log(program.getCompilerOptions());
     const { outDir = '.', outFile, target = ts.ScriptTarget.ES3 } = program.getCompilerOptions();
+    const typeChecker = program.getTypeChecker();
     // console.log(program.getCurrentDirectory());
 
     if (outFile) {
@@ -68,9 +70,32 @@ function dumpSchemas(program: ts.Program) {
         ts.ScriptKind.JS
     );
 
+    const schemasVariable = ts.createIdentifier('schemas');
+
+    const schemasById: ts.PropertyAssignment[] = [];
+
+    for (const [key, value] of schemas) {
+        console.log(colors.underline(colors.bold(colors.yellow(`Processing schema ${value}`))));
+
+        const schema = buildSchemaFromType(key, typeChecker);
+
+        schemasById.push(
+            ts.createPropertyAssignment(
+                ts.createNumericLiteral(value.toString()),
+                ts.createLiteral(util.inspect(schema))
+            )
+        );
+
+        console.log(util.inspect(schema, true, 80, true));
+    }
+
+    const schemaNode = ts.createVariableStatement(
+        [],
+        [ts.createVariableDeclaration(schemasVariable, undefined, ts.createObjectLiteral([...schemasById]))]
+    );
+
     sourceFile = ts.updateSourceFileNode(sourceFile, [
-        // ts.createThrow(ts.createLiteral('thrown')),
-        // ts.createStatement(ts.createCall(ts.createPropertyAccess(ts.createIdentifier('console'), 'log'), [], []))
+        schemaNode,
         ts.createFunctionDeclaration(
             [],
             [],
@@ -82,10 +107,6 @@ function dumpSchemas(program: ts.Program) {
             ts.createBlock([])
         )
     ]);
-
-    for (const [key, value] of schemas) {
-        console.log(key, value);
-    }
 
     const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
     const result = printer.printFile(sourceFile);
@@ -113,7 +134,7 @@ function visitNode(node: ts.Node, program: ts.Program): ts.Node {
             if (parent.type) {
                 const refType = typeChecker.getTypeAtLocation(parent.type);
 
-                return transformNode(node, refType.symbol);
+                return transformNode(node, refType);
             } else {
                 // TODO: Build Error
                 console.log('No associated variable type');
@@ -129,7 +150,7 @@ function visitNode(node: ts.Node, program: ts.Program): ts.Node {
 
             const refType = typeChecker.getTypeAtLocation(assignedNode);
 
-            return transformNode(node, refType.symbol);
+            return transformNode(node, refType);
         } else if (ts.isExpressionStatement(parent)) {
             return error(node, 'Standalone expression statements are not supported');
         }
@@ -242,16 +263,12 @@ function isRuntimeChecker(type: ts.TypeNode) {
     );
 }
 
-function addSchema(symbol: ts.Symbol) {
-    const schemaId = schemas.get(symbol);
-
-    if (schemaId === undefined) {
-        schemas.set(symbol, schemas.size);
+function transformNode(node: ts.CallExpression, type: ts.Type) {
+    if (!type) {
+        throw new Error('wat');
     }
-}
 
-function transformNode(node: ts.CallExpression, symbol?: ts.Symbol) {
-    if (!symbol) {
+    if (!type.symbol) {
         console.error('No data associated with node');
         return ts.createCall(
             ts.createPropertyAccess(ts.createIdentifier('console'), 'log'),
@@ -260,14 +277,14 @@ function transformNode(node: ts.CallExpression, symbol?: ts.Symbol) {
         );
     }
 
-    addSchema(symbol);
+    addSchema(type);
 
     // console.log('---------------------------------');
     // console.log(astFormatter(node));
 
     return ts.updateCall(node, node.expression, node.typeArguments, [
         ...node.arguments,
-        ts.createLiteral(symbol.escapedName.toString())
+        ts.createLiteral(type.symbol.escapedName.toString())
     ]);
     // return node;
     // return ts.createCall(
