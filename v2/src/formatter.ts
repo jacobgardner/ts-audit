@@ -14,7 +14,7 @@ function printNode(node: ts.Node) {
     return result;
 }
 
-function indent(lines: string, spaceCount: number) {
+export function indent(lines: string, spaceCount: number) {
     const spaces = new Array(spaceCount + 1).map(() => '').join(' ');
 
     return lines

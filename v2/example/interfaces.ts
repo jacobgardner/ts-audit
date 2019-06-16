@@ -11,10 +11,16 @@ export enum NonInitializedEnum {
     C
 }
 
+type TypeAlias = number[];
+
 export interface RecordKey {
-    key: string;
-    certType: CertificateType;
-    wat: NonInitializedEnum;
-    extras?: string[];
-    certs: CertificateType[];
+    // key: string;
+    // num: number;
+    someKeyName: TypeAlias;
+    // nestedType: { nestedNumber?: number; nestedCert: CertificateType };
+    // key2: string | number | CertificateType;
+    // certType: CertificateType;
+    // wat: NonInitializedEnum;
+    // extras?: string[];
+    // certs: CertificateType[];
 }

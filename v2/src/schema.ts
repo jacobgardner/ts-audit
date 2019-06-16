@@ -4,9 +4,13 @@ import { MULTILINE_LITERALS } from './config';
 import { addSchema } from './schemaDB';
 import { hideSymbol, hideNode, hide } from './utils';
 import colors from 'colors';
+import { formatNode } from './printTS';
 
 enum MatcherType {
+    Interface = 'interface',
     String = 'string',
+    Boolean = 'boolean',
+    Number = 'number',
     Array = 'array',
     OneOf = 'oneof',
     Ref = 'ref'
@@ -14,13 +18,12 @@ enum MatcherType {
 
 interface TypeDetails {
     // type: MatcherType;
-    isRequired: boolean;
+    isRequired?: boolean;
     [key: string]: any;
 }
 
-// type TypeDetails = any;
 
-function buildSchemaFromSymbol(symbol: ts.Symbol, typeChecker: ts.TypeChecker) {
+function buildSchemaFromSymbol(symbol: ts.Symbol, typeChecker: ts.TypeChecker): TypeDetails {
     const output: Record<string, TypeDetails> = {};
     const { exports, members } = symbol;
 
@@ -59,27 +62,34 @@ function buildSchemaFromSymbol(symbol: ts.Symbol, typeChecker: ts.TypeChecker) {
                 if (currentIndex === undefined) {
                     throw new Error('Cannot have automatically indexed element after string');
                 }
+
+                console.warn('While we do support non-initialized enums, we do not recommend it for APIs');
                 values.push(currentIndex);
             }
 
             if (currentIndex !== undefined) {
                 currentIndex += 1;
             }
-            // values.push(enumMember.initializer.getText())
         });
 
         return {
             type: MatcherType.OneOf,
             subType: values
         };
-
-        // console.log(util.inspect(symbol.exports, true, 1, true));
     } else if (symbol.getFlags() & ts.SymbolFlags.Interface) {
         if (!members) {
             throw new Error('No members associated with interface symbol');
         }
 
         members.forEach((value, key) => {
+
+            console.log(colors.rainbow('====================================='));
+            value.declarations.forEach(value => {
+                console.log(`${key} - ${ts.SyntaxKind[value.kind]}`);
+                // console.log(formatNode(value));
+                // console.log(util.inspect(hide(value, ['parent']), false, 2, true));
+            });
+
             if (value.declarations.length !== 1) {
                 throw new Error('Did not expect more than 1 declaration');
             }
@@ -87,6 +97,11 @@ function buildSchemaFromSymbol(symbol: ts.Symbol, typeChecker: ts.TypeChecker) {
             console.log(colors.underline(colors.red(key.toString())));
             output[key.toString()] = buildSchemaFromNode(value.declarations[0], typeChecker);
         });
+
+        return {
+            type: MatcherType.Interface,
+            members: output
+        };
     }
 
     return output;
@@ -102,8 +117,6 @@ function buildSchemaFromPropertySignature(node: ts.PropertySignature, typeChecke
     if (!ts.isTypeNode(type)) {
         throw new Error('Expected type node to be TypeNode...');
     }
-    // console.log(ts.SyntaxKind[node.kind]);
-    // console.log(util.inspect(hideNode(node), false, 3, true));
 
     return {
         ...buildSchemaFromTypeNode(type, typeChecker),
@@ -113,10 +126,19 @@ function buildSchemaFromPropertySignature(node: ts.PropertySignature, typeChecke
 }
 
 function buildSchemaFromTypeNode(node: ts.TypeNode, typeChecker: ts.TypeChecker): Omit<TypeDetails, 'isRequired'> {
+    console.log(formatNode(node));
     switch (node.kind) {
+        case ts.SyntaxKind.BooleanKeyword:
+            return {
+                type: MatcherType.Boolean
+            };
         case ts.SyntaxKind.StringKeyword:
             return {
                 type: MatcherType.String
+            };
+        case ts.SyntaxKind.NumberKeyword:
+            return {
+                type: MatcherType.Number
             };
         case ts.SyntaxKind.TypeReference:
             const type = typeChecker.getTypeFromTypeNode(node);
@@ -131,7 +153,30 @@ function buildSchemaFromTypeNode(node: ts.TypeNode, typeChecker: ts.TypeChecker)
                     subType: buildSchemaFromTypeNode(node.elementType, typeChecker)
                 };
             }
-        // console.log(util.inspect())
+        case ts.SyntaxKind.UnionType:
+            if (ts.isUnionTypeNode(node)) {
+                return {
+                    type: MatcherType.OneOf,
+                    subType: node.types.map(type => buildSchemaFromTypeNode(type, typeChecker))
+                };
+            }
+        case ts.SyntaxKind.TypeLiteral:
+            if (ts.isTypeLiteralNode(node)) {
+                const members: Record<string, TypeDetails> = {};
+
+                node.members.forEach(value => {
+                    if (!ts.isPropertySignature(value)) {
+                        throw new Error('This should be a propertySignature, I think');
+                    }
+
+                    members[value.name.getText()] = buildSchemaFromPropertySignature(value, typeChecker);
+                });
+
+                return {
+                    type: MatcherType.Interface,
+                    members
+                };
+            }
     }
 
     throw new Error(`Should not have fallen through for ${ts.SyntaxKind[node.kind]}`);
@@ -143,6 +188,7 @@ function buildSchemaFromNode(node: ts.Node, typeChecker: ts.TypeChecker): TypeDe
     switch (node.kind) {
         case ts.SyntaxKind.PropertySignature:
             if (ts.isPropertySignature(node)) {
+                // console.log(util.inspect(node, false, 1, true));
                 return buildSchemaFromPropertySignature(node, typeChecker);
             }
             break;
@@ -155,7 +201,6 @@ function buildSchemaFromNode(node: ts.Node, typeChecker: ts.TypeChecker): TypeDe
 }
 
 export function buildSchemaFromType(type: ts.Type, typeChecker: ts.TypeChecker): Object {
-    const obj = {};
     if (!type) {
         throw new Error('WHERE TYPE GO?');
     }
@@ -164,71 +209,20 @@ export function buildSchemaFromType(type: ts.Type, typeChecker: ts.TypeChecker):
     if (symbol) {
         return buildSchemaFromSymbol(symbol, typeChecker);
     } else {
+        // TODO: Make this in line with
+        if (type.flags & ts.TypeFlags.Boolean) {
+            return {
+                type: MatcherType.Boolean
+            };
+        } else if (type.flags & ts.TypeFlags.Number) {
+            return {
+                type: MatcherType.Number
+            };
+        }
+        // console.log(ts.SyntaxKind[symbol.kind]);
+        // console.log(util.inspect(hide(type, ['checker']), false, 3, true));
         throw new Error('No symbol associated with type.');
     }
-
-    // const { members } = symbol;
-
-    // console.log(util.inspect(type, false, 1, true));
-
-    // if (members) {
-    //     const properties: ts.PropertyAssignment[] = [];
-    //     members.forEach((value, key) => {
-    //         properties.push(ts.createPropertyAssignment(key.toString(), buildSchemaNode(value, typeChecker)));
-
-    //         // console.log(util.inspect(value, false, 2, true));
-    //     });
-
-    //     return ts.createObjectLiteral(properties, MULTILINE_LITERALS);
-    // } else {
-    //     // console.log('No Members');
-    //     // console.log('-----------------------');
-    //     // console.log(util.inspect(symbol, false, 1, true));
-
-    //     if (symbol.declarations.length !== 1) {
-    //         throw new Error('I never expected this.');
-    //     }
-
-    //     const declaration = symbol.declarations[0];
-    //     if (ts.isPropertySignature(declaration)) {
-    //         const { type, questionToken } = declaration;
-
-    //         if (type) {
-    //             switch (type.kind) {
-    //                 case ts.SyntaxKind.StringKeyword:
-    //                     return createStringMatcher(!questionToken);
-    //                 case ts.SyntaxKind.TypeReference:
-    //                     const t = typeChecker.getTypeAtLocation(type);
-    //                     const refId = addSchema(t.symbol);
-
-    //                     return createRefTypeMatcher(refId, !questionToken);
-    //                 case ts.SyntaxKind.ArrayType:
-    //                     if (ts.isArrayTypeNode(type)) {
-    //                         const t = typeChecker.getTypeAtLocation(type.elementType);
-    //                         // console.log(util.inspect(t, false, 1, true));
-    //                         // console.log('-----------------------------------------');
-    //                         // console.log(util.inspect(type, false, 1, true));
-    //                         const refId = addSchema(t.symbol);
-    //                         // const types = buildSchemaNode(t.symbol, typeChecker);
-    //                         // console.log(types);
-
-    //                         return createArrayMatcher(refId, !questionToken);
-    //                     }
-    //                 default:
-    //                     console.error(`No Handler defined for ${ts.SyntaxKind[type.kind]}`);
-    //                     break;
-    //             }
-    //         } else {
-    //             return ts.createLiteral('No type of type reference');
-    //         }
-    //     } else {
-    //         console.log(util.inspect(declaration, false, 1, true));
-
-    //         return ts.createLiteral('Not a property signature');
-    //     }
-    // }
-
-    return obj;
 }
 
 interface TypeMatcherOptions {

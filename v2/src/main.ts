@@ -72,26 +72,36 @@ function dumpSchemas(program: ts.Program) {
 
     const schemasVariable = ts.createIdentifier('schemas');
 
-    const schemasById: ts.PropertyAssignment[] = [];
+    const schemaPropertyAssignments: ts.PropertyAssignment[] = [];
+    const schemasById: Record<number, Object> = {};
 
     for (const [key, value] of schemas) {
         console.log(colors.underline(colors.bold(colors.yellow(`Processing schema ${value}`))));
 
         const schema = buildSchemaFromType(key, typeChecker);
 
-        schemasById.push(
+        schemaPropertyAssignments.push(
             ts.createPropertyAssignment(
                 ts.createNumericLiteral(value.toString()),
                 ts.createLiteral(util.inspect(schema))
             )
         );
 
-        console.log(util.inspect(schema, true, 80, true));
+        schemasById[value] = schema;
     }
+
+    console.log(colors.underline(colors.zebra('SCHEMAS')));
+    console.log(util.inspect(schemasById, true, 80, true));
 
     const schemaNode = ts.createVariableStatement(
         [],
-        [ts.createVariableDeclaration(schemasVariable, undefined, ts.createObjectLiteral([...schemasById]))]
+        [
+            ts.createVariableDeclaration(
+                schemasVariable,
+                undefined,
+                ts.createObjectLiteral([...schemaPropertyAssignments])
+            )
+        ]
     );
 
     sourceFile = ts.updateSourceFileNode(sourceFile, [
