@@ -2,7 +2,7 @@ import * as ts from 'typescript';
 import colors from 'colors';
 import { indent } from './formatter';
 
-const EXCLUDE: Record<string, boolean> = { parent: true, pos: true, end: true };
+const EXCLUDE: Record<string, boolean> = { parent: true, pos: true, end: true, checker: true };
 
 function isNode(node: any): node is ts.Node {
     return node && typeof node.kind === 'number';
@@ -12,7 +12,7 @@ export function formatNode(node: unknown, maxDepth = 6): string {
     // colors.disable();
 
     if (maxDepth <= 0) {
-        return colors.red(colors.underline('MAX DEPTH'));
+        return colors.red(colors.underline('[MAX DEPTH]'));
     }
 
     switch (typeof node) {
@@ -20,10 +20,14 @@ export function formatNode(node: unknown, maxDepth = 6): string {
             return colors.yellow(node.toString());
         case 'string':
             return `"${colors.yellow(node)}"`;
+        case 'boolean':
+            return colors.green(node.toString());
         case 'undefined':
             return colors.red('undefined');
         case 'object':
             break;
+        case 'function':
+            return colors.blue('[function]');
         default:
             throw new Error(`No handler for ${typeof node}`);
     }
@@ -47,7 +51,6 @@ export function formatNode(node: unknown, maxDepth = 6): string {
 
     output += '{\n';
 
-    // let indented = '';
     const lines = [];
 
     for (const key of Object.keys(node)) {
@@ -68,6 +71,10 @@ export function formatNode(node: unknown, maxDepth = 6): string {
 
     output += indent(lines.join('\n'), 2);
     output += '\n}';
+
+    if (!lines.length) {
+        return '{}';
+    }
 
     return output;
     // return indent(output, 2);

@@ -2,9 +2,11 @@ import * as ts from 'typescript';
 import * as util from 'util';
 import { MULTILINE_LITERALS } from './config';
 import { addSchema } from './schemaDB';
-import { hideSymbol, hideNode, hide } from './utils';
+import { hideSymbol, hideNode, hide, parseTypeFlags, parseSymbolFlags } from './utils';
 import colors from 'colors';
 import { formatNode } from './printTS';
+import { type } from 'os';
+import { log } from './logger';
 
 enum MatcherType {
     Interface = 'interface',
@@ -22,10 +24,11 @@ interface TypeDetails {
     [key: string]: any;
 }
 
-
 function buildSchemaFromSymbol(symbol: ts.Symbol, typeChecker: ts.TypeChecker): TypeDetails {
     const output: Record<string, TypeDetails> = {};
     const { exports, members } = symbol;
+    log(formatNode(symbol));
+    log(parseSymbolFlags(symbol));
 
     if (symbol.getFlags() & ts.SymbolFlags.RegularEnum) {
         if (!exports) {
@@ -63,7 +66,7 @@ function buildSchemaFromSymbol(symbol: ts.Symbol, typeChecker: ts.TypeChecker): 
                     throw new Error('Cannot have automatically indexed element after string');
                 }
 
-                console.warn('While we do support non-initialized enums, we do not recommend it for APIs');
+                log('While we do support non-initialized enums, we do not recommend it for APIs');
                 values.push(currentIndex);
             }
 
@@ -81,11 +84,33 @@ function buildSchemaFromSymbol(symbol: ts.Symbol, typeChecker: ts.TypeChecker): 
             throw new Error('No members associated with interface symbol');
         }
 
-        members.forEach((value, key) => {
+        log(colors.rainbow('====================================='));
 
-            console.log(colors.rainbow('====================================='));
+        // if (symbol.escapedName === 'Array') {
+        //     const { valueDeclaration } = symbol;
+
+        //     if (!ts.isVariableDeclaration(valueDeclaration)) {
+        //         throw new Error('Expected type to be variable declaration');
+        //     } else if (!valueDeclaration.type) {
+        //         throw new Error('Expected value declaration to have type');
+        //     }
+
+        //     // if (valueDeclaration.kind !== ts.SyntaxKind.Signature)
+
+        //     // valueDeclaration.flags
+        //     // console.log(formatNode(symbol.valueDeclaration));
+        //     // console.log(formatNode(symbol, 4));
+        //     // (symbol as any).typeArguments[0]
+
+        //     return {
+        //         type: MatcherType.Array,
+        //         subType: buildSchemaFromTypeNode(valueDeclaration.type, typeChecker)
+        //     };
+        // }
+
+        members.forEach((value, key) => {
             value.declarations.forEach(value => {
-                console.log(`${key} - ${ts.SyntaxKind[value.kind]}`);
+                log(`${key} - ${ts.SyntaxKind[value.kind]}`);
                 // console.log(formatNode(value));
                 // console.log(util.inspect(hide(value, ['parent']), false, 2, true));
             });
@@ -94,7 +119,8 @@ function buildSchemaFromSymbol(symbol: ts.Symbol, typeChecker: ts.TypeChecker): 
                 throw new Error('Did not expect more than 1 declaration');
             }
 
-            console.log(colors.underline(colors.red(key.toString())));
+            log(colors.underline(colors.red(key.toString())));
+            log(formatNode(symbol, 5));
             output[key.toString()] = buildSchemaFromNode(value.declarations[0], typeChecker);
         });
 
@@ -126,7 +152,6 @@ function buildSchemaFromPropertySignature(node: ts.PropertySignature, typeChecke
 }
 
 function buildSchemaFromTypeNode(node: ts.TypeNode, typeChecker: ts.TypeChecker): Omit<TypeDetails, 'isRequired'> {
-    console.log(formatNode(node));
     switch (node.kind) {
         case ts.SyntaxKind.BooleanKeyword:
             return {
@@ -141,7 +166,29 @@ function buildSchemaFromTypeNode(node: ts.TypeNode, typeChecker: ts.TypeChecker)
                 type: MatcherType.Number
             };
         case ts.SyntaxKind.TypeReference:
-            const type = typeChecker.getTypeFromTypeNode(node);
+            const type = typeChecker.getTypeFromTypeNode(node) as ts.TypeReference;
+            // const apparent = typeChecker.getApparentType(type);
+            // typeChecker.getBaseTypes()
+            // typeChecker.
+
+            // log(formatNode(apparent));
+
+            // colors.disable();
+            // console.log(formatNode(type.symbol.declarations, 5));
+            // console.log(formatNode(type.symbol.valueDeclaration, 5));
+            // console.log(colors.strikethrough('----------------------'));
+
+            // if (type.typeArguments) {
+            //     console.log(buildSchemaFromType(type.typeArguments[0], typeChecker));
+            // }
+
+            // console.log(formatNode(type.typeArguments));
+            // if (ts.isTypeReferenceNode(node)) {
+            //     console.log(node.typeName);
+            //     console.log(node.typeArguments);
+            // }
+
+            // console.log(formatNode(type, 3))
             return {
                 type: MatcherType.Ref,
                 subType: addSchema(type)
@@ -192,7 +239,12 @@ function buildSchemaFromNode(node: ts.Node, typeChecker: ts.TypeChecker): TypeDe
                 return buildSchemaFromPropertySignature(node, typeChecker);
             }
             break;
+        // case ts.SyntaxKind.InterfaceDeclaration:
+        //     if (ts.isInterfaceDeclaration(node)) {
 
+        //         return buildSchemaFromInterfaceDeclaration
+        //     }
+        //     break;
         default:
             throw new Error(`Unable to build schema from ${ts.SyntaxKind[node.kind]}`);
     }
@@ -204,6 +256,10 @@ export function buildSchemaFromType(type: ts.Type, typeChecker: ts.TypeChecker):
     if (!type) {
         throw new Error('WHERE TYPE GO?');
     }
+
+    // // log(formatNode());
+    // log(formatNode(type));
+    // log(parseTypeFlags(type));
 
     const symbol = type.getSymbol();
     if (symbol) {

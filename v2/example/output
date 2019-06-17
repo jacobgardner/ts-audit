@@ -1,1 +1,5139 @@
-Terminate batch job (Y/N)? 
+
+{
+  flags: 64
+  escapedName: "RecordKey"
+  declarations: 
+  [
+    
+    {
+      flags: 0
+      modifierFlagsCache: 536870913
+      transformFlags: 536870913
+      kind: InterfaceDeclaration
+      decorators: undefined
+      modifiers: 
+      [
+        
+        {
+          flags: 0
+          modifierFlagsCache: 0
+          transformFlags: 536870912
+          kind: ExportKeyword
+        }
+      ]
+      name: RecordKey
+      typeParameters: undefined
+      heritageClauses: undefined
+      members: 
+      [
+        
+        {
+          flags: 0
+          modifierFlagsCache: 536870912
+          transformFlags: 536870913
+          kind: PropertySignature
+          modifiers: undefined
+          name: num
+          questionToken: undefined
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: ArrayType
+            elementType: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 0
+          modifierFlagsCache: 536870912
+          transformFlags: 536870913
+          kind: PropertySignature
+          modifiers: undefined
+          name: someKeyName
+          questionToken: undefined
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }
+      ]
+      symbol: 
+      {
+        flags: 64
+        escapedName: "RecordKey"
+        declarations: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            localSymbol: [MAX DEPTH]
+          }
+        ]
+        members: {}
+        id: 21136
+      }
+      localSymbol: 
+      {
+        flags: 0
+        escapedName: "RecordKey"
+        declarations: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            localSymbol: [MAX DEPTH]
+          }
+        ]
+        exportSymbol: 
+        {
+          flags: 64
+          escapedName: "RecordKey"
+          declarations: 
+          [
+            [MAX DEPTH]
+          ]
+          members: {}
+          id: 21136
+        }
+      }
+    }
+  ]
+  members: {}
+  id: 21136
+}
+Interface, All, Type, EnumMemberExcludes, RegularEnumExcludes, ConstEnumExcludes, TypeParameterExcludes, TypeAliasExcludes, ModuleMember, Classifiable, LateBindingContainer
+=====================================
+num - PropertySignature
+num
+
+{
+  flags: 64
+  escapedName: "RecordKey"
+  declarations: 
+  [
+    
+    {
+      flags: 0
+      modifierFlagsCache: 536870913
+      transformFlags: 536870913
+      kind: InterfaceDeclaration
+      decorators: undefined
+      modifiers: 
+      [
+        
+        {
+          flags: [MAX DEPTH]
+          modifierFlagsCache: [MAX DEPTH]
+          transformFlags: [MAX DEPTH]
+          kind: ExportKeyword
+        }
+      ]
+      name: RecordKey
+      typeParameters: undefined
+      heritageClauses: undefined
+      members: 
+      [
+        
+        {
+          flags: [MAX DEPTH]
+          modifierFlagsCache: [MAX DEPTH]
+          transformFlags: [MAX DEPTH]
+          kind: PropertySignature
+          modifiers: [MAX DEPTH]
+          name: [MAX DEPTH]
+          questionToken: [MAX DEPTH]
+          type: [MAX DEPTH]
+          symbol: [MAX DEPTH]
+        }, 
+        {
+          flags: [MAX DEPTH]
+          modifierFlagsCache: [MAX DEPTH]
+          transformFlags: [MAX DEPTH]
+          kind: PropertySignature
+          modifiers: [MAX DEPTH]
+          name: [MAX DEPTH]
+          questionToken: [MAX DEPTH]
+          type: [MAX DEPTH]
+          symbol: [MAX DEPTH]
+        }
+      ]
+      symbol: 
+      {
+        flags: 64
+        escapedName: "RecordKey"
+        declarations: 
+        [
+          [MAX DEPTH]
+        ]
+        members: {}
+        id: 21136
+      }
+      localSymbol: 
+      {
+        flags: 0
+        escapedName: "RecordKey"
+        declarations: 
+        [
+          [MAX DEPTH]
+        ]
+        exportSymbol: 
+        {
+          flags: [MAX DEPTH]
+          escapedName: [MAX DEPTH]
+          declarations: [MAX DEPTH]
+          members: [MAX DEPTH]
+          id: [MAX DEPTH]
+        }
+      }
+    }
+  ]
+  members: {}
+  id: 21136
+}
+someKeyName - PropertySignature
+someKeyName
+
+{
+  flags: 64
+  escapedName: "RecordKey"
+  declarations: 
+  [
+    
+    {
+      flags: 0
+      modifierFlagsCache: 536870913
+      transformFlags: 536870913
+      kind: InterfaceDeclaration
+      decorators: undefined
+      modifiers: 
+      [
+        
+        {
+          flags: [MAX DEPTH]
+          modifierFlagsCache: [MAX DEPTH]
+          transformFlags: [MAX DEPTH]
+          kind: ExportKeyword
+        }
+      ]
+      name: RecordKey
+      typeParameters: undefined
+      heritageClauses: undefined
+      members: 
+      [
+        
+        {
+          flags: [MAX DEPTH]
+          modifierFlagsCache: [MAX DEPTH]
+          transformFlags: [MAX DEPTH]
+          kind: PropertySignature
+          modifiers: [MAX DEPTH]
+          name: [MAX DEPTH]
+          questionToken: [MAX DEPTH]
+          type: [MAX DEPTH]
+          symbol: [MAX DEPTH]
+        }, 
+        {
+          flags: [MAX DEPTH]
+          modifierFlagsCache: [MAX DEPTH]
+          transformFlags: [MAX DEPTH]
+          kind: PropertySignature
+          modifiers: [MAX DEPTH]
+          name: [MAX DEPTH]
+          questionToken: [MAX DEPTH]
+          type: [MAX DEPTH]
+          symbol: [MAX DEPTH]
+        }
+      ]
+      symbol: 
+      {
+        flags: 64
+        escapedName: "RecordKey"
+        declarations: 
+        [
+          [MAX DEPTH]
+        ]
+        members: {}
+        id: 21136
+      }
+      localSymbol: 
+      {
+        flags: 0
+        escapedName: "RecordKey"
+        declarations: 
+        [
+          [MAX DEPTH]
+        ]
+        exportSymbol: 
+        {
+          flags: [MAX DEPTH]
+          escapedName: [MAX DEPTH]
+          declarations: [MAX DEPTH]
+          members: [MAX DEPTH]
+          id: [MAX DEPTH]
+        }
+      }
+    }
+  ]
+  members: {}
+  id: 21136
+}
+
+{
+  flags: 33554497
+  escapedName: "Array"
+  checkFlags: 0
+  declarations: 
+  [
+    
+    {
+      flags: 4194368
+      modifierFlagsCache: 536870912
+      transformFlags: 0
+      kind: InterfaceDeclaration
+      decorators: undefined
+      modifiers: undefined
+      name: Array
+      typeParameters: 
+      [
+        
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: TypeParameter
+          name: T
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+        }
+      ]
+      heritageClauses: undefined
+      members: 
+      [
+        
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: PropertySignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: length
+          questionToken: undefined
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: NumberKeyword
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: toString
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: StringKeyword
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: toLocaleString
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: StringKeyword
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: pop
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: UnionType
+            types: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: push
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: NumberKeyword
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: concat
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: ArrayType
+            elementType: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: concat
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: ArrayType
+            elementType: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: join
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: StringKeyword
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: reverse
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: ArrayType
+            elementType: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: shift
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: UnionType
+            types: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: slice
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: ArrayType
+            elementType: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: sort
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: ThisType
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: splice
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: ArrayType
+            elementType: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: splice
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: ArrayType
+            elementType: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: unshift
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: NumberKeyword
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: indexOf
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: NumberKeyword
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: lastIndexOf
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: NumberKeyword
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: every
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: BooleanKeyword
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: some
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: BooleanKeyword
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: forEach
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: VoidKeyword
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: map
+          questionToken: undefined
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: ArrayType
+            elementType: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: filter
+          questionToken: undefined
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: ArrayType
+            elementType: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: filter
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: ArrayType
+            elementType: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: reduce
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          modifiers: undefined
+          name: reduce
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: reduce
+          questionToken: undefined
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: reduceRight
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          modifiers: undefined
+          name: reduceRight
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: reduceRight
+          questionToken: undefined
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: IndexSignature
+          modifiers: undefined
+          parameters: 
+          [
+            [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }
+      ]
+      symbol: 
+      {
+        flags: 65
+        escapedName: "Array"
+        declarations: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }, 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: VariableDeclaration
+            name: [MAX DEPTH]
+            type: [MAX DEPTH]
+            initializer: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        ]
+        members: {}
+        exports: {}
+        valueDeclaration: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: VariableDeclaration
+          name: Array
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          initializer: undefined
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+        }
+        mergeId: 7
+      }
+      nextContainer: 
+      {
+        flags: 4194304
+        modifierFlagsCache: 536870912
+        transformFlags: 0
+        kind: MethodSignature
+        jsDoc: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: JSDocComment
+            tags: [MAX DEPTH]
+            comment: [MAX DEPTH]
+          }
+        ]
+        modifiers: undefined
+        name: toString
+        questionToken: undefined
+        typeParameters: undefined
+        parameters: 
+        [
+          
+        ]
+        type: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 0
+          transformFlags: 0
+          kind: StringKeyword
+        }
+        symbol: 
+        {
+          flags: 8192
+          escapedName: "toString"
+          declarations: 
+          [
+            [MAX DEPTH]
+          ]
+          valueDeclaration: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+          id: 101
+        }
+        locals: {}
+        nextContainer: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: toLocaleString
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: StringKeyword
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }
+      }
+    }, 
+    {
+      flags: 4194304
+      modifierFlagsCache: 536870912
+      transformFlags: 0
+      kind: VariableDeclaration
+      name: Array
+      type: 
+      {
+        flags: 4194304
+        modifierFlagsCache: 0
+        transformFlags: 0
+        kind: TypeReference
+        typeName: ArrayConstructor
+        id: 687
+      }
+      initializer: undefined
+      symbol: 
+      {
+        flags: 65
+        escapedName: "Array"
+        declarations: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }, 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: VariableDeclaration
+            name: [MAX DEPTH]
+            type: [MAX DEPTH]
+            initializer: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        ]
+        members: {}
+        exports: {}
+        valueDeclaration: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: VariableDeclaration
+          name: Array
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          initializer: undefined
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+        }
+        mergeId: 7
+      }
+    }, 
+    {
+      flags: 4194368
+      modifierFlagsCache: 536870912
+      transformFlags: 0
+      kind: InterfaceDeclaration
+      decorators: undefined
+      modifiers: undefined
+      name: Array
+      typeParameters: 
+      [
+        
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: TypeParameter
+          name: T
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+        }
+      ]
+      heritageClauses: undefined
+      members: 
+      [
+        
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: find
+          questionToken: undefined
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: UnionType
+            types: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          modifiers: undefined
+          name: find
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: UnionType
+            types: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: findIndex
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: NumberKeyword
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FunctionType
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: fill
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: ThisType
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: copyWithin
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: ThisType
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }
+      ]
+      symbol: 
+      {
+        flags: 64
+        escapedName: "Array"
+        declarations: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        ]
+        members: {}
+        mergeId: 10
+      }
+      nextContainer: 
+      {
+        flags: 4194304
+        modifierFlagsCache: 536870912
+        transformFlags: 0
+        kind: MethodSignature
+        jsDoc: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: JSDocComment
+            tags: [MAX DEPTH]
+            comment: [MAX DEPTH]
+          }
+        ]
+        modifiers: undefined
+        name: find
+        questionToken: undefined
+        typeParameters: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeParameter
+            name: [MAX DEPTH]
+            constraint: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        ]
+        parameters: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: Parameter
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            dotDotDotToken: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            type: [MAX DEPTH]
+            initializer: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }, 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: Parameter
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            dotDotDotToken: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            type: [MAX DEPTH]
+            initializer: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        ]
+        type: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 0
+          transformFlags: 0
+          kind: UnionType
+          types: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          id: 20093
+        }
+        symbol: 
+        {
+          flags: 8192
+          escapedName: "find"
+          declarations: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          valueDeclaration: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+          id: 122
+        }
+        locals: {}
+        nextContainer: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 0
+          transformFlags: 0
+          kind: FunctionType
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: FirstTypeNode
+            parameterName: [MAX DEPTH]
+            type: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+          id: 20090
+        }
+      }
+    }, 
+    {
+      flags: 4194304
+      modifierFlagsCache: 536870912
+      transformFlags: 0
+      kind: InterfaceDeclaration
+      decorators: undefined
+      modifiers: undefined
+      name: Array
+      typeParameters: 
+      [
+        
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: TypeParameter
+          name: T
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+        }
+      ]
+      heritageClauses: undefined
+      members: 
+      [
+        
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: ComputedPropertyName
+            expression: [MAX DEPTH]
+          }
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: entries
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: keys
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: values
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }
+      ]
+      symbol: 
+      {
+        flags: 64
+        escapedName: "Array"
+        declarations: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        ]
+        members: {}
+        mergeId: 42
+      }
+      nextContainer: 
+      {
+        flags: 4194304
+        modifierFlagsCache: 536870912
+        transformFlags: 0
+        kind: MethodSignature
+        jsDoc: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: JSDocComment
+            tags: [MAX DEPTH]
+            comment: [MAX DEPTH]
+          }
+        ]
+        modifiers: undefined
+        name: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 0
+          transformFlags: 0
+          kind: ComputedPropertyName
+          expression: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: PropertyAccessExpression
+            expression: [MAX DEPTH]
+            name: [MAX DEPTH]
+            flowNode: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }
+        questionToken: undefined
+        typeParameters: undefined
+        parameters: 
+        [
+          
+        ]
+        type: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 0
+          transformFlags: 0
+          kind: TypeReference
+          typeName: IterableIterator
+          typeArguments: 
+          [
+            [MAX DEPTH]
+          ]
+          id: 20336
+        }
+        symbol: 
+        {
+          flags: 8192
+          escapedName: "__@iterator"
+          declarations: 
+          [
+            [MAX DEPTH]
+          ]
+          valueDeclaration: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+          id: 126
+        }
+        locals: {}
+        nextContainer: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: entries
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }
+      }
+    }, 
+    {
+      flags: 4194304
+      modifierFlagsCache: 536870912
+      transformFlags: 0
+      kind: InterfaceDeclaration
+      decorators: undefined
+      modifiers: undefined
+      name: Array
+      typeParameters: 
+      [
+        
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: TypeParameter
+          name: T
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+        }
+      ]
+      heritageClauses: undefined
+      members: 
+      [
+        
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: ComputedPropertyName
+            expression: [MAX DEPTH]
+          }
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeLiteral
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeLiteral
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }
+      ]
+      symbol: 
+      {
+        flags: 64
+        escapedName: "Array"
+        declarations: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        ]
+        members: {}
+        mergeId: 189
+      }
+      nextContainer: 
+      {
+        flags: 4194304
+        modifierFlagsCache: 536870912
+        transformFlags: 0
+        kind: MethodSignature
+        jsDoc: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: JSDocComment
+            tags: [MAX DEPTH]
+            comment: [MAX DEPTH]
+          }
+        ]
+        modifiers: undefined
+        name: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 0
+          transformFlags: 0
+          kind: ComputedPropertyName
+          expression: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: PropertyAccessExpression
+            expression: [MAX DEPTH]
+            name: [MAX DEPTH]
+            flowNode: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+        }
+        questionToken: undefined
+        typeParameters: undefined
+        parameters: 
+        [
+          
+        ]
+        type: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 0
+          transformFlags: 0
+          kind: TypeLiteral
+          members: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+          id: 20954
+        }
+        symbol: 
+        {
+          flags: 8192
+          escapedName: "__@unscopables"
+          declarations: 
+          [
+            [MAX DEPTH]
+          ]
+          valueDeclaration: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+          id: 130
+        }
+        locals: {}
+        nextContainer: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 0
+          transformFlags: 0
+          kind: TypeLiteral
+          members: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+          id: 20954
+        }
+      }
+    }, 
+    {
+      flags: 4194304
+      modifierFlagsCache: 536870912
+      transformFlags: 0
+      kind: InterfaceDeclaration
+      decorators: undefined
+      modifiers: undefined
+      name: Array
+      typeParameters: 
+      [
+        
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: TypeParameter
+          name: T
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+        }
+      ]
+      heritageClauses: undefined
+      members: 
+      [
+        
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: MethodSignature
+          jsDoc: 
+          [
+            [MAX DEPTH]
+          ]
+          modifiers: undefined
+          name: includes
+          questionToken: undefined
+          typeParameters: undefined
+          parameters: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: BooleanKeyword
+          }
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          locals: {}
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }
+      ]
+      symbol: 
+      {
+        flags: 64
+        escapedName: "Array"
+        declarations: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        ]
+        members: {}
+        mergeId: 240
+      }
+      nextContainer: 
+      {
+        flags: 4194304
+        modifierFlagsCache: 536870912
+        transformFlags: 0
+        kind: MethodSignature
+        jsDoc: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: JSDocComment
+            tags: [MAX DEPTH]
+            comment: [MAX DEPTH]
+          }
+        ]
+        modifiers: undefined
+        name: includes
+        questionToken: undefined
+        typeParameters: undefined
+        parameters: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: Parameter
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            dotDotDotToken: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            type: [MAX DEPTH]
+            initializer: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }, 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: Parameter
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            dotDotDotToken: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            type: [MAX DEPTH]
+            initializer: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        ]
+        type: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 0
+          transformFlags: 0
+          kind: BooleanKeyword
+        }
+        symbol: 
+        {
+          flags: 8192
+          escapedName: "includes"
+          declarations: 
+          [
+            [MAX DEPTH]
+          ]
+          valueDeclaration: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+          id: 131
+        }
+        locals: {}
+        nextContainer: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: InterfaceDeclaration
+          decorators: undefined
+          modifiers: undefined
+          name: ReadonlyArray
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          heritageClauses: undefined
+          members: 
+          [
+            [MAX DEPTH]
+          ]
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }
+      }
+    }
+  ]
+  valueDeclaration: 
+  {
+    flags: 4194304
+    modifierFlagsCache: 536870912
+    transformFlags: 0
+    kind: VariableDeclaration
+    name: Array
+    type: 
+    {
+      flags: 4194304
+      modifierFlagsCache: 0
+      transformFlags: 0
+      kind: TypeReference
+      typeName: ArrayConstructor
+      id: 687
+    }
+    initializer: undefined
+    symbol: 
+    {
+      flags: 65
+      escapedName: "Array"
+      declarations: 
+      [
+        
+        {
+          flags: 4194368
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: InterfaceDeclaration
+          decorators: undefined
+          modifiers: undefined
+          name: Array
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          heritageClauses: undefined
+          members: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: VariableDeclaration
+          name: Array
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          initializer: undefined
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+        }
+      ]
+      members: {}
+      exports: {}
+      valueDeclaration: 
+      {
+        flags: 4194304
+        modifierFlagsCache: 536870912
+        transformFlags: 0
+        kind: VariableDeclaration
+        name: Array
+        type: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 0
+          transformFlags: 0
+          kind: TypeReference
+          typeName: ArrayConstructor
+          id: 687
+        }
+        initializer: undefined
+        symbol: 
+        {
+          flags: 65
+          escapedName: "Array"
+          declarations: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          members: {}
+          exports: {}
+          valueDeclaration: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: VariableDeclaration
+            name: [MAX DEPTH]
+            type: [MAX DEPTH]
+            initializer: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+          mergeId: 7
+        }
+      }
+      mergeId: 7
+    }
+  }
+  members: {}
+  exports: {}
+  declaredType: 
+  {
+    flags: 524288
+    id: 53
+    objectFlags: 6
+    symbol: 
+    {
+      flags: 33554497
+      escapedName: "Array"
+      checkFlags: 0
+      declarations: 
+      [
+        
+        {
+          flags: 4194368
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: InterfaceDeclaration
+          decorators: undefined
+          modifiers: undefined
+          name: Array
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          heritageClauses: undefined
+          members: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: VariableDeclaration
+          name: Array
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          initializer: undefined
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194368
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: InterfaceDeclaration
+          decorators: undefined
+          modifiers: undefined
+          name: Array
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          heritageClauses: undefined
+          members: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: InterfaceDeclaration
+          decorators: undefined
+          modifiers: undefined
+          name: Array
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          heritageClauses: undefined
+          members: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: InterfaceDeclaration
+          decorators: undefined
+          modifiers: undefined
+          name: Array
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          heritageClauses: undefined
+          members: 
+          [
+            [MAX DEPTH]
+          ]
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }, 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: InterfaceDeclaration
+          decorators: undefined
+          modifiers: undefined
+          name: Array
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          heritageClauses: undefined
+          members: 
+          [
+            [MAX DEPTH]
+          ]
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+          nextContainer: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: MethodSignature
+            jsDoc: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            questionToken: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            parameters: [MAX DEPTH]
+            type: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            locals: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        }
+      ]
+      valueDeclaration: 
+      {
+        flags: 4194304
+        modifierFlagsCache: 536870912
+        transformFlags: 0
+        kind: VariableDeclaration
+        name: Array
+        type: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 0
+          transformFlags: 0
+          kind: TypeReference
+          typeName: ArrayConstructor
+          id: 687
+        }
+        initializer: undefined
+        symbol: 
+        {
+          flags: 65
+          escapedName: "Array"
+          declarations: 
+          [
+            [MAX DEPTH], [MAX DEPTH]
+          ]
+          members: {}
+          exports: {}
+          valueDeclaration: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: VariableDeclaration
+            name: [MAX DEPTH]
+            type: [MAX DEPTH]
+            initializer: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+          mergeId: 7
+        }
+      }
+      members: {}
+      exports: {}
+      declaredType: 
+      {
+        flags: 524288
+        id: 53
+        objectFlags: 6
+        symbol: 
+        {
+          flags: 33554497
+          escapedName: "Array"
+          checkFlags: 0
+          declarations: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          valueDeclaration: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: VariableDeclaration
+            name: [MAX DEPTH]
+            type: [MAX DEPTH]
+            initializer: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+          members: {}
+          exports: {}
+          declaredType: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            objectFlags: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            members: [MAX DEPTH]
+            properties: [MAX DEPTH]
+            callSignatures: [MAX DEPTH]
+            constructSignatures: [MAX DEPTH]
+            stringIndexInfo: [MAX DEPTH]
+            numberIndexInfo: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            outerTypeParameters: [MAX DEPTH]
+            localTypeParameters: [MAX DEPTH]
+            instantiations: [MAX DEPTH]
+            target: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            thisType: [MAX DEPTH]
+          }
+        }
+        members: undefined
+        properties: undefined
+        callSignatures: undefined
+        constructSignatures: undefined
+        stringIndexInfo: undefined
+        numberIndexInfo: undefined
+        typeParameters: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        ]
+        outerTypeParameters: undefined
+        localTypeParameters: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        ]
+        instantiations: {}
+        target: 
+        {
+          flags: 524288
+          id: 53
+          objectFlags: 6
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            checkFlags: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            declaredType: [MAX DEPTH]
+          }
+          members: undefined
+          properties: undefined
+          callSignatures: undefined
+          constructSignatures: undefined
+          stringIndexInfo: undefined
+          numberIndexInfo: undefined
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          outerTypeParameters: undefined
+          localTypeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          instantiations: {}
+          target: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            objectFlags: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            members: [MAX DEPTH]
+            properties: [MAX DEPTH]
+            callSignatures: [MAX DEPTH]
+            constructSignatures: [MAX DEPTH]
+            stringIndexInfo: [MAX DEPTH]
+            numberIndexInfo: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            outerTypeParameters: [MAX DEPTH]
+            localTypeParameters: [MAX DEPTH]
+            instantiations: [MAX DEPTH]
+            target: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            thisType: [MAX DEPTH]
+          }
+          typeArguments: 
+          [
+            [MAX DEPTH]
+          ]
+          thisType: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            isThisType: [MAX DEPTH]
+            constraint: [MAX DEPTH]
+          }
+        }
+        typeArguments: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        ]
+        thisType: 
+        {
+          flags: 262144
+          id: 55
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            checkFlags: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            declaredType: [MAX DEPTH]
+          }
+          isThisType: true
+          constraint: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            objectFlags: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            members: [MAX DEPTH]
+            properties: [MAX DEPTH]
+            callSignatures: [MAX DEPTH]
+            constructSignatures: [MAX DEPTH]
+            stringIndexInfo: [MAX DEPTH]
+            numberIndexInfo: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            outerTypeParameters: [MAX DEPTH]
+            localTypeParameters: [MAX DEPTH]
+            instantiations: [MAX DEPTH]
+            target: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            thisType: [MAX DEPTH]
+          }
+        }
+      }
+    }
+    members: undefined
+    properties: undefined
+    callSignatures: undefined
+    constructSignatures: undefined
+    stringIndexInfo: undefined
+    numberIndexInfo: undefined
+    typeParameters: 
+    [
+      
+      {
+        flags: 262144
+        id: 54
+        symbol: 
+        {
+          flags: 33816576
+          escapedName: "T"
+          checkFlags: 0
+          declarations: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          declaredType: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        }
+      }
+    ]
+    outerTypeParameters: undefined
+    localTypeParameters: 
+    [
+      
+      {
+        flags: 262144
+        id: 54
+        symbol: 
+        {
+          flags: 33816576
+          escapedName: "T"
+          checkFlags: 0
+          declarations: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          declaredType: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        }
+      }
+    ]
+    instantiations: {}
+    target: 
+    {
+      flags: 524288
+      id: 53
+      objectFlags: 6
+      symbol: 
+      {
+        flags: 33554497
+        escapedName: "Array"
+        checkFlags: 0
+        declarations: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }, 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: VariableDeclaration
+            name: [MAX DEPTH]
+            type: [MAX DEPTH]
+            initializer: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }, 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }, 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }, 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }, 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        ]
+        valueDeclaration: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: VariableDeclaration
+          name: Array
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          initializer: undefined
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+        }
+        members: {}
+        exports: {}
+        declaredType: 
+        {
+          flags: 524288
+          id: 53
+          objectFlags: 6
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            checkFlags: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            declaredType: [MAX DEPTH]
+          }
+          members: undefined
+          properties: undefined
+          callSignatures: undefined
+          constructSignatures: undefined
+          stringIndexInfo: undefined
+          numberIndexInfo: undefined
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          outerTypeParameters: undefined
+          localTypeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          instantiations: {}
+          target: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            objectFlags: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            members: [MAX DEPTH]
+            properties: [MAX DEPTH]
+            callSignatures: [MAX DEPTH]
+            constructSignatures: [MAX DEPTH]
+            stringIndexInfo: [MAX DEPTH]
+            numberIndexInfo: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            outerTypeParameters: [MAX DEPTH]
+            localTypeParameters: [MAX DEPTH]
+            instantiations: [MAX DEPTH]
+            target: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            thisType: [MAX DEPTH]
+          }
+          typeArguments: 
+          [
+            [MAX DEPTH]
+          ]
+          thisType: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            isThisType: [MAX DEPTH]
+            constraint: [MAX DEPTH]
+          }
+        }
+      }
+      members: undefined
+      properties: undefined
+      callSignatures: undefined
+      constructSignatures: undefined
+      stringIndexInfo: undefined
+      numberIndexInfo: undefined
+      typeParameters: 
+      [
+        
+        {
+          flags: 262144
+          id: 54
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            checkFlags: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            declaredType: [MAX DEPTH]
+          }
+        }
+      ]
+      outerTypeParameters: undefined
+      localTypeParameters: 
+      [
+        
+        {
+          flags: 262144
+          id: 54
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            checkFlags: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            declaredType: [MAX DEPTH]
+          }
+        }
+      ]
+      instantiations: {}
+      target: 
+      {
+        flags: 524288
+        id: 53
+        objectFlags: 6
+        symbol: 
+        {
+          flags: 33554497
+          escapedName: "Array"
+          checkFlags: 0
+          declarations: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          valueDeclaration: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: VariableDeclaration
+            name: [MAX DEPTH]
+            type: [MAX DEPTH]
+            initializer: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+          members: {}
+          exports: {}
+          declaredType: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            objectFlags: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            members: [MAX DEPTH]
+            properties: [MAX DEPTH]
+            callSignatures: [MAX DEPTH]
+            constructSignatures: [MAX DEPTH]
+            stringIndexInfo: [MAX DEPTH]
+            numberIndexInfo: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            outerTypeParameters: [MAX DEPTH]
+            localTypeParameters: [MAX DEPTH]
+            instantiations: [MAX DEPTH]
+            target: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            thisType: [MAX DEPTH]
+          }
+        }
+        members: undefined
+        properties: undefined
+        callSignatures: undefined
+        constructSignatures: undefined
+        stringIndexInfo: undefined
+        numberIndexInfo: undefined
+        typeParameters: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        ]
+        outerTypeParameters: undefined
+        localTypeParameters: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        ]
+        instantiations: {}
+        target: 
+        {
+          flags: 524288
+          id: 53
+          objectFlags: 6
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            checkFlags: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            declaredType: [MAX DEPTH]
+          }
+          members: undefined
+          properties: undefined
+          callSignatures: undefined
+          constructSignatures: undefined
+          stringIndexInfo: undefined
+          numberIndexInfo: undefined
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          outerTypeParameters: undefined
+          localTypeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          instantiations: {}
+          target: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            objectFlags: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            members: [MAX DEPTH]
+            properties: [MAX DEPTH]
+            callSignatures: [MAX DEPTH]
+            constructSignatures: [MAX DEPTH]
+            stringIndexInfo: [MAX DEPTH]
+            numberIndexInfo: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            outerTypeParameters: [MAX DEPTH]
+            localTypeParameters: [MAX DEPTH]
+            instantiations: [MAX DEPTH]
+            target: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            thisType: [MAX DEPTH]
+          }
+          typeArguments: 
+          [
+            [MAX DEPTH]
+          ]
+          thisType: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            isThisType: [MAX DEPTH]
+            constraint: [MAX DEPTH]
+          }
+        }
+        typeArguments: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        ]
+        thisType: 
+        {
+          flags: 262144
+          id: 55
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            checkFlags: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            declaredType: [MAX DEPTH]
+          }
+          isThisType: true
+          constraint: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            objectFlags: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            members: [MAX DEPTH]
+            properties: [MAX DEPTH]
+            callSignatures: [MAX DEPTH]
+            constructSignatures: [MAX DEPTH]
+            stringIndexInfo: [MAX DEPTH]
+            numberIndexInfo: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            outerTypeParameters: [MAX DEPTH]
+            localTypeParameters: [MAX DEPTH]
+            instantiations: [MAX DEPTH]
+            target: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            thisType: [MAX DEPTH]
+          }
+        }
+      }
+      typeArguments: 
+      [
+        
+        {
+          flags: 262144
+          id: 54
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            checkFlags: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            declaredType: [MAX DEPTH]
+          }
+        }
+      ]
+      thisType: 
+      {
+        flags: 262144
+        id: 55
+        symbol: 
+        {
+          flags: 33554497
+          escapedName: "Array"
+          checkFlags: 0
+          declarations: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          valueDeclaration: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: VariableDeclaration
+            name: [MAX DEPTH]
+            type: [MAX DEPTH]
+            initializer: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+          members: {}
+          exports: {}
+          declaredType: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            objectFlags: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            members: [MAX DEPTH]
+            properties: [MAX DEPTH]
+            callSignatures: [MAX DEPTH]
+            constructSignatures: [MAX DEPTH]
+            stringIndexInfo: [MAX DEPTH]
+            numberIndexInfo: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            outerTypeParameters: [MAX DEPTH]
+            localTypeParameters: [MAX DEPTH]
+            instantiations: [MAX DEPTH]
+            target: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            thisType: [MAX DEPTH]
+          }
+        }
+        isThisType: true
+        constraint: 
+        {
+          flags: 524288
+          id: 53
+          objectFlags: 6
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            checkFlags: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            declaredType: [MAX DEPTH]
+          }
+          members: undefined
+          properties: undefined
+          callSignatures: undefined
+          constructSignatures: undefined
+          stringIndexInfo: undefined
+          numberIndexInfo: undefined
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          outerTypeParameters: undefined
+          localTypeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          instantiations: {}
+          target: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            objectFlags: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            members: [MAX DEPTH]
+            properties: [MAX DEPTH]
+            callSignatures: [MAX DEPTH]
+            constructSignatures: [MAX DEPTH]
+            stringIndexInfo: [MAX DEPTH]
+            numberIndexInfo: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            outerTypeParameters: [MAX DEPTH]
+            localTypeParameters: [MAX DEPTH]
+            instantiations: [MAX DEPTH]
+            target: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            thisType: [MAX DEPTH]
+          }
+          typeArguments: 
+          [
+            [MAX DEPTH]
+          ]
+          thisType: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            isThisType: [MAX DEPTH]
+            constraint: [MAX DEPTH]
+          }
+        }
+      }
+    }
+    typeArguments: 
+    [
+      
+      {
+        flags: 262144
+        id: 54
+        symbol: 
+        {
+          flags: 33816576
+          escapedName: "T"
+          checkFlags: 0
+          declarations: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          declaredType: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        }
+      }
+    ]
+    thisType: 
+    {
+      flags: 262144
+      id: 55
+      symbol: 
+      {
+        flags: 33554497
+        escapedName: "Array"
+        checkFlags: 0
+        declarations: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }, 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: VariableDeclaration
+            name: [MAX DEPTH]
+            type: [MAX DEPTH]
+            initializer: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }, 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }, 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }, 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }, 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: InterfaceDeclaration
+            decorators: [MAX DEPTH]
+            modifiers: [MAX DEPTH]
+            name: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            heritageClauses: [MAX DEPTH]
+            members: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            nextContainer: [MAX DEPTH]
+          }
+        ]
+        valueDeclaration: 
+        {
+          flags: 4194304
+          modifierFlagsCache: 536870912
+          transformFlags: 0
+          kind: VariableDeclaration
+          name: Array
+          type: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: TypeReference
+            typeName: [MAX DEPTH]
+            id: [MAX DEPTH]
+          }
+          initializer: undefined
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            mergeId: [MAX DEPTH]
+          }
+        }
+        members: {}
+        exports: {}
+        declaredType: 
+        {
+          flags: 524288
+          id: 53
+          objectFlags: 6
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            checkFlags: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            declaredType: [MAX DEPTH]
+          }
+          members: undefined
+          properties: undefined
+          callSignatures: undefined
+          constructSignatures: undefined
+          stringIndexInfo: undefined
+          numberIndexInfo: undefined
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          outerTypeParameters: undefined
+          localTypeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          instantiations: {}
+          target: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            objectFlags: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            members: [MAX DEPTH]
+            properties: [MAX DEPTH]
+            callSignatures: [MAX DEPTH]
+            constructSignatures: [MAX DEPTH]
+            stringIndexInfo: [MAX DEPTH]
+            numberIndexInfo: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            outerTypeParameters: [MAX DEPTH]
+            localTypeParameters: [MAX DEPTH]
+            instantiations: [MAX DEPTH]
+            target: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            thisType: [MAX DEPTH]
+          }
+          typeArguments: 
+          [
+            [MAX DEPTH]
+          ]
+          thisType: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            isThisType: [MAX DEPTH]
+            constraint: [MAX DEPTH]
+          }
+        }
+      }
+      isThisType: true
+      constraint: 
+      {
+        flags: 524288
+        id: 53
+        objectFlags: 6
+        symbol: 
+        {
+          flags: 33554497
+          escapedName: "Array"
+          checkFlags: 0
+          declarations: 
+          [
+            [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH], [MAX DEPTH]
+          ]
+          valueDeclaration: 
+          {
+            flags: [MAX DEPTH]
+            modifierFlagsCache: [MAX DEPTH]
+            transformFlags: [MAX DEPTH]
+            kind: VariableDeclaration
+            name: [MAX DEPTH]
+            type: [MAX DEPTH]
+            initializer: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+          members: {}
+          exports: {}
+          declaredType: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            objectFlags: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            members: [MAX DEPTH]
+            properties: [MAX DEPTH]
+            callSignatures: [MAX DEPTH]
+            constructSignatures: [MAX DEPTH]
+            stringIndexInfo: [MAX DEPTH]
+            numberIndexInfo: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            outerTypeParameters: [MAX DEPTH]
+            localTypeParameters: [MAX DEPTH]
+            instantiations: [MAX DEPTH]
+            target: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            thisType: [MAX DEPTH]
+          }
+        }
+        members: undefined
+        properties: undefined
+        callSignatures: undefined
+        constructSignatures: undefined
+        stringIndexInfo: undefined
+        numberIndexInfo: undefined
+        typeParameters: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        ]
+        outerTypeParameters: undefined
+        localTypeParameters: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        ]
+        instantiations: {}
+        target: 
+        {
+          flags: 524288
+          id: 53
+          objectFlags: 6
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            checkFlags: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            declaredType: [MAX DEPTH]
+          }
+          members: undefined
+          properties: undefined
+          callSignatures: undefined
+          constructSignatures: undefined
+          stringIndexInfo: undefined
+          numberIndexInfo: undefined
+          typeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          outerTypeParameters: undefined
+          localTypeParameters: 
+          [
+            [MAX DEPTH]
+          ]
+          instantiations: {}
+          target: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            objectFlags: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            members: [MAX DEPTH]
+            properties: [MAX DEPTH]
+            callSignatures: [MAX DEPTH]
+            constructSignatures: [MAX DEPTH]
+            stringIndexInfo: [MAX DEPTH]
+            numberIndexInfo: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            outerTypeParameters: [MAX DEPTH]
+            localTypeParameters: [MAX DEPTH]
+            instantiations: [MAX DEPTH]
+            target: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            thisType: [MAX DEPTH]
+          }
+          typeArguments: 
+          [
+            [MAX DEPTH]
+          ]
+          thisType: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            isThisType: [MAX DEPTH]
+            constraint: [MAX DEPTH]
+          }
+        }
+        typeArguments: 
+        [
+          
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+          }
+        ]
+        thisType: 
+        {
+          flags: 262144
+          id: 55
+          symbol: 
+          {
+            flags: [MAX DEPTH]
+            escapedName: [MAX DEPTH]
+            checkFlags: [MAX DEPTH]
+            declarations: [MAX DEPTH]
+            valueDeclaration: [MAX DEPTH]
+            members: [MAX DEPTH]
+            exports: [MAX DEPTH]
+            declaredType: [MAX DEPTH]
+          }
+          isThisType: true
+          constraint: 
+          {
+            flags: [MAX DEPTH]
+            id: [MAX DEPTH]
+            objectFlags: [MAX DEPTH]
+            symbol: [MAX DEPTH]
+            members: [MAX DEPTH]
+            properties: [MAX DEPTH]
+            callSignatures: [MAX DEPTH]
+            constructSignatures: [MAX DEPTH]
+            stringIndexInfo: [MAX DEPTH]
+            numberIndexInfo: [MAX DEPTH]
+            typeParameters: [MAX DEPTH]
+            outerTypeParameters: [MAX DEPTH]
+            localTypeParameters: [MAX DEPTH]
+            instantiations: [MAX DEPTH]
+            target: [MAX DEPTH]
+            typeArguments: [MAX DEPTH]
+            thisType: [MAX DEPTH]
+          }
+        }
+      }
+    }
+  }
+}
+FunctionScopedVariable, Interface, Transient, All, Variable, Value, Type, BlockScopedVariableExcludes, ParameterExcludes, EnumMemberExcludes, FunctionExcludes, ClassExcludes, RegularEnumExcludes, ConstEnumExcludes, ValueModuleExcludes, MethodExcludes, GetAccessorExcludes, SetAccessorExcludes, TypeParameterExcludes, TypeAliasExcludes, ModuleMember, Classifiable, LateBindingContainer
+=====================================
+T - TypeParameter
+T - TypeParameter
+T - TypeParameter
+T - TypeParameter
+T - TypeParameter

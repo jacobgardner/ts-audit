@@ -11,11 +11,11 @@ export enum NonInitializedEnum {
     C
 }
 
-type TypeAlias = number[];
+type TypeAlias = CertificateType[];
 
 export interface RecordKey {
-    // key: string;
-    // num: number;
+//     key: string;
+    num: number[];
     someKeyName: TypeAlias;
     // nestedType: { nestedNumber?: number; nestedCert: CertificateType };
     // key2: string | number | CertificateType;
