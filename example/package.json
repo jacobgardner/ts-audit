@@ -1,22 +1,20 @@
 {
-  "name": "examples",
-  "version": "0.0.0",
+  "name": "example",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "process": "ts-runtime-interface -p tsconfig.json ./output.d.ts ./runtimeSchema.json",
-    "build:parent": "cd .. && npm run build",
-    "prebuild": "npm run build:parent",
-    "build": "tsc",
-    "pretest": "npm run build",
-    "test": "node ./build/usage.js"
+    "check": "npm run build -- --noEmit",
+    "build": "ttsc usage.ts",
+    "build:errors": "ttsc errors.ts",
+    "watch": "npm run build -- --watch"
   },
   "author": "",
   "private": true,
-  "dependencies": {
-    "ts-runtime-interface": "0.1.0"
-  },
+  "license": "ISC",
   "devDependencies": {
-    "typescript": "^3.3.3333"
+    "@types/node": "^12.0.8",
+    "ttypescript": "^1.5.7",
+    "typescript": "^3.5.1"
   }
 }
