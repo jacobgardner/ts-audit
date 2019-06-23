@@ -2,7 +2,7 @@ import * as ts from 'typescript';
 import colors from 'colors';
 import { indent } from './formatter';
 
-const EXCLUDE: Record<string, boolean> = { parent: true, pos: true, end: true, checker: true };
+const EXCLUDE: Record<string, boolean> = { parent: true, pos: true, end: true, checker: true, nextContainer: true };
 
 function isNode(node: any): node is ts.Node {
     return node && typeof node.kind === 'number';
@@ -45,7 +45,7 @@ export function formatNode(node: unknown, maxDepth = 6): string {
 
     if (isNode(node)) {
         if (ts.isIdentifier(node)) {
-            return colors.green(node.escapedText.toString());
+            return colors.blue(node.escapedText.toString());
         }
     }
 
@@ -54,7 +54,12 @@ export function formatNode(node: unknown, maxDepth = 6): string {
     const lines = [];
 
     for (const key of Object.keys(node)) {
-        if (EXCLUDE[key] !== undefined) {
+        if (key === 'pos' && isNode(node)) {
+            const source = node.getSourceFile();
+            const { line: lineNumber, character } = source.getLineAndCharacterOfPosition(node.pos);
+            lines.push(`location: ` + colors.cyan(`${source.fileName}:${lineNumber + 1}`));
+            continue;
+        } else if (EXCLUDE[key] !== undefined) {
             continue;
         }
 

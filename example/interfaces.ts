@@ -15,7 +15,7 @@ type TypeAlias = CertificateType[];
 
 export interface RecordKey {
 //     key: string;
-    num: number[];
+    num: CertificateType[];
     someKeyName: TypeAlias;
     // nestedType: { nestedNumber?: number; nestedCert: CertificateType };
     // key2: string | number | CertificateType;

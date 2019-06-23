@@ -6,6 +6,8 @@ import { validateInterface } from '..';
 import { buildSchemaFromType } from './schema';
 import { schemas, addSchema } from './schemaDB';
 import colors from 'colors';
+import { log } from './logger';
+import {formatNode} from './printTS';
 
 const RUNTIME_CHECK_SYMBOL = '_RUNTIME_CHECK_ANY';
 
@@ -17,8 +19,6 @@ interface ErrorData {
 }
 
 export const errors: ErrorData[] = [];
-
-const validator = ts.createUniqueName('runtimeValidator');
 
 function isTransformable(filename: string) {
     return !filename.endsWith('.d.ts') && (filename.endsWith('.ts') || filename.endsWith('.tsx'));
@@ -56,7 +56,6 @@ export default function transformer(program: ts.Program, config: any) {
 function dumpSchemas(program: ts.Program) {
     const { outDir = '.', outFile, target = ts.ScriptTarget.ES3 } = program.getCompilerOptions();
     const typeChecker = program.getTypeChecker();
-    // console.log(program.getCurrentDirectory());
 
     if (outFile) {
         throw new Error('This does not work with outFile in tsconfig');
@@ -76,7 +75,8 @@ function dumpSchemas(program: ts.Program) {
     const schemasById: Record<number, Object> = {};
 
     for (const [key, value] of schemas) {
-        console.log(colors.underline(colors.bold(colors.yellow(`Processing schema ${value}`))));
+        log(colors.underline(colors.bold(colors.yellow(`Processing schema ${value}`))));
+        log(formatNode(key, 2));
 
         const schema = buildSchemaFromType(key, typeChecker);
 
@@ -90,8 +90,8 @@ function dumpSchemas(program: ts.Program) {
         schemasById[value] = schema;
     }
 
-    console.log(colors.underline(colors.zebra('SCHEMAS')));
-    console.log(util.inspect(schemasById, true, 80, true));
+    log(colors.underline(colors.zebra('SCHEMAS')));
+    log(util.inspect(schemasById, true, 80, true));
 
     const schemaNode = ts.createVariableStatement(
         [],
@@ -176,7 +176,7 @@ function error(node: ts.Node, message: string): ts.Node {
 
     errors.push({
         file: sourceFile.fileName,
-        line,
+        line: line + 1,
         character,
         message
     });
@@ -287,7 +287,7 @@ function transformNode(node: ts.CallExpression, type: ts.Type) {
         );
     }
 
-    addSchema(type);
+    addSchema(node, type);
 
     // console.log('---------------------------------');
     // console.log(astFormatter(node));
