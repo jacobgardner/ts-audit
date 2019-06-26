@@ -7,6 +7,7 @@
   "scripts": {
     "check": "npm run build -- --noEmit",
     "build": "tsc",
+    "start": "http-server",
     "watch": "npm run build -- --watch"
   },
   "author": "",

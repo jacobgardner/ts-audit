@@ -4,7 +4,7 @@ import { astFormatter } from './formatter';
 import * as path from 'path';
 import { validateInterface } from '..';
 import { buildSchemaFromType } from './schema';
-import { schemas, addSchema } from './schemaDB';
+import { schemas, addSchema, schemaList } from './schemaDB';
 import colors from 'colors';
 import { log } from './logger';
 import {formatNode} from './printTS';
@@ -74,21 +74,26 @@ function dumpSchemas(program: ts.Program) {
     const schemaPropertyAssignments: ts.PropertyAssignment[] = [];
     const schemasById: Record<number, Object> = {};
 
-    for (const [key, value] of schemas) {
-        log(colors.underline(colors.bold(colors.yellow(`Processing schema ${value}`))));
-        log(formatNode(key, 2));
 
-        const schema = buildSchemaFromType(key, typeChecker);
+    while (schemaList.length) {
+        const [schemaId, type] = schemaList.pop() as [number, ts.Type];
+
+        log(colors.underline(colors.bold(colors.yellow(`Processing schema ${schemaId}`))));
+        log(formatNode(type, 2));
+
+        const schema = buildSchemaFromType(type, typeChecker);
 
         schemaPropertyAssignments.push(
             ts.createPropertyAssignment(
-                ts.createNumericLiteral(value.toString()),
+                ts.createNumericLiteral(schemaId.toString()),
                 ts.createLiteral(util.inspect(schema))
             )
         );
 
-        schemasById[value] = schema;
+        schemasById[schemaId] = schema;
     }
+
+    // console.log(schemas);
 
     log(colors.underline(colors.zebra('SCHEMAS')));
     log(util.inspect(schemasById, true, 80, true));

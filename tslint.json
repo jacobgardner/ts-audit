@@ -2,6 +2,8 @@
     "defaultSeverity": "error",
     "extends": ["tslint:recommended", "tslint-config-prettier", "dtslint/dtslint.json"],
     "jsRules": {},
-    "rules": {},
+    "rules": {
+        "no-console": true
+    },
     "rulesDirectory": []
 }

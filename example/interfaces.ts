@@ -11,12 +11,17 @@ export enum NonInitializedEnum {
     C
 }
 
+interface TestGeneric<T = number> {
+    data: T;
+}
+
 type TypeAlias = CertificateType[];
 
 export interface RecordKey {
-//     key: string;
+    key: string;
     num: CertificateType[];
     someKeyName: TypeAlias;
+    // gType: TestGeneric;
     // nestedType: { nestedNumber?: number; nestedCert: CertificateType };
     // key2: string | number | CertificateType;
     // certType: CertificateType;

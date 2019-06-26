@@ -27,6 +27,20 @@ export function parseTypeFlags(type: ts.Type) {
     return flagNames.join(', ');
 }
 
+export function parseObjectFlags(type: ts.Type) {
+    const {objectFlags = 0} = type as any;
+
+    const flagNames = [];
+    for (const key of Object.keys(ts.SymbolFlags)) {
+        const num = (ts.ObjectFlags[key as any] as any) as number;
+        if (num & (objectFlags as number)) {
+            flagNames.push(key);
+        }
+    }
+
+    return flagNames.join(', ');
+}
+
 export function parseSymbolFlags(type: ts.Symbol) {
     const { flags } = type;
 
