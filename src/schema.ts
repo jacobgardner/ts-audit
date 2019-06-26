@@ -214,3 +214,27 @@ function buildSchemaFromSymbol(symbol: ts.Symbol, typeChecker: ts.TypeChecker): 
 
     throw new Error(`No matcher supported for ${parseSymbolFlags(symbol)}`);
 }
+
+export function buildSchemaFromType(type: ts.Type, typeChecker: ts.TypeChecker): Object {
+    if (!type) {
+        throw new Error('WHERE TYPE GO?');
+    }
+
+    const symbol = type.getSymbol();
+    if (!symbol) {
+        // TODO: Make this in line with
+        if (type.flags & ts.TypeFlags.Boolean) {
+            return {
+                type: MatcherType.Boolean
+            };
+        } else if (type.flags & ts.TypeFlags.Number) {
+            return {
+                type: MatcherType.Number
+            };
+        }
+
+        throw new Error('No symbol associated with type.');
+    } else {
+        return buildSchemaFromSymbol(symbol, typeChecker);
+    }
+}
