@@ -81,9 +81,10 @@ class TransformClass {
             ts.ScriptKind.JS
         );
 
-        const schemasVariable = ts.createIdentifier('schema');
+        const schemasVariable = ts.createIdentifier('validate');
 
         const schema = {
+            $id: 'root',
             $schema: 'http://json-schema.org/draft-07/schema#',
             definitions: this.schemaDb.dump()
         };
@@ -97,24 +98,64 @@ class TransformClass {
                 ts.createVariableDeclaration(
                     schemasVariable,
                     undefined,
-                    dumpSchemaObj(schema)
+                    ts.createCall(
+                        ts.createPropertyAccess(ts.createIdentifier('ajv'), 'compile'),
+                        [],
+                        [dumpSchemaObj(schema)]
+                    )
+
                     // ts.createObjectLiteral([...schemaPropertyAssignments])
                 )
             ]
         );
 
-        sourceFile = ts.updateSourceFileNode(sourceFile, [
-            schemaNode,
-            ts.createFunctionDeclaration(
-                [],
-                [],
-                undefined,
-                'validateInterface',
-                [],
-                [ts.createParameter([], [], undefined, 'raw'), ts.createParameter([], [], undefined, 'interfaceId')],
-                undefined,
-                ts.createBlock([])
+        const validateImport = ts.createVariableStatement(
+            [],
+            [
+                ts.createVariableDeclaration(
+                    'Ajv',
+                    undefined,
+                    ts.createCall(ts.createIdentifier('require'), [], [ts.createStringLiteral('ajv')])
+                )
+            ]
+        );
+
+        const ajvInit = ts.createVariableStatement(
+            [],
+            [ts.createVariableDeclaration('ajv', undefined, ts.createNew(ts.createIdentifier('Ajv'), [], []))]
+        );
+
+        // const validateImport = ts.createImportDeclaration(
+        //     [],
+        //     [],
+        //     ts.createImportClause(ts.createIdentifier('ajv'), undefined),
+        //     ts.createStringLiteral('ajv')
+        // );
+
+        const exportValidate = ts.createStatement(
+            ts.createAssignment(
+                ts.createPropertyAccess(ts.createIdentifier('exports'), 'validateInterface'),
+                ts.createIdentifier('validateInterface')
             )
+        );
+
+        const validateInterfaceFunction = ts.createFunctionDeclaration(
+            [],
+            [],
+            undefined,
+            'validateInterface',
+            [],
+            [ts.createParameter([], [], undefined, 'raw'), ts.createParameter([], [], undefined, 'interfaceId')],
+            undefined,
+            ts.createBlock([])
+        );
+
+        sourceFile = ts.updateSourceFileNode(sourceFile, [
+            validateImport,
+            ajvInit,
+            schemaNode,
+            validateInterfaceFunction,
+            exportValidate
         ]);
 
         const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
@@ -290,6 +331,8 @@ class TransformClass {
         }
 
         const defn = this.schemaDb.addSchema(typeNode);
+
+        defn['$ref'] = 'root' + defn['$ref'];
 
         return ts.updateCall(node, node.expression, node.typeArguments, [...node.arguments, dumpSchemaObj(defn)]);
     }
