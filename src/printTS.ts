@@ -169,11 +169,11 @@ export function stringifyNode(node: unknown, maxDepth = 6): string {
         return colors.red('null');
     }
 
-    if (isNode(node)) {
-        if (ts.isIdentifier(node)) {
-            return colors.blue(node.escapedText.toString());
-        }
-    }
+    // if (isNode(node)) {
+    //     if (ts.isIdentifier(node)) {
+    //         return colors.blue(node.escapedText.toString());
+    //     }
+    // }
 
     output += '{\n';
 

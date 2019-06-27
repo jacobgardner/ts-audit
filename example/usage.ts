@@ -1,16 +1,24 @@
 import { validateInterface as renamed } from 'runtime-check';
 
-import { RecordKey } from './interfaces';
+import { RecordKey as RK, CertificateType } from './interfaces';
+import { RecordKey as RK2 } from './interfaces-again';
 
-// type Dup = RecordKey;
+type Dup = RK;
 
-const key: RecordKey = renamed({ key: 'thing', certType: 'application' }); // $ExpectType RecordKey
-const key2 = renamed({ key: 'thing', certType: 'application' }) as RecordKey; // $ExpectType RecordKey
+const key: RK = renamed({ key: 'thing', certType: 'application' }); // $ExpectType RecordKey
+const key2 = renamed({ key: 'thing', certType: 'application' }) as RK; // $ExpectType RecordKey
 
-// let delayed: RecordKey;
+const certType: string = renamed('application');
 
-// delayed = renamed({ key: 'thing', certType: 'application' }); // $ExpectType RecordKey
+const thing: RK2 = {};
 
-// let delayedType;
-// delayedType = renamed({ key: 'thing', certType: 'application' }) as Dup; // $ExpectType RecordKey
+let delayed: CertificateType;
+
+delayed = renamed('application'); // $ExpectType CertificateType
+
+const fu = renamed('application') as CertificateType;
+const fu2: CertificateType = renamed('application');
+
+let delayedType;
+delayedType = renamed({ key: 'thing', certType: 'application' }) as Dup; // $ExpectType RecordKey
 

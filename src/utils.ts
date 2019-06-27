@@ -31,7 +31,7 @@ export function parseObjectFlags(type: ts.Type) {
     const {objectFlags = 0} = type as any;
 
     const flagNames = [];
-    for (const key of Object.keys(ts.SymbolFlags)) {
+    for (const key of Object.keys(ts.ObjectFlags)) {
         const num = (ts.ObjectFlags[key as any] as any) as number;
         if (num & (objectFlags as number)) {
             flagNames.push(key);
