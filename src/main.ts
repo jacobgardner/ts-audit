@@ -81,9 +81,7 @@ class TransformClass {
             ts.ScriptKind.JS
         );
 
-        const schemasVariable = ts.createIdentifier('schemas');
-
-        const schemaPropertyAssignments: ts.PropertyAssignment[] = [];
+        const schemasVariable = ts.createIdentifier('schema');
 
         const schema = {
             $schema: 'http://json-schema.org/draft-07/schema#',
@@ -99,7 +97,8 @@ class TransformClass {
                 ts.createVariableDeclaration(
                     schemasVariable,
                     undefined,
-                    ts.createObjectLiteral([...schemaPropertyAssignments])
+                    dumpSchemaObj(schema)
+                    // ts.createObjectLiteral([...schemaPropertyAssignments])
                 )
             ]
         );
@@ -292,12 +291,41 @@ class TransformClass {
 
         const defn = this.schemaDb.addSchema(typeNode);
 
-        return ts.updateCall(node, node.expression, node.typeArguments, [
-            ...node.arguments,
-            // TODO: Fix this output
-            ts.createLiteral(JSON.stringify(defn))
-        ]);
+        return ts.updateCall(node, node.expression, node.typeArguments, [...node.arguments, dumpSchemaObj(defn)]);
     }
+}
+
+function dumpSchemaObj(obj: unknown, depth = 0): ts.Expression {
+    if (typeof obj === 'string') {
+        return ts.createStringLiteral(obj);
+    } else if (typeof obj === 'number') {
+        return ts.createNumericLiteral(obj.toString());
+    } else if (typeof obj === 'object') {
+        if (Array.isArray(obj)) {
+            return ts.createArrayLiteral(obj.map(dumpSchemaObj));
+        } else if (obj === null) {
+            return ts.createNull();
+        }
+
+        const properties: ts.PropertyAssignment[] = [];
+
+        for (const key of Object.keys(obj)) {
+            properties.push(
+                ts.createPropertyAssignment(ts.createStringLiteral(key), dumpSchemaObj((obj as any)[key], depth + 1))
+            );
+        }
+
+        return ts.createObjectLiteral(properties);
+    } else if (typeof obj === 'boolean') {
+        if (obj) {
+            return ts.createTrue();
+        } else {
+            return ts.createFalse();
+        }
+    }
+
+    console.log(obj, typeof obj);
+    throw new Error('not supported');
 }
 
 function isRuntimeChecker(type: ts.TypeNode) {
