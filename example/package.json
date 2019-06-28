@@ -19,6 +19,7 @@
         "typescript": "^3.5.1"
     },
     "dependencies": {
-        "source-map-support": "^0.5.12"
+        "source-map-support": "^0.5.12",
+        "ts-audit": "^0.1.2"
     }
 }

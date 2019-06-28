@@ -1,7 +1,7 @@
 /* eslint @typescript-eslint/no-unused-vars: "off" */
 /* eslint prefer-const: "off" */
 /* eslint @typescript-eslint/no-explicit-any: "off" */
-import { validateInterface as renamed } from 'runtime-check';
+import { validateInterface as renamed } from 'ts-audit';
 
 import { RecordKey as RK, CertificateType } from './interfaces';
 import { RecordKey as RK2 } from './interfaces-again';
@@ -9,7 +9,7 @@ import { RecordKey as RK2 } from './interfaces-again';
 type Dup = RK;
 
 const key: RK = renamed({ key: 'thing', certType: 'application' }); // $ExpectType RecordKey
-const key2 = renamed({ key: 'thing', certype: 'application' }) as RK; // $ExpectType RecordKey
+const key2 = renamed({ key: 'thing', certType: 'application' }) as RK; // $ExpectType RecordKey
 
 // const certType: string = renamed('application');
 // const unTyped = renamed('dfkasdf');

@@ -38,6 +38,8 @@ compilation process.
 }
 ```
 
+Finally, you'll need to change your build setup to use `ttsc` instead of `tsc`.
+
 And you're ready to go!!!!!!
 
 ## Usage
@@ -81,3 +83,5 @@ throwing assertions
 [ ] Make readme better
 [ ] Add tests
 [ ] Add CI pipeline so we don't screw up the project
+[ ] Support watch mode
+[ ] Find better names for functions
