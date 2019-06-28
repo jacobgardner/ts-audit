@@ -1,9 +1,6 @@
 import * as ts from 'typescript';
-import * as util from 'util';
 import * as path from 'path';
 import { SchemaDB } from './schemaDB';
-import colors from 'colors';
-import { log } from './logger';
 import pjson from 'pjson';
 import { assertExists } from './assert';
 import { convertObjToAST, isRuntimeChecker, addChain } from './utils';
@@ -49,9 +46,6 @@ class TransformClass {
             $schema: 'http://json-schema.org/draft-07/schema#',
             definitions: this.schemaDb.dump(),
         };
-
-        log(colors.underline(colors.rainbow('SCHEMA')));
-        log(util.inspect(schema, false, 1000, true));
 
         const ajvClass = ts.createIdentifier('Validator');
         const ajvInstance = ts.createIdentifier('validator');

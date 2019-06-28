@@ -1,5 +1,5 @@
 {
-    "name": "runtime-check",
+    "name": "ts-audit",
     "version": "0.1.0",
     "description": "Plugin for typescript for donig runtime validation of interfaces",
     "main": "build/main.js",

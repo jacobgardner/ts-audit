@@ -10,4 +10,4 @@ const inferred = renamed({ key: 'thing', certType: 'application' }); // Should e
 let delayed: RecordKey;
 delayed = renamed({ key: 'thing', certType: 'application' }) as any; // I'm honestly not sure
 
-// renamed({ key: 'thing', certType: 'application' }); // Should error at build
+renamed({ key: 'thing', certType: 'application' }); // Should error at build
