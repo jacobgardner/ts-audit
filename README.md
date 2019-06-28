@@ -75,13 +75,13 @@ indicating that the JSON returned does not match what we were expecting.
 
 ## TODO
 
-[ ] Add `matchesInterface` function which returns `true`/`false` instead of
-throwing assertions
-[ ] Minify schema output
-[ ] Performance test against typescript-is
-[ ] Allow namespace imports at least.
-[ ] Make readme better
-[ ] Add tests
-[ ] Add CI pipeline so we don't screw up the project
-[ ] Support watch mode
-[ ] Find better names for functions
+-   [ ] Add `matchesInterface` function which returns `true`/`false` instead of
+        throwing assertions
+-   [ ] Minify schema output
+-   [ ] Performance test against typescript-is
+-   [ ] Allow namespace imports at least.
+-   [ ] Make readme better
+-   [ ] Add tests
+-   [ ] Add CI pipeline so we don't screw up the project
+-   [ ] Support watch mode
+-   [ ] Find better names for functions
