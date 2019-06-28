@@ -1,37 +1,31 @@
-export enum Permission {
-    Admin = 'admin',
+export enum CertificateType {
+    Application = 'application',
     User = 'user',
-    Anonymous = 'anonymous'
 }
 
-// Other comment
-// @runtime
-export interface ExternalInterface {
-    user: {
-        firstName: string;
-        lastName: string;
-        phoneNumber?: string;
-        id: number;
-    };
-    permission: Permission;
+export enum NonInitializedEnum {
+    TWELVE,
+    A = '5',
+    B = 4,
+    A1,
+    C,
 }
 
-export interface AlsoExternalInterface {
-    firstName: string;
-    lastName: string;
-    phoneNumber?: string;
+interface TestGeneric<T = number> {
+    data: T;
 }
 
-// @runtime
-export type CustomName = AlsoExternalInterface;
+type TypeAlias = CertificateType[];
 
-// @runtime
-export interface References extends AlsoExternalInterface {
-    tacos: boolean;
-    ref: AlsoExternalInterface;
-}
-
-export interface YetAnotherExternalInterface {
-    firstName: string;
-    phoneNumber: string;
+export interface RecordKey {
+    key: string;
+    // num: CertificateType[];
+    // someKeyName: TypeAlias;
+    // gType: TestGeneric;
+    nestedType?: { nestedNumber?: number; nestedCert: CertificateType };
+    key2?: string | number | CertificateType;
+    certType: CertificateType;
+    // wat: NonInitializedEnum;
+    // extras?: string[];
+    // certs: CertificateType[];
 }

@@ -1,72 +1,87 @@
-# ts-runtime-interface 
+# TS-AUDIT
 
-**WARNING: This is still very much a work in progress...**
+`ts-audit` is a Typescript transform plugin that verifies external data
+structures match what you expect them to be inside your typescript ecosystem.
+
+Typescript's safety guarentees can only work on data that originated inside your
+code. Performing a type assertion on a JSON object downloaded from an external
+API or library can lead to odd, hard to debug, runtime errors that Typescript
+would otherwise have prevented at compile time. `ts-audit` solves that by
+verifying that external data structures match the structure of the types inside
+your system before you can start to interact with them. What this provides is a
+barrier between your safe and unsafe code and clearly shows when untyped data
+doesn't match your expections. We can't stop mismatched expectations from
+occurring at runtime, but we can do is isolate where that can occur and provide
+clear indicators of where a mismatch occured and why.
+
+## Installation
+
+You'll need to install two packages, `ts-audit` and `ttypescript` which is used
+to run the transform plugin.
+
+    npm install -S ts-audit ttypescript
+
+Your `tsconfig.json` will need to be modified to use `ts-audit` during the
+compilation process.
+
+```javascript
+{
+    "compilerOptions": {
+        /* Basic Options */
+        "plugins": [
+            {
+                "transform": "ts-audit",
+            }
+        ],
+        /* ... */
+    }
+}
+```
+
+Finally, you'll need to change your build setup to use `ttsc` instead of `tsc`.
+
+And you're ready to go!!!!!!
 
 ## Usage
 
-See `example` for a quick example of usage. Overall what you need to do is:
-
- * Add a `prebuild` step that runs `ts-runtime-interface -p tsconfig.json ./augmented-definitions.d.ts ./schema.json` 
-
-    This will use your `tsconfig.json` file to find relevant typescript files and scans for any interfaces leading with the `// @runtime`.
-
-    These interfaces will be output in JSONSchema format and a type-definition augumentation file will be generated.
-
-    Make sure both of these outputs are in places that 
-
-    * TypeScript can find them 
-    * You can consume them
-
- * In your code, set up the validator with:
-
-    ```typescript
-    const validate = validator('./path/to/schema.json');
-    ```
-
-    The resulting function returned will use the schema file to validate any objects passed into it at runtime.  If a validation fails, it will throw an exception.  If it passes, the returned value should be associated with the `interface` you annotated with `// @runtime`.
-
- * Use the validator:
-
-    ```typescript
-    const safeAPIResult = validate('InterfaceYouAnnotated', unsafeAPIbody);
-
-    // safeAPIResult is guarenteed to have type soundness with your system
-    //  given that everything was set up properly and there are no bugs
-    //  (there are bugs)
-    ```
-
-
-## FAQ  
-
-Ok now one's never actually asked me any of these but...
-
-### Doesn't this already exist?
-
-Probably
-
-### Then why did you do it? 
-
-Why does anyone do anything? 
-
-### I already use swagger/openAPI/api-blueprint for validation
-
-Good!
-
-I'm not sure if this will be a good fit then. My first thought is that you could use something that generates a typescript interface from swagger (so sort of the reverse of what this is).  I don't know which is honestly better.  I made this originally for interactions with libraries/APIs which had no standard sort of validation in place. 
-
-### Why didn't you use \<some typescript thing\> as the method of annotating an interface as needing runtime validation
-
-I briefly considered having an empty interface that looked like: 
+All you have to do to use `ts-audit` is use `validateInterface` (TODO: change
+name) from the library, making sure to annotate the type of the assigned value.
 
 ```typescript
-interface Validate<AliasedName extends string = ''> {}
+import { validateInterface } from 'ts-audit';
+
+enum Animal {
+    Cat = 'cat',
+    Dog = 'dog',
+    Goat = 'goat',
+}
+
+interface UserData {
+    username: string;
+    phoneNumber: string;
+    age: number;
+    pet: Animal;
+    notes?: string;
+}
+
+const fredsData: UserData = validateInterface(await fetchUser('fred'));
 ```
 
-But there were a number of questions that lead to complexity (of usage not implementation) that I didn't have reasonable answers to that wouldn't confuse people:
+In this example `fetchUser` hits an API that returns a JSON object that we
+expect to match UserData. If the object matches correctly, then we can use it
+safely in our system using the power of the typescript type-system. If there's
+a mispelling, missing required key, or type-mismatch we'll throw a runtime error
+indicating that the JSON returned does not match what we were expecting.
 
- * Do all ancestors of Validate become candidates for runtime validation?
- * How do we deal with aliased interfaces
+## TODO
 
-### This is slow
-
-That's not a question, but yes, it does have to process your project with the typescript compiler before you actually compile. There should be a way to focus what files have external interfaces at some point, but it's not there yet. 
+-   [ ] Add `matchesInterface` function which returns `true`/`false` instead of
+        throwing assertions
+-   [ ] Minify schema output
+-   [ ] Performance test against typescript-is
+-   [ ] Allow namespace imports at least.
+-   [ ] Make readme better
+-   [ ] Add tests
+-   [ ] Add CI pipeline so we don't screw up the project
+-   [ ] Support watch mode
+-   [ ] Find better names for functions

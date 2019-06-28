@@ -1,44 +1,27 @@
-import { validator } from 'ts-runtime-interface';
-import { assertError, assertEqual } from './assert';
-import { Permission } from './interfaces';
+/* eslint @typescript-eslint/no-unused-vars: "off" */
+/* eslint prefer-const: "off" */
+/* eslint @typescript-eslint/no-explicit-any: "off" */
+import { validateInterface as renamed } from 'ts-audit';
 
-const validate = validator('./runtimeSchema.json');
+import { RecordKey as RK, CertificateType } from './interfaces';
+import { RecordKey as RK2 } from './interfaces-again';
 
-const parsedExternalInterface = JSON.parse(`{
-    "user": {
-        "firstName": "Jacob",
-        "lastName": "Gardner",
-        "id": 12
-    },
-    "permission": "anonymous"
-}`);
-const parsedCustomInterface = JSON.parse(`{
-    "firstName": "Jacob",
-    "lastName": "Gardner",
-    "extraField": 182301,
-    "phoneNumber": "1238"
-}`);
+type Dup = RK;
 
-parsedExternalInterface; // $ExpectType any
+const key: RK = renamed({ key: 'thing', certType: 'application' }); // $ExpectType RecordKey
+const key2 = renamed({ key: 'thing', certType: 'application' }) as RK; // $ExpectType RecordKey
 
-const validated = validate('ExternalInterface', parsedExternalInterface); // $ExpectType ExternalInterface
-assertEqual(validated.permission, Permission.Anonymous);
-assertEqual(validated.user.firstName, 'Jacob');
-assertEqual(validated.user.lastName, 'Gardner');
-assertEqual(validated.user.id, 12);
-assertEqual(validated.user.phoneNumber, undefined);
+// const certType: string = renamed('application');
+// const unTyped = renamed('dfkasdf');
 
-const custom = validate('CustomName', parsedCustomInterface); // $ExpectType AlsoExternalInterface
-assertEqual(custom.firstName, 'Jacob');
-assertEqual(custom.lastName, 'Gardner');
-assertEqual(custom.phoneNumber, '1238');
+const thing: RK2 = {};
 
-assertError(() => {
-    validate('UnknownInterface', parsedExternalInterface); // $ExpectType never
-});
+let delayed: CertificateType;
 
-assertError(() => {
-    const { firstName, ...obj } = parsedCustomInterface;
+delayed = renamed('application'); // $ExpectType CertificateType
 
-    validate('CustomName', obj); // $ExpectType AlsoExternalInterface
-});
+const fu = renamed('application') as CertificateType;
+const fu2: CertificateType = renamed('application');
+
+let delayedType;
+delayedType = renamed({ key: 'thing', certType: 'application' }) as Dup; // $ExpectType RecordKey
