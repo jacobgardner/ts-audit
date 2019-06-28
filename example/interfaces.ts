@@ -1,6 +1,6 @@
 export enum CertificateType {
     Application = 'application',
-    User = 'user'
+    User = 'user',
 }
 
 export enum NonInitializedEnum {
@@ -8,7 +8,7 @@ export enum NonInitializedEnum {
     A = '5',
     B = 4,
     A1,
-    C
+    C,
 }
 
 interface TestGeneric<T = number> {
@@ -18,13 +18,13 @@ interface TestGeneric<T = number> {
 type TypeAlias = CertificateType[];
 
 export interface RecordKey {
-    // key: string;
+    key: string;
     // num: CertificateType[];
     // someKeyName: TypeAlias;
     // gType: TestGeneric;
-    nestedType: { nestedNumber?: number; nestedCert: CertificateType };
-    key2: string | number | CertificateType;
-    // certType: CertificateType;
+    nestedType?: { nestedNumber?: number; nestedCert: CertificateType };
+    key2?: string | number | CertificateType;
+    certType: CertificateType;
     // wat: NonInitializedEnum;
     // extras?: string[];
     // certs: CertificateType[];

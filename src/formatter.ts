@@ -3,10 +3,16 @@ import * as util from 'util';
 import colors from 'colors';
 
 function printNode(node: ts.Node) {
-    const outFile = ts.createSourceFile('bogus', '', ts.ScriptTarget.Latest, false, ts.ScriptKind.TS);
+    const outFile = ts.createSourceFile(
+        'bogus',
+        '',
+        ts.ScriptTarget.Latest,
+        false,
+        ts.ScriptKind.TS,
+    );
 
     const printer = ts.createPrinter({
-        newLine: ts.NewLineKind.LineFeed
+        newLine: ts.NewLineKind.LineFeed,
     });
 
     const result = printer.printNode(ts.EmitHint.Unspecified, node, outFile);
@@ -29,9 +35,9 @@ export function astFormatter(node: ts.Node, depth = 0): string {
     switch (node.kind) {
         case ts.SyntaxKind.CallExpression:
             if (ts.isCallExpression(node)) {
-                console.log(util.inspect(node, false, 1, true));
-
-                output += `  Expression: ${colors.yellow(astFormatter(node.expression))}\n`;
+                output += `  Expression: ${colors.yellow(
+                    astFormatter(node.expression),
+                )}\n`;
                 output += `  Arguments:\n`;
 
                 for (const argument of node.arguments) {
@@ -109,7 +115,9 @@ export function astFormatter(node: ts.Node, depth = 0): string {
 
             break;
         default:
-            output += colors.red(`No formatter for ${ts.SyntaxKind[node.kind]}`);
+            output += colors.red(
+                `No formatter for ${ts.SyntaxKind[node.kind]}`,
+            );
     }
     // console.log(util.inspect(node, false, 0, true));
 

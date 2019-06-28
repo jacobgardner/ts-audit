@@ -1,26 +1,30 @@
 {
-  "name": "example",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "check": "npm run build -- --noEmit",
-    "builder": "node -r source-map-support/register node_modules/ttypescript/lib/tsc.js",
-    "build": "npm run builder -- usage.ts",
-    "build:errors": "ttsc errors.ts",
-    "watch": "npm run build -- --watch"
-  },
-  "author": "",
-  "private": true,
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^12.0.8",
-    "ttypescript": "^1.5.7",
-    "typescript": "^3.5.1"
-  },
-  "dependencies": {
-    "@types/ajv": "^1.0.0",
-    "http-server": "^0.11.1",
-    "source-map-support": "^0.5.12"
-  }
+    "name": "example",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "check": "npm run build -- --noEmit",
+        "builder": "node -r source-map-support/register node_modules/ttypescript/lib/tsc.js",
+        "build": "npm run builder -- usage.ts",
+        "build:errors": "npm run build -- errors.ts",
+        "watch": "npm run build -- --watch"
+    },
+    "author": "",
+    "private": true,
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^12.0.8",
+        "@typescript-eslint/eslint-plugin": "^1.11.0",
+        "@typescript-eslint/parser": "^1.11.0",
+        "eslint": "^6.0.1",
+        "ttypescript": "^1.5.7",
+        "typescript": "^3.5.1"
+    },
+    "dependencies": {
+        "@types/ajv": "^1.0.0",
+        "http-server": "^0.11.1",
+        "pjson": "^1.0.9",
+        "source-map-support": "^0.5.12"
+    }
 }

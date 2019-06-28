@@ -3,7 +3,7 @@ import { log } from './logger';
 import colors from 'colors';
 import * as schema from 'ts-json-schema-generator';
 import { TypeFormatter, AliasType } from 'ts-json-schema-generator';
-import { JSONSchema7 } from 'json-schema';
+import { JSONSchema7, JSONSchema7Definition } from 'json-schema';
 import * as util from 'util';
 
 // export const schemas = new Map<ts.Type, number>();
@@ -21,8 +21,9 @@ export class SchemaDB {
     constructor(program: ts.Program, path: string) {
         this.parser = schema.createParser(program, {
             ...schema.DEFAULT_CONFIG,
+            jsDoc: 'none',
             skipTypeCheck: true,
-            path
+            path,
         });
         this.formatter = schema.createFormatter();
     }
@@ -32,15 +33,15 @@ export class SchemaDB {
         const baseType = this.parser.createType(node, new schema.Context());
         let definition = this.schemasByType.get(baseType.getId());
 
-        log('Base:', util.inspect(baseType, false, 1000, true));
-        log(' -', baseType.getName(), baseType.getId());
-        if (definition) {
-            log(' -', definition);
-        }
+        // log('Base:', util.inspect(baseType, false, 1000, true));
+        // log(' -', baseType.getName(), baseType.getId());
+        // if (definition) {
+        //     log(' -', definition);
+        // }
 
         if (definition === undefined) {
             definition = this.formatter.getDefinition(baseType);
-            log(' -', definition);
+            // log(' -', definition);
             // this.schemasByType.set(baseType.getId(), definition);
             const seen = new Set<string>();
 
@@ -49,7 +50,10 @@ export class SchemaDB {
             // Make A PR to make this functionality public.
             const children = this.formatter
                 .getChildren(baseType)
-                .filter((child): child is schema.DefinitionType => child instanceof schema.DefinitionType)
+                .filter(
+                    (child): child is schema.DefinitionType =>
+                        child instanceof schema.DefinitionType,
+                )
                 .filter(child => {
                     if (!seen.has(child.getId())) {
                         seen.add(child.getId());
@@ -60,8 +64,8 @@ export class SchemaDB {
 
             children.reduce((definitions, child) => {
                 const name = child.getName();
-                log('childId', child.getId());
-                log(child);
+                // log('childId', child.getId());
+                // log(child);
 
                 if (this.schemasByType.get(child.getId())) {
                     return definitions;
@@ -77,13 +81,19 @@ export class SchemaDB {
                     childBaseType = childBaseType.getType();
                 }
 
-                // const childBaseType = child.getType();
-                const childDefinition = this.formatter.getDefinition(childBaseType);
+                const childDefinition = this.formatter.getDefinition(
+                    childBaseType,
+                );
 
-                log('ChildBase:', util.inspect(childBaseType, false, 1000, true));
-                log(' -', childBaseType.getName(), childBaseType.getId());
-                log(' -', childDefinition);
-                this.schemasByType.set(child.getId(), this.formatter.getDefinition(child));
+                stripAdditionalProperties(childDefinition);
+
+                // log('ChildBase:', util.inspect(childBaseType, false, 1000, true));
+                // log(' -', childBaseType.getName(), childBaseType.getId());
+                // log(' -', childDefinition);
+                this.schemasByType.set(
+                    child.getId(),
+                    this.formatter.getDefinition(child),
+                );
 
                 definitions[name] = childDefinition;
                 return definitions;
@@ -106,4 +116,18 @@ function cleanId(baseTypeName: string) {
 
     // log('Match:', m[2]);
     return m[2];
+}
+
+function stripAdditionalProperties(defn: JSONSchema7 | JSONSchema7Definition) {
+    if (typeof defn === 'boolean') {
+        return;
+    }
+
+    delete defn.additionalProperties;
+
+    if (defn.properties) {
+        for (const key of Object.keys(defn.properties)) {
+            stripAdditionalProperties(defn.properties[key]);
+        }
+    }
 }
