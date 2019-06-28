@@ -1,3 +1,6 @@
+/* eslint @typescript-eslint/no-unused-vars: "off" */
+/* eslint prefer-const: "off" */
+/* eslint @typescript-eslint/no-explicit-any: "off" */
 import { validateInterface as renamed } from 'runtime-check';
 
 import { RecordKey as RK, CertificateType } from './interfaces';
