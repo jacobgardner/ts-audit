@@ -13,6 +13,8 @@
     "author": "Jacob V. Gardner <jacob.v.gardner@gmail.com>",
     "license": "MIT",
     "devDependencies": {
+        "@types/colors": "^1.2.1",
+        "@types/json-schema": "^7.0.3",
         "@types/node": "^12.0.8",
         "@typescript-eslint/eslint-plugin": "^1.11.0",
         "@typescript-eslint/parser": "^1.11.0",
@@ -23,10 +25,12 @@
         "pretty-quick": "^1.11.1",
         "typescript": "^3.5.1"
     },
+    "peerDependencies": {
+        "typescript": ">3.0"
+    },
     "private": true,
     "dependencies": {
-        "@types/colors": "^1.2.1",
-        "@types/json-schema": "^7.0.3",
+        "ajv": "^6.10.0",
         "colors": "^1.3.3",
         "json-schema": "^0.2.3",
         "pjson": "^1.0.9",
