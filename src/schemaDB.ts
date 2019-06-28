@@ -1,16 +1,21 @@
 import * as ts from 'typescript';
-import { log } from './logger';
-import colors from 'colors';
 import * as schema from 'ts-json-schema-generator';
-import { TypeFormatter, AliasType } from 'ts-json-schema-generator';
+import { AliasType } from 'ts-json-schema-generator';
 import { JSONSchema7, JSONSchema7Definition } from 'json-schema';
-import * as util from 'util';
 
-// export const schemas = new Map<ts.Type, number>();
-// export const nodes = new Map<ts.Node, number>();
-// export const schemaList: Array<[number, ts.Type]> = [];
-// export const nodeList: Array<[number, ts.Node]> = [];
-// export const definitions: Record<string, schema.Definition> = {};
+function stripAdditionalProperties(defn: JSONSchema7 | JSONSchema7Definition) {
+    if (typeof defn === 'boolean') {
+        return;
+    }
+
+    delete defn.additionalProperties;
+
+    if (defn.properties) {
+        for (const key of Object.keys(defn.properties)) {
+            stripAdditionalProperties(defn.properties[key]);
+        }
+    }
+}
 
 export class SchemaDB {
     private parser: schema.NodeParser;
@@ -18,7 +23,7 @@ export class SchemaDB {
     private definitions: Record<string, schema.Definition> = {};
     private schemasByType = new Map<string, JSONSchema7>();
 
-    constructor(program: ts.Program, path: string) {
+    public constructor(program: ts.Program, path: string) {
         this.parser = schema.createParser(program, {
             ...schema.DEFAULT_CONFIG,
             jsDoc: 'none',
@@ -28,7 +33,7 @@ export class SchemaDB {
         this.formatter = schema.createFormatter();
     }
 
-    addSchema(node: ts.Node): JSONSchema7 {
+    public addSchema(node: ts.Node): JSONSchema7 {
         // log(node);
         const baseType = this.parser.createType(node, new schema.Context());
         let definition = this.schemasByType.get(baseType.getId());
@@ -103,31 +108,7 @@ export class SchemaDB {
         return definition;
     }
 
-    dump() {
+    public dump() {
         return this.definitions;
-    }
-}
-
-function cleanId(baseTypeName: string) {
-    const m = baseTypeName.match(/^(def-)?(.*)$/);
-    if (!m) {
-        throw new Error('m should definitely exist. Trust me');
-    }
-
-    // log('Match:', m[2]);
-    return m[2];
-}
-
-function stripAdditionalProperties(defn: JSONSchema7 | JSONSchema7Definition) {
-    if (typeof defn === 'boolean') {
-        return;
-    }
-
-    delete defn.additionalProperties;
-
-    if (defn.properties) {
-        for (const key of Object.keys(defn.properties)) {
-            stripAdditionalProperties(defn.properties[key]);
-        }
     }
 }

@@ -18,7 +18,6 @@ module.exports = {
     rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-parameter-properties': 'off',
-        'indent': ['error', 4],
         'linebreak-style': ['error', 'unix'],
     },
 };

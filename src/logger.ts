@@ -4,8 +4,9 @@ import colors from 'colors';
 
 const f = fs.openSync('output', 'w');
 
-export function log(...params: any[]) {
+export function log(...params: unknown[]) {
     console.log(...params);
+
     fs.writeSync(
         f,
         Buffer.from(
@@ -18,7 +19,7 @@ export function log(...params: any[]) {
                     }
                 })
                 .map(param => colors.stripColors(param))
-                .join(' ') + '\n'
-        )
+                .join(' ') + '\n',
+        ),
     );
 }

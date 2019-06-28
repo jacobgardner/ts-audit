@@ -8,6 +8,7 @@ import pjson from 'pjson';
 import { assertExists } from './assert';
 import { convertObjToAST, isRuntimeChecker, addChain } from './utils';
 import { errors, emitErrorFromNode } from './errors';
+import { MULTILINE_LITERALS } from './config';
 
 const INTERFACE_ASSERTION_NAME = 'validateInterface';
 
@@ -89,14 +90,17 @@ class TransformClass {
                         ajvClass,
                         [],
                         [
-                            ts.createObjectLiteral([
-                                ts.createPropertyAssignment(
-                                    'schemas',
-                                    ts.createArrayLiteral([
-                                        convertObjToAST(schema),
-                                    ]),
-                                ),
-                            ]),
+                            ts.createObjectLiteral(
+                                [
+                                    ts.createPropertyAssignment(
+                                        'schemas',
+                                        ts.createArrayLiteral([
+                                            convertObjToAST(schema),
+                                        ]),
+                                    ),
+                                ],
+                                MULTILINE_LITERALS,
+                            ),
                         ],
                     ),
                 ),

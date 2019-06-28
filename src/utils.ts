@@ -1,4 +1,5 @@
 import * as ts from 'typescript';
+import { RUNTIME_CHECK_SYMBOL, MULTILINE_LITERALS } from './config';
 
 export function hide<T extends {}>(obj: T, hiddenFields: string[]): T {
     const dup: Record<string | number | symbol, unknown> = { ...obj };
@@ -13,53 +14,55 @@ export function hide<T extends {}>(obj: T, hiddenFields: string[]): T {
 export const hideSymbol = (symbol: ts.Symbol) => hide(symbol, ['parent']);
 export const hideNode = (node: ts.Node) => hide(node, ['parent']);
 
-export function parseTypeFlags(type: ts.Type) {
-    const { flags } = type;
+// eslint-disable-next-line
+type AnyObj = { [key: string]: any };
 
-    const flagNames = [];
+export function enumerateFlags<T extends { [key: string]: AnyObj }>(
+    e: T,
+    callback: (key: string, value: number) => void,
+) {
+    for (const key of Object.keys(e)) {
+        const value = e[key];
+        if (typeof value !== 'number') {
+            throw new Error('Expected flag to be number');
+        }
+        callback(key, value);
+    }
+}
 
-    for (const key of Object.keys(ts.TypeFlags)) {
-        const num = (ts.TypeFlags[key as any] as any) as number;
+type FlagsKeys<B> = {
+    [K in keyof B]: B[K] extends number ? K : never;
+}[keyof B];
 
-        if (num & (flags as number)) {
+export function parseFlags<T, K extends FlagsKeys<T>, E extends AnyObj>(
+    flagKey: K,
+    type: T,
+    enumType: E,
+) {
+    const flags = type[flagKey];
+    if (typeof flags !== 'number') {
+        throw new Error('This flag must be number');
+    }
+
+    const flagNames: string[] = [];
+
+    enumerateFlags(enumType, (key, value) => {
+        if (value & flags) {
             flagNames.push(key);
         }
-    }
+    });
 
     return flagNames.join(', ');
 }
 
-export function parseObjectFlags(type: ts.Type) {
-    const { objectFlags = 0 } = type as any;
+export const parseTypeFlags = (type: ts.Type) =>
+    parseFlags('flags', type, ts.TypeFlags);
 
-    const flagNames = [];
+export const parseObjectFlags = (type: ts.ObjectType) =>
+    parseFlags('objectFlags', type, ts.ObjectFlags);
 
-    for (const key of Object.keys(ts.ObjectFlags)) {
-        const num = (ts.ObjectFlags[key as any] as any) as number;
-
-        if (num & (objectFlags as number)) {
-            flagNames.push(key);
-        }
-    }
-
-    return flagNames.join(', ');
-}
-
-export function parseSymbolFlags(type: ts.Symbol) {
-    const { flags } = type;
-
-    const flagNames = [];
-
-    for (const key of Object.keys(ts.SymbolFlags)) {
-        const num = (ts.SymbolFlags[key as any] as any) as number;
-
-        if (num & (flags as number)) {
-            flagNames.push(key);
-        }
-    }
-
-    return flagNames.join(', ');
-}
+export const parseSymbolFlags = (symbol: ts.Symbol) =>
+    parseFlags('flags', symbol, ts.SymbolFlags);
 
 export function convertObjToAST(obj: unknown, depth = 0): ts.Expression {
     if (typeof obj === 'string') {
@@ -79,12 +82,12 @@ export function convertObjToAST(obj: unknown, depth = 0): ts.Expression {
             properties.push(
                 ts.createPropertyAssignment(
                     ts.createStringLiteral(key),
-                    convertObjToAST((obj as any)[key], depth + 1),
+                    convertObjToAST((obj as AnyObj)[key], depth + 1),
                 ),
             );
         }
 
-        return ts.createObjectLiteral(properties);
+        return ts.createObjectLiteral(properties, MULTILINE_LITERALS);
     } else if (typeof obj === 'boolean') {
         if (obj) {
             return ts.createTrue();
@@ -97,8 +100,6 @@ export function convertObjToAST(obj: unknown, depth = 0): ts.Expression {
 
     throw new Error(`${typeof obj} is not yet supported for AST dump`);
 }
-
-const RUNTIME_CHECK_SYMBOL = '_RUNTIME_CHECK_ANY';
 
 export function isRuntimeChecker(type: ts.TypeNode) {
     return (

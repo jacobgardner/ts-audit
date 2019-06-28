@@ -7,7 +7,7 @@ export function assertEqual<T>(expected: T, actual: T, message?: string) {
 }
 
 export function assert<T>(expression: T, message: string) {
-    if (!Boolean(expression)) {
+    if (!expression) {
         throw new Error(message);
     }
 }
