@@ -25,3 +25,8 @@ const fu2: CertificateType = renamed('application');
 
 let delayedType;
 delayedType = renamed({ key: 'thing', certType: 'application' }) as Dup; // $ExpectType RecordKey
+
+// eslint-disable-next-line
+const bracketAssign = <CertificateType>renamed('user');
+
+const genericAssign = renamed<CertificateType>('user');

@@ -74,13 +74,18 @@ export function stringifyNode(node: unknown, maxDepth = 6): string {
     for (const key of Object.keys(node)) {
         if (key === 'pos' && isNode(node)) {
             const source = node.getSourceFile();
-            const { line: lineNumber } = source.getLineAndCharacterOfPosition(
-                node.pos,
-            );
-            lines.push(
-                `location: ` +
-                    colors.cyan(`${source.fileName}:${lineNumber + 1}`),
-            );
+
+            if (source) {
+                const {
+                    line: lineNumber,
+                } = source.getLineAndCharacterOfPosition(node.pos);
+                lines.push(
+                    `location: ` +
+                        colors.cyan(`${source.fileName}:${lineNumber + 1}`),
+                );
+            } else {
+                lines.push('location: unknown');
+            }
             continue;
         } else if (EXCLUDE[key] !== undefined) {
             continue;
