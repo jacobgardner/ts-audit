@@ -11,6 +11,7 @@ install:
     - cd ..
 script:
     - npm run build
+    - npm run lint
     - npm test
     - cd example
     - npm run build

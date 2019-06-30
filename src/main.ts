@@ -219,7 +219,16 @@ class TransformClass {
         } else if (this.isValidateFunction(node)) {
             const parent = node.parent;
 
-            if (ts.isVariableDeclaration(parent) || ts.isAsExpression(parent)) {
+            if (node.typeArguments && node.typeArguments.length) {
+                const [arg] = node.typeArguments;
+
+                const refType = this.typeChecker.getTypeFromTypeNode(arg);
+
+                return this.transformNode(node, arg, refType);
+            } else if (
+                ts.isVariableDeclaration(parent) ||
+                ts.isAsExpression(parent)
+            ) {
                 if (parent.type) {
                     const refType = this.typeChecker.getTypeAtLocation(
                         parent.type,
@@ -265,12 +274,18 @@ class TransformClass {
                 }
 
                 throw new Error('Assigned Node must be an identifier');
-            } else if (ts.isExpressionStatement(parent)) {
-                return emitErrorFromNode(
-                    node,
-                    'Standalone expression statements are not supported',
-                );
+            } else if (ts.isTypeAssertion(parent)) {
+                const { type } = parent;
+
+                const refType = this.typeChecker.getTypeFromTypeNode(type);
+
+                return this.transformNode(node, type, refType);
             }
+
+            return emitErrorFromNode(
+                node,
+                `validationFunction not used in a supported way.  Please see documentation for details on usage`,
+            );
         }
 
         return node;
