@@ -14,7 +14,8 @@
         "build": "tsc",
         "prepublish": "npm run build",
         "lint": "eslint --ext ts,tsx src example",
-        "watch": "npm run build -- --watch"
+        "watch": "npm run build -- --watch",
+        "test": "ava"
     },
     "author": "Jacob V. Gardner <jacob.v.gardner@gmail.com>",
     "license": "MIT",
@@ -24,12 +25,15 @@
         "@types/node": "^12.0.8",
         "@typescript-eslint/eslint-plugin": "^1.11.0",
         "@typescript-eslint/parser": "^1.11.0",
+        "ava": "^2.1.0",
         "eslint": "^6.0.1",
         "eslint-config-prettier": "^6.0.0",
         "husky": "^2.7.0",
         "prettier": "^1.18.2",
         "pretty-quick": "^1.11.1",
         "rimraf": "^2.6.3",
+        "ts-node": "^8.3.0",
+        "ttypescript": "^1.5.7",
         "typescript": "^3.5.1"
     },
     "peerDependencies": {
@@ -46,5 +50,14 @@
         "hooks": {
             "pre-commit": "pretty-quick --staged"
         }
+    },
+    "ava": {
+        "compileEnhancements": false,
+        "extensions": [
+            "ts"
+        ],
+        "require": [
+            "tts-node/register"
+        ]
     }
 }

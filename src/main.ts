@@ -8,12 +8,13 @@ import { errors, emitErrorFromNode } from './errors';
 import { MULTILINE_LITERALS } from './config';
 
 const INTERFACE_ASSERTION_NAME = 'validateInterface';
+const VALIDATION_ERROR_NAME = 'ValidationError';
 
 class TransformClass {
     private schemaDb: SchemaDB;
     private typeChecker: ts.TypeChecker;
 
-    public constructor(private program: ts.Program) {
+    public constructor(private program: ts.Program, private baseDir: string) {
         this.schemaDb = new SchemaDB(program, '.');
         this.typeChecker = program.getTypeChecker();
     }
@@ -29,12 +30,16 @@ class TransformClass {
             throw new Error('This does not work with outFile in tsconfig...');
         }
 
+        let fullPath;
+
+        if (path.isAbsolute(outDir)) {
+            fullPath = outDir;
+        } else {
+            fullPath = path.join(this.program.getCurrentDirectory(), outDir);
+        }
+
         let sourceFile = ts.createSourceFile(
-            path.join(
-                this.program.getCurrentDirectory(),
-                outDir,
-                'runTimeValidations.js',
-            ),
+            path.join(fullPath, 'runTimeValidations.js'),
             '',
             target,
             undefined,
@@ -139,7 +144,7 @@ class TransformClass {
                     ts.createReturn(rawArg),
                     ts.createThrow(
                         ts.createNew(
-                            ts.createIdentifier('Error'),
+                            ts.createIdentifier('ValidationError'),
                             [],
                             [
                                 addChain(
@@ -189,11 +194,91 @@ class TransformClass {
             ]),
         );
 
-        sourceFile = ts.updateSourceFileNode(sourceFile, [
+        const validationLines = [
             validateImport,
             ajvInit,
             validateInterfaceFunction,
             exportValidate,
+        ];
+
+        const exportValidationError = ts.createStatement(
+            ts.createAssignment(
+                ts.createPropertyAccess(
+                    ts.createIdentifier('exports'),
+                    VALIDATION_ERROR_NAME,
+                ),
+                ts.createIdentifier(VALIDATION_ERROR_NAME),
+            ),
+        );
+
+        const thisId = ts.createIdentifier('this');
+        const messageArg = ts.createIdentifier('message');
+
+        const validationError = ts.createFunctionDeclaration(
+            [],
+            [],
+            undefined,
+            VALIDATION_ERROR_NAME,
+            [],
+            [ts.createParameter([], [], undefined, messageArg)],
+            undefined,
+            ts.createBlock(
+                [
+                    ts.createStatement(
+                        ts.createAssignment(
+                            ts.createPropertyAccess(thisId, 'name'),
+                            ts.createStringLiteral(VALIDATION_ERROR_NAME),
+                        ),
+                    ),
+                    ts.createStatement(
+                        ts.createAssignment(
+                            ts.createPropertyAccess(thisId, 'message'),
+                            messageArg,
+                        ),
+                    ),
+                    ts.createStatement(
+                        ts.createAssignment(
+                            ts.createPropertyAccess(thisId, 'validationError'),
+                            ts.createTrue(),
+                        ),
+                    ),
+                    ts.createStatement(
+                        ts.createAssignment(
+                            ts.createPropertyAccess(thisId, 'stack'),
+                            ts.createPropertyAccess(
+                                ts.createNew(
+                                    ts.createIdentifier('Error'),
+                                    [],
+                                    [messageArg],
+                                ),
+                                'stack',
+                            ),
+                        ),
+                    ),
+                ],
+                MULTILINE_LITERALS,
+            ),
+        );
+
+        const errorPrototypeExtend = ts.createStatement(
+            ts.createAssignment(
+                ts.createPropertyAccess(
+                    ts.createIdentifier(VALIDATION_ERROR_NAME),
+                    'prototype',
+                ),
+                ts.createNew(ts.createIdentifier('Error'), [], undefined),
+            ),
+        );
+
+        const errorLines = [
+            validationError,
+            errorPrototypeExtend,
+            exportValidationError,
+        ];
+
+        sourceFile = ts.updateSourceFileNode(sourceFile, [
+            ...validationLines,
+            ...errorLines,
         ]);
 
         const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
@@ -320,13 +405,22 @@ class TransformClass {
                             declaration.type &&
                             isRuntimeChecker(declaration.type)
                         ) {
+                            const sourceDir = path.dirname(
+                                path.normalize(node.getSourceFile().fileName),
+                            );
+                            const relative = path.relative(
+                                sourceDir,
+                                this.baseDir,
+                            );
+
                             return ts.updateImportDeclaration(
                                 node,
                                 node.decorators,
                                 node.modifiers,
-
                                 node.importClause,
-                                ts.createLiteral('./runTimeValidations'),
+                                ts.createLiteral(
+                                    `${relative}/runTimeValidations`,
+                                ),
                             );
                         }
                     }
@@ -403,8 +497,51 @@ export default function transformer(program: ts.Program /*, config: Config*/) {
         .map(sourceFile => sourceFile.fileName)
         .filter(isTransformable);
 
+    let baseDir: string | undefined;
+
+    const { baseUrl } = program.getCompilerOptions();
+
+    if (baseUrl) {
+        baseDir = path.normalize(
+            path.join(program.getCurrentDirectory(), baseUrl),
+        );
+    }
+
+    // TODO: make count separators function
+    const sepRegex = new RegExp(`/\\${path.sep}/`, 'g');
+
+    if (!baseDir) {
+        program
+            .getSourceFiles()
+            .filter(value => {
+                return !value.fileName.endsWith('.d.ts');
+            })
+            .filter(value => {
+                return !value.fileName.match(/.*\/node_modules\/.*/);
+            })
+            .forEach(value => {
+                const dir = path.resolve(
+                    path.normalize(path.dirname(value.fileName)),
+                );
+
+                if (!baseDir) {
+                    baseDir = dir;
+                } else {
+                    const baseCount = (baseDir.match(sepRegex) || []).length;
+                    const curCount = (dir.match(sepRegex) || []).length;
+
+                    if (curCount < baseCount) {
+                        baseDir = dir;
+                    }
+                }
+            });
+    }
+
     let filesRemaining = filesToTransform.length;
-    const transformer = new TransformClass(program);
+    const transformer = new TransformClass(
+        program,
+        baseDir || program.getCurrentDirectory(),
+    );
 
     return (context: ts.TransformationContext) => (file: ts.SourceFile) => {
         const finalNode = transformer.visitNodeAndChildren(file, context);
