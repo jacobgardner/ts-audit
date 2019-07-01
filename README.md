@@ -134,16 +134,7 @@ the code works.
 
 ## Running Tests
 
-We have to set up tests slightly differently due to the unique nature of how the
-type declaration file does not match up with the generated javascript. There
-may be a way to fix this, but it's not a high priority ATM. (See TODO below)
-
-From the root directory:
-
-    npm link
-    cd tests
-    npm install
-    npm link ts-audit
+    npm test
 
 ## TODO
 
@@ -179,6 +170,6 @@ From the root directory:
 -   [ ] Test in browser
 -   [ ] Move config.ts to using user passed options instead.
 -   [ ] Use `dtslint` in tests
--   [ ] Create `.d.ts` file in tests that overrides types in `/build` so we
+-   [x] Create `.d.ts` file in tests that overrides types in `/build` so we
         don't need to install separately in tests and `link` against the parent.
         It should provide a much smoother testing experience.
