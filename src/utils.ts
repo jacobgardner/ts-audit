@@ -1,5 +1,5 @@
 import * as ts from 'typescript';
-import { RUNTIME_CHECK_SYMBOL, MULTILINE_LITERALS } from './config';
+import { MULTILINE_LITERALS, RUNTIME_CHECK_SYMBOL } from './config';
 
 export function hide<T extends {}>(obj: T, hiddenFields: string[]): T {
     const dup: Record<string | number | symbol, unknown> = { ...obj };
@@ -112,13 +112,17 @@ export function isRuntimeChecker(type: ts.TypeNode) {
 export function addChain(
     firstOperand: ts.Expression,
     ...remaining: ts.Expression[]
-): ts.Expression {
+): ts.Expression;
+export function addChain(...operands: ts.Expression[]): ts.Expression {
+    const remaining = operands.slice(0, -1);
+    const lastOperand = operands[operands.length - 1];
+
     if (remaining.length) {
         return ts.createAdd(
-            firstOperand,
             addChain(...(remaining as [ts.Expression, ...ts.Expression[]])),
+            lastOperand,
         );
     } else {
-        return firstOperand;
+        return lastOperand;
     }
 }

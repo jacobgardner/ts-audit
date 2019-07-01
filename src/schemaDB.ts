@@ -1,7 +1,7 @@
-import * as ts from 'typescript';
 import * as schema from 'ts-json-schema-generator';
-import { AliasType } from 'ts-json-schema-generator';
+import * as ts from 'typescript';
 import { JSONSchema7, JSONSchema7Definition } from 'json-schema';
+import { AliasType } from 'ts-json-schema-generator';
 
 function stripAdditionalProperties(defn: JSONSchema7 | JSONSchema7Definition) {
     if (typeof defn === 'boolean') {
@@ -15,6 +15,10 @@ function stripAdditionalProperties(defn: JSONSchema7 | JSONSchema7Definition) {
             stripAdditionalProperties(defn.properties[key]);
         }
     }
+}
+
+function sanitizeId(id: string): string {
+    return id.replace(/\//g, '_');
 }
 
 export class SchemaDB {
@@ -68,7 +72,7 @@ export class SchemaDB {
                 });
 
             children.reduce((definitions, child) => {
-                const name = child.getName();
+                const name = sanitizeId(child.getName());
                 // log('childId', child.getId());
                 // log(child);
 
@@ -95,10 +99,20 @@ export class SchemaDB {
                 // log('ChildBase:', util.inspect(childBaseType, false, 1000, true));
                 // log(' -', childBaseType.getName(), childBaseType.getId());
                 // log(' -', childDefinition);
-                this.schemasByType.set(
-                    child.getId(),
-                    this.formatter.getDefinition(child),
-                );
+
+                // TODO: This is an ugly hack which fixes the definition  having
+                // slashes and fucking up the json schema
+                const defn = this.formatter.getDefinition(child);
+
+                if (defn.$ref) {
+                    const splits = defn.$ref.split(/#\/definitions\//);
+
+                    defn.$ref = `${splits[0]}#/definitions/${sanitizeId(
+                        splits[1],
+                    )}`;
+                }
+
+                this.schemasByType.set(sanitizeId(child.getId()), defn);
 
                 definitions[name] = childDefinition;
                 return definitions;

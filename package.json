@@ -1,6 +1,6 @@
 {
     "name": "ts-audit",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "description": "Plugin for typescript for doing runtime validation of interfaces",
     "main": "build/main.js",
     "types": "./index.d.ts",
@@ -13,13 +13,16 @@
         "prebuild": "rimraf build",
         "build": "tsc",
         "prepublish": "npm run build",
-        "lint": "eslint --ext ts,tsx src example",
+        "lint:base": "eslint --ext ts,tsx",
+        "lint:fix": "npm run lint:base -- --fix src tests",
+        "lint": "npm run lint:base -- src tests",
         "watch": "npm run build -- --watch"
     },
     "author": "Jacob V. Gardner <jacob.v.gardner@gmail.com>",
     "license": "MIT",
     "devDependencies": {
         "@types/colors": "^1.2.1",
+        "@types/debug": "^4.1.4",
         "@types/json-schema": "^7.0.3",
         "@types/node": "^12.0.8",
         "@typescript-eslint/eslint-plugin": "^1.11.0",
@@ -30,6 +33,8 @@
         "prettier": "^1.18.2",
         "pretty-quick": "^1.11.1",
         "rimraf": "^2.6.3",
+        "ts-node": "^8.3.0",
+        "ttypescript": "^1.5.7",
         "typescript": "^3.5.1"
     },
     "peerDependencies": {
@@ -38,6 +43,7 @@
     "dependencies": {
         "ajv": "^6.10.0",
         "colors": "^1.3.3",
+        "debug": "^4.1.1",
         "json-schema": "^0.2.3",
         "pjson": "^1.0.9",
         "ts-json-schema-generator": "^0.50.2"

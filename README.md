@@ -73,6 +73,34 @@ safely in our system using the power of the typescript type-system. If there's
 a mispelling, missing required key, or type-mismatch we'll throw a runtime error
 indicating that the JSON returned does not match what we were expecting.
 
+## Disclaimer
+
+This does not work for classes, functions, or pretty much anything else that's
+not supported by JSON-schema.
+
+## Known Issues
+
+These are some known issues. There may be more unknown...
+
+-   This also does not support primitive types unless they are aliased.
+-   Importing as a named import is the only way to currently interact with
+    `ts-audit`.
+-   Watch mode does not appear to work correctly on the consuming project when
+    altering code using the `ts-audit` library.
+
+## Other Similar Projects
+
+-   [typescript-is](https://github.com/woutervh-/typescript-is)
+
+## Directory Structure
+
+```
+/src - Source for the transformer (details to come after refactor maybe)
+/tests - Tests testing the transformer and schema validation
+    /tests/valid - Tests that build and run to completio (including testing bad schemas)
+    /tests/invalid - A series of files that should fail at build time.
+```
+
 ## TODO
 
 -   [ ] Add `matchesInterface` function which returns `true`/`false` instead of
@@ -81,7 +109,18 @@ indicating that the JSON returned does not match what we were expecting.
 -   [ ] Performance test against typescript-is
 -   [ ] Allow namespace imports at least.
 -   [ ] Make readme better
--   [ ] Add tests
--   [ ] Add CI pipeline so we don't screw up the project
--   [ ] Support watch mode
+-   [x] Add tests
+-   [x] Add CI pipeline so we don't screw up the project
+-   [ ] Support watch mode - I think the issue is we cache the types after the
+        first pass and the second pass doesn't invalidate the cache so changes to
+        types aren't propogated correctly.
 -   [ ] Find better names for functions
+-   [ ] Support primitives
+-   [ ] Use custom error so that consumer can catch interface validations
+-   [ ] Allow option to disable additional properties being added to an object
+        (possibly with a decorator)
+-   [ ] Add realistic, useful example instead of the pseudo-test-like examples
+        we had before.
+-   [ ] Refactor like crazy
+-   [ ] Build a tool like `Quote` in rust so that it's easier to build up the
+        AST without building the AST.

@@ -5,8 +5,12 @@
     "main": "index.js",
     "scripts": {
         "check": "npm run build -- --noEmit",
-        "builder": "node -r source-map-support/register node_modules/ttypescript/lib/tsc.js",
-        "build": "npm run builder -- usage.ts",
+        "prebuild": "rimraf build",
+        "_builder": "node -r source-map-support/register node_modules/ttypescript/lib/tsc.js",
+        "builder": "ttsc",
+        "build": "npm run builder",
+        "pretest": "npm run build",
+        "test": "node build/main.js",
         "build:errors": "npm run build -- errors.ts",
         "watch": "npm run build -- --watch"
     },
@@ -15,6 +19,7 @@
     "license": "ISC",
     "devDependencies": {
         "@types/node": "^12.0.8",
+        "rimraf": "^2.6.3",
         "ttypescript": "^1.5.7",
         "typescript": "^3.5.1"
     },

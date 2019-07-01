@@ -19,5 +19,6 @@ module.exports = {
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-parameter-properties': 'off',
         'linebreak-style': ['error', 'unix'],
+        'sort-imports': ['error', { ignoreCase: true }],
     },
 };
