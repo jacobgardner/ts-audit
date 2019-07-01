@@ -1,8 +1,7 @@
 import * as ts from 'typescript';
+import { addChain, generateNamedExport } from '../utils/exportAst';
 import { definitionReferenceArg, isTypeIdentifier, rawArg } from './isType';
-import { addChain } from '../utils';
 import { ajvInstance } from './schemaBoilerplate';
-import { generateNamedExport } from '../utils/exportAst';
 import { TYPE_ASSERTION_NAME } from '../config';
 import { validationErrorIdentifier } from './validationError';
 

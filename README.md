@@ -119,7 +119,7 @@ These are some known issues. There may be more unknown...
 -   [ ] Minify schema output
 -   [ ] Performance test against typescript-is
 -   [ ] Allow namespace imports at least.
--   [ ] Make readme better
+-   [x] Make readme better
 -   [x] Add tests
 -   [x] Add CI pipeline so we don't screw up the project
 -   [ ] Support watch mode - I think the issue is we cache the types after the
@@ -136,8 +136,9 @@ These are some known issues. There may be more unknown...
 -   [ ] Refactor like crazy
 -   [ ] Build a tool like `Quote` in rust so that it's easier to build up the
         AST without building the AST.
--   [ ] Replace all asserts with emiteErrorFromNode for better user-error
+-   [ ] Replace all asserts with emitErrorFromNode for better user-error
         reporting
 -   [ ] Add optional hooks into assertion function so that custom error
         reporting can be done; this would be used to partially accomodate the fact that the
         validate function can't be wrapped in a generic function.
+-   [ ] Add tests for improper usage of API.

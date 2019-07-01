@@ -32,7 +32,3 @@ export function emitErrorFromNode(node: ts.Node, message: string): ts.Node {
 
     return throwNode;
 }
-
-// export function formatErrors(): string {
-
-// }

@@ -32,6 +32,7 @@ export default function transformer(program: ts.Program /*, config: Config*/) {
         filesRemaining -= 1;
 
         if (filesRemaining === 0) {
+            // TODO: Move at least some of this into errors.ts
             if (errors.length) {
                 const lines = errors.map(
                     ({ message, file, line, character }) =>

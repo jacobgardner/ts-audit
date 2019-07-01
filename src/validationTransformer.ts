@@ -1,16 +1,24 @@
 import * as path from 'path';
 import * as ts from 'typescript';
-import { convertObjToAST, isRuntimeChecker } from './utils';
 import { ROOT_SCHEMA_ID, TYPE_ASSERTION_NAME } from './config';
 import { assertExists } from './utils/assert';
+import { convertObjToAST } from './utils/exportAst';
 import { emitErrorFromNode } from './errors';
 import { generateAssertIsTypeFn } from './astGenerators/assertIsType';
 import { generateIsTypeFn } from './astGenerators/isType';
 import { generateSchemaBoilerplate } from './astGenerators/schemaBoilerplate';
 import { generateValidationError } from './astGenerators/validationError';
+import { isRuntimeChecker } from './utils';
 import { JSONSchema7 } from 'json-schema';
 import pjson from 'pjson';
 import { SchemaDB } from './schemaDB';
+
+// TODO: This can all be broken up/abstracted/fped quite a bit.
+
+/*
+    This is where most of the work occurs for discovering the validation
+    functions and converting them to the usable types in the final build.
+*/
 
 export class ValidationTransformer {
     private schemaDb: SchemaDB;
@@ -99,7 +107,7 @@ export class ValidationTransformer {
 
         const refType = this.typeChecker.getTypeFromTypeNode(arg);
 
-        return this.transformNode(node, arg, refType);
+        return this.transformValidateCallToRuntimeForm(node, arg, refType);
     }
 
     private transformValidationFromExplicitType(
@@ -114,7 +122,11 @@ export class ValidationTransformer {
                 containingExpression.type,
             );
 
-            return this.transformNode(node, containingExpression.type, refType);
+            return this.transformValidateCallToRuntimeForm(
+                node,
+                containingExpression.type,
+                refType,
+            );
         } else {
             return emitErrorFromNode(
                 node,
@@ -158,7 +170,11 @@ export class ValidationTransformer {
                     );
                 }
 
-                return this.transformNode(node, type, refType);
+                return this.transformValidateCallToRuntimeForm(
+                    node,
+                    type,
+                    refType,
+                );
             }
 
             return emitErrorFromNode(
@@ -323,7 +339,11 @@ export class ValidationTransformer {
         return node;
     }
 
-    private transformNode(
+    /*
+        This is what ultimates converts the pseudo-function call with the type
+        information into the call we use at runtime which references the schema.
+    */
+    private transformValidateCallToRuntimeForm(
         node: ts.CallExpression,
         typeNode: ts.TypeNode,
         type: ts.Type,

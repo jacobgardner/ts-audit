@@ -15,7 +15,7 @@ export const hideSymbol = (symbol: ts.Symbol) => hide(symbol, ['parent']);
 export const hideNode = (node: ts.Node) => hide(node, ['parent']);
 
 // eslint-disable-next-line
-type AnyObj = { [key: string]: any };
+export type AnyObj = { [key: string]: any };
 
 export function enumerateFlags<T extends { [key: string]: AnyObj }>(
     e: T,
@@ -64,65 +64,10 @@ export const parseObjectFlags = (type: ts.ObjectType) =>
 export const parseSymbolFlags = (symbol: ts.Symbol) =>
     parseFlags('flags', symbol, ts.SymbolFlags);
 
-export function convertObjToAST(obj: unknown, depth = 0): ts.Expression {
-    if (typeof obj === 'string') {
-        return ts.createStringLiteral(obj);
-    } else if (typeof obj === 'number') {
-        return ts.createNumericLiteral(obj.toString());
-    } else if (typeof obj === 'object') {
-        if (Array.isArray(obj)) {
-            return ts.createArrayLiteral(obj.map(convertObjToAST));
-        } else if (obj === null) {
-            return ts.createNull();
-        }
-
-        const properties: ts.PropertyAssignment[] = [];
-
-        for (const key of Object.keys(obj)) {
-            properties.push(
-                ts.createPropertyAssignment(
-                    ts.createStringLiteral(key),
-                    convertObjToAST((obj as AnyObj)[key], depth + 1),
-                ),
-            );
-        }
-
-        return ts.createObjectLiteral(properties, MULTILINE_LITERALS);
-    } else if (typeof obj === 'boolean') {
-        if (obj) {
-            return ts.createTrue();
-        } else {
-            return ts.createFalse();
-        }
-    } else if (typeof obj === 'undefined') {
-        return ts.createNode(ts.SyntaxKind.UndefinedKeyword) as ts.Expression;
-    }
-
-    throw new Error(`${typeof obj} is not yet supported for AST dump`);
-}
-
 export function isRuntimeChecker(type: ts.TypeNode) {
     return (
         ts.isTypeReferenceNode(type) &&
         ts.isIdentifier(type.typeName) &&
         type.typeName.escapedText === RUNTIME_CHECK_SYMBOL
     );
-}
-
-export function addChain(
-    firstOperand: ts.Expression,
-    ...remaining: ts.Expression[]
-): ts.Expression;
-export function addChain(...operands: ts.Expression[]): ts.Expression {
-    const remaining = operands.slice(0, -1);
-    const lastOperand = operands[operands.length - 1];
-
-    if (remaining.length) {
-        return ts.createAdd(
-            addChain(...(remaining as [ts.Expression, ...ts.Expression[]])),
-            lastOperand,
-        );
-    } else {
-        return lastOperand;
-    }
 }

@@ -1,6 +1,6 @@
 import * as ts from 'typescript';
 import { MULTILINE_LITERALS, ROOT_SCHEMA_ID } from '../config';
-import { convertObjToAST } from '../utils';
+import { convertObjToAST } from '../utils/exportAst';
 import { JSONSchema7 } from 'json-schema';
 
 export const ajvClass = ts.createIdentifier('Validator');
