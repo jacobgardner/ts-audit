@@ -17,6 +17,10 @@ function stripAdditionalProperties(defn: JSONSchema7 | JSONSchema7Definition) {
     }
 }
 
+function sanitizeId(id: string): string {
+    return id.replace(/\//g, '_');
+}
+
 export class SchemaDB {
     private parser: schema.NodeParser;
     private formatter: schema.TypeFormatter;
@@ -68,7 +72,7 @@ export class SchemaDB {
                 });
 
             children.reduce((definitions, child) => {
-                const name = child.getName();
+                const name = sanitizeId(child.getName());
                 // log('childId', child.getId());
                 // log(child);
 
@@ -95,10 +99,26 @@ export class SchemaDB {
                 // log('ChildBase:', util.inspect(childBaseType, false, 1000, true));
                 // log(' -', childBaseType.getName(), childBaseType.getId());
                 // log(' -', childDefinition);
-                this.schemasByType.set(
-                    child.getId(),
-                    this.formatter.getDefinition(child),
-                );
+
+                // TODO: This is an ugly hack which fixes the definition  having
+                // slashes and fucking up the json schema
+                const defn = this.formatter.getDefinition(child);
+
+                if (defn.$ref) {
+                    const splits = defn.$ref.split(/#\/definitions\//);
+
+                    console.log(defn.$ref);
+                    console.log(splits);
+
+                    defn.$ref = `${splits[0]}#/definitions/${sanitizeId(
+                        splits[1],
+                    )}`;
+                }
+
+                this.schemasByType.set(sanitizeId(child.getId()), defn);
+
+                console.log(defn);
+                console.log(name, sanitizeId(child.getId()));
 
                 definitions[name] = childDefinition;
                 return definitions;

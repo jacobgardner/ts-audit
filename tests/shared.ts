@@ -48,6 +48,11 @@ export interface ComplexInterface<T> {
     tuple: [number, T];
 }
 
+export interface UnionIntersectionInterface {
+    union: NonExportedInterface | CircularInterface;
+    intersection: NonExportedInterface & ShallowInterface;
+}
+
 export type Aliased = NonExportedInterface;
 export type UnionType = NonExportedInterface | CircularInterface;
 export type IntersectionType = NonExportedInterface & ShallowInterface;

@@ -108,3 +108,5 @@ These are some known issues. There may be more unknown...
 -   [ ] Find better names for functions
 -   [ ] Support primitives
 -   [ ] Use custom error so that consumer can catch interface validations
+-   [ ] Allow option to disable additional properties being added to an object
+        (possibly with a decorator)
