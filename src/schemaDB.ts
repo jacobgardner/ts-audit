@@ -107,18 +107,12 @@ export class SchemaDB {
                 if (defn.$ref) {
                     const splits = defn.$ref.split(/#\/definitions\//);
 
-                    console.log(defn.$ref);
-                    console.log(splits);
-
                     defn.$ref = `${splits[0]}#/definitions/${sanitizeId(
                         splits[1],
                     )}`;
                 }
 
                 this.schemasByType.set(sanitizeId(child.getId()), defn);
-
-                console.log(defn);
-                console.log(name, sanitizeId(child.getId()));
 
                 definitions[name] = childDefinition;
                 return definitions;
