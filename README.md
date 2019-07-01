@@ -23,7 +23,7 @@ You'll need to install two packages, `ts-audit` and `ttypescript` which is used
 to run the transform plugin. (You'll still need `typescript` as `ttypescript`
 uses whatever version of `typescript` you have installed)
 
-    npm install -S ts-audit ttypescript
+    npm install --save-dev ts-audit ttypescript
 
 Your `tsconfig.json` will need to be modified to use `ts-audit` during the
 compilation process.
