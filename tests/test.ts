@@ -9,9 +9,9 @@ import { spawnSync } from 'child_process';
 function compileFile(path: string, suppressError: boolean): boolean {
     const result = spawnSync('ttsc', [path]);
 
-    // if (!suppressError && result.status) {
-    console.log(result.output.toString());
-    // }
+    if (!suppressError && result.status) {
+        console.log(result.output.toString());
+    }
 
     return !result.status;
 }
