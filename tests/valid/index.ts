@@ -1,4 +1,5 @@
 import './aliasing';
 import './as-types';
-import './explicit-types';
+import './variable-declaration';
 import './generic';
+import './type-assertion';

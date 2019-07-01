@@ -11,12 +11,11 @@ function isTransformable(filename: string): boolean {
 }
 
 export default function transformer(program: ts.Program /*, config: Config*/) {
+    const baseDir = determineBaseDirectory(program);
     const filesToTransform = program
         .getSourceFiles()
         .map(sourceFile => sourceFile.fileName)
         .filter(isTransformable);
-
-    const baseDir = determineBaseDirectory(program);
 
     let filesRemaining = filesToTransform.length;
     const transformer = new ValidationTransformer(
@@ -37,7 +36,7 @@ export default function transformer(program: ts.Program /*, config: Config*/) {
 
                 throw new Error(lines.join('\n'));
             } else {
-                transformer.dumpSchemas();
+                transformer.writeSchemaToFile();
             }
         }
 

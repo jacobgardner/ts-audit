@@ -1,4 +1,4 @@
-// TODO: This was copied from explicit-types, could we autogenerate this?
+// TODO: This was copied from variable-declaration, could we autogenerate this?
 import {
     ComplexInterface,
     GenericType,

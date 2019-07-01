@@ -116,6 +116,7 @@ These are some known issues. There may be more unknown...
         types aren't propogated correctly.
 -   [ ] Find better names for functions
 -   [ ] Support primitives
+-   [ ] Support root-level unions/intersections (will be solved similarly to primitives)
 -   [ ] Use custom error so that consumer can catch interface validations
 -   [ ] Allow option to disable additional properties being added to an object
         (possibly with a decorator)
@@ -124,3 +125,4 @@ These are some known issues. There may be more unknown...
 -   [ ] Refactor like crazy
 -   [ ] Build a tool like `Quote` in rust so that it's easier to build up the
         AST without building the AST.
+-   [ ] Replace all asserts with emiteErrorFromNode for better user-error reporting

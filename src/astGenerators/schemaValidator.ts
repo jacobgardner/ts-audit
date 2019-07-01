@@ -1,6 +1,10 @@
 import * as ts from 'typescript';
 import { addChain, convertObjToAST } from '../utils';
-import { INTERFACE_ASSERTION_NAME, MULTILINE_LITERALS } from '../config';
+import {
+    INTERFACE_ASSERTION_NAME,
+    MULTILINE_LITERALS,
+    ROOT_SCHEMA_ID,
+} from '../config';
 import { JSONSchema7 } from 'json-schema';
 
 /*
@@ -38,7 +42,7 @@ export function generateSchemaValidator(
     schemaDefinitions: Record<string, JSONSchema7>,
 ) {
     const schema = {
-        $id: 'root',
+        $id: ROOT_SCHEMA_ID,
         $schema: 'http://json-schema.org/draft-07/schema#',
         definitions: schemaDefinitions,
     };

@@ -6,8 +6,8 @@
     "scripts": {
         "check": "npm run build -- --noEmit",
         "prebuild": "rimraf build",
-        "_builder": "node -r source-map-support/register node_modules/ttypescript/lib/tsc.js",
-        "builder": "ttsc",
+        "builder": "node -r source-map-support/register node_modules/ttypescript/lib/tsc.js",
+        "_builder": "ttsc",
         "build": "npm run builder",
         "pretest": "npm run build",
         "test": "node build/main.js",
