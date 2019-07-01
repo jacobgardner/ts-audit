@@ -114,24 +114,23 @@ These are some known issues. There may be more unknown...
 Overview of the project via directory structure. May help you understand how
 the code works.
 
-```
-/src - Source for the transformer
-    /src/astGenerators - Functions that generate the AST to be output in the runtime.
-    /src/utils - Various utilities for making code more DRY and readable. This needs some love.
-    /src/buildRuntimeValidator.ts - Given the schema definitions, this is responsible
+-   `/src` - Source for the transformer
+    -   `/src/astGenerators` - Functions that generate the AST to be output in the runtime.
+    -   `/src/utils` - Various utilities for making code more DRY and readable. This needs some love.
+    -   `/src/transforms` - The code that transforms that validation calls inline to use the runtime.
+    -   `/src/buildRuntimeValidator.ts` - Given the schema definitions, this is responsible
         for actually building the generated javascript file used.
-    /src/config.ts - Global configuration values that should eventually be made user-config.
-    /src/errors.ts - Util for building up user-friendly error list for compile-time issues
+    -   `/src/config.ts` - Global configuration values that should eventually be made user-config.
+    -   `/src/errors.ts` - Util for building up user-friendly error list for compile-time issues
         from `ts-audit` that typescript doesn't report.
-    /src/main.ts - Entry point for typescript compiler to invoke the transformer
-    /src/schemaDB.ts - Class that contains all definitions of types being runtime-checked.
+    -   `/src/main.ts` - Entry point for typescript compiler to invoke the transformer
+    -   `/src/schemaDB.ts` - Class that contains all definitions of types being runtime-checked.
         Ultimately dumps the schema definition list to the runtime.
-    /src/validationVisitor.ts - The code which visits all the nodes attemping to find
-        `ts-audit` functions/imports and transforming them correctly.
-/tests - Tests testing the transformer and schema validation
-    /tests/valid - Tests that build and run to completio (including testing bad schemas)
-    /tests/invalid - A series of files that should fail at build time.
-```
+    -   `/src/validationVisitor.ts` - The code which visits all the nodes
+        attemping to find `ts-audit` functions/imports and transforming them correctly.
+-   `/tests` - Tests testing the transformer and schema validation
+    -   `/tests/valid` - Tests that build and run to completio (including testing bad schemas)
+    -   `/tests/invalid` - A series of files that should fail at build time.
 
 ## Running Tests
 

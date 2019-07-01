@@ -14,8 +14,6 @@ import { writeRuntimeValidatorToFile } from './buildRuntimeValidator';
 
 // TODO: This can all be broken up/abstracted/fped quite a bit.
 // TODO: Organize this better in a way that makes more logical sense
-// TODO: This function as it is on this comment is a fundamental failure of the
-//  single responsibility principle.
 
 /*
     This is where most of the work occurs for discovering the validation
