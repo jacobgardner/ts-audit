@@ -121,4 +121,6 @@ These are some known issues. There may be more unknown...
         (possibly with a decorator)
 -   [ ] Add realistic, useful example instead of the pseudo-test-like examples
         we had before.
-        [ ] Refactor like crazy
+-   [ ] Refactor like crazy
+-   [ ] Build a tool like `Quote` in rust so that it's easier to build up the
+        AST without building the AST.

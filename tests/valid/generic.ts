@@ -1,13 +1,13 @@
 // TODO: This was copied from explicit-types, could we autogenerate this?
-import { validateInterface } from 'ts-audit';
 import {
-    StringEnum,
-    Mixed,
     ComplexInterface,
     GenericType,
+    Mixed,
+    StringEnum,
     UnionIntersectionInterface,
 } from '../shared';
 import { expectValidationError } from '../utils';
+import { validateInterface } from 'ts-audit';
 
 // TODO: Same issue as in `as Type`.  We should preserve the type after the
 // first call

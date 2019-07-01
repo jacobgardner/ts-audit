@@ -1,12 +1,12 @@
-import { validateInterface } from 'ts-audit';
 import {
-    StringEnum,
-    Mixed,
     ComplexInterface,
     GenericType,
+    Mixed,
+    StringEnum,
     UnionIntersectionInterface,
 } from '../shared';
 import { expectValidationError } from '../utils';
+import { validateInterface } from 'ts-audit';
 
 // eslint-disable-next-line
 let enum1: StringEnum = validateInterface('apple');

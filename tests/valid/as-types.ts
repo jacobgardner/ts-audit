@@ -1,13 +1,13 @@
 // TODO: This was copied from explicit-types, could we autogenerate this?
-import { validateInterface } from 'ts-audit';
 import {
-    StringEnum,
-    Mixed,
     ComplexInterface,
     GenericType,
+    Mixed,
+    StringEnum,
     UnionIntersectionInterface,
 } from '../shared';
 import { expectValidationError } from '../utils';
+import { validateInterface } from 'ts-audit';
 
 // TODO: Right now, we require every line to be annotated with `as Type`, but we
 // should try to infer the type if we can after the first usage.

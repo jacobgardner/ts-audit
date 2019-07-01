@@ -1,7 +1,7 @@
-import * as ts from 'typescript';
 import * as schema from 'ts-json-schema-generator';
-import { AliasType } from 'ts-json-schema-generator';
+import * as ts from 'typescript';
 import { JSONSchema7, JSONSchema7Definition } from 'json-schema';
+import { AliasType } from 'ts-json-schema-generator';
 
 function stripAdditionalProperties(defn: JSONSchema7 | JSONSchema7Definition) {
     if (typeof defn === 'boolean') {

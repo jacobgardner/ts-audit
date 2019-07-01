@@ -13,7 +13,9 @@
         "prebuild": "rimraf build",
         "build": "tsc",
         "prepublish": "npm run build",
-        "lint": "eslint --ext ts,tsx src example",
+        "lint:base": "eslint --ext ts,tsx",
+        "lint:fix": "npm run lint:base -- --fix src tests",
+        "lint": "npm run lint:base -- src tests",
         "watch": "npm run build -- --watch"
     },
     "author": "Jacob V. Gardner <jacob.v.gardner@gmail.com>",
