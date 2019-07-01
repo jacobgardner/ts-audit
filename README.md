@@ -14,7 +14,7 @@ verifying that external data structures match the structure of the types inside
 your system before you can start to interact with them. What this provides is a
 barrier between your safe and unsafe code and clearly shows when untyped data
 doesn't match your expections. We can't stop mismatched expectations from
-occurring at runtime, but we can do is isolate where that can occur and provide
+occurring at runtime, but we can do is isolate where they can occur and provide
 clear indicators of where a mismatch occured and why.
 
 ## Installation
@@ -178,3 +178,4 @@ From the root directory:
 -   [ ] Add tests for improper usage of API.
 -   [ ] Test in browser
 -   [ ] Move config.ts to using user passed options instead.
+-   [ ] Use `dtslint` in tests
