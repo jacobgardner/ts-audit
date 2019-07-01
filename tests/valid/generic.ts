@@ -1,3 +1,4 @@
+/// <reference path="../ts-audit.d.ts" />
 // TODO: This was copied from variable-declaration, could we autogenerate this?
 import {
     ComplexInterface,
@@ -12,7 +13,6 @@ import { expectValidationError } from '../utils';
 // TODO: Same issue as in `as Type`.  We should preserve the type after the
 // first call
 
-// eslint-disable-next-line
 let enum1 = assertIsType<StringEnum>('apple');
 enum1 = assertIsType<StringEnum>('orange');
 
@@ -32,7 +32,6 @@ expectValidationError(() => {
     enum1 = assertIsType<StringEnum>({});
 });
 
-// eslint-disable-next-line
 let enum2 = assertIsType<Mixed>('Coke');
 enum2 = assertIsType<Mixed>('Pepsi');
 enum2 = assertIsType<Mixed>(29);
@@ -51,7 +50,6 @@ expectValidationError(() => {
     enum2 = assertIsType<Mixed>(-1);
 });
 
-// eslint-disable-next-line
 let obj = assertIsType<ComplexInterface<GenericType<number>>>({
     mixed: [],
     circular: { value: 12 },
@@ -93,11 +91,9 @@ expectValidationError(() => {
 
 // TODO: Make root level union work
 
-// // eslint-disable-next-line
 // let union: UnionType = assertIsType({nonExport1: 'astring', nonExport2: 132});
 // union = assertIsType({value: 5, circle: {value: 12}});
 
-// eslint-disable-next-line
 let iface = assertIsType<UnionIntersectionInterface>({
     union: { value: 5, circular: { value: 8 } },
     intersection: {

@@ -1,3 +1,4 @@
+/// <reference path="../ts-audit.d.ts" />
 import { ComplexInterface, GenericType, StringEnum } from '../shared';
 import { isType } from 'ts-audit';
 

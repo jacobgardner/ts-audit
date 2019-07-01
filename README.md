@@ -14,7 +14,7 @@ verifying that external data structures match the structure of the types inside
 your system before you can start to interact with them. What this provides is a
 barrier between your safe and unsafe code and clearly shows when untyped data
 doesn't match your expections. We can't stop mismatched expectations from
-occurring at runtime, but we can do is isolate where that can occur and provide
+occurring at runtime, but we can do is isolate where they can occur and provide
 clear indicators of where a mismatch occured and why.
 
 ## Installation
@@ -129,21 +129,12 @@ the code works.
     -   `/src/validationVisitor.ts` - The code which visits all the nodes
         attemping to find `ts-audit` functions/imports and transforming them correctly.
 -   `/tests` - Tests testing the transformer and schema validation
-    -   `/tests/valid` - Tests that build and run to completio (including testing bad schemas)
+    -   `/tests/valid` - Tests that build and run to completion (including testing bad schemas)
     -   `/tests/invalid` - A series of files that should fail at build time.
 
 ## Running Tests
 
-We have to set up tests slightly differently due to the unique nature of how the
-type declaration file does not match up with the generated javascript. There
-may be a way to fix this, but it's not a high priority ATM.
-
-From the root directory:
-
-    npm link
-    cd tests
-    npm install
-    npm link ts-audit
+    npm test
 
 ## TODO
 
@@ -175,6 +166,11 @@ From the root directory:
 -   [ ] Add optional hooks into assertion function so that custom error
         reporting can be done; this would be used to partially accomodate the fact that the
         validate function can't be wrapped in a generic function.
--   [ ] Add tests for improper usage of API.
+-   [x] Add tests for improper usage of API.
 -   [ ] Test in browser
 -   [ ] Move config.ts to using user passed options instead.
+-   [ ] Use `dtslint` in tests
+-   [x] Create `.d.ts` file in tests that overrides types in `/build` so we
+        don't need to install separately in tests and `link` against the parent.
+        It should provide a much smoother testing experience.
+-   [ ] Make sure failing tests are failing for the reasons we're expecting

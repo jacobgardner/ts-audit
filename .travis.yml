@@ -4,13 +4,7 @@ node_js:
 cache: npm
 install:
     - npm ci
-    - npm link
-    - cd tests
-    - npm ci
-    - npm link ts-audit
-    - cd ..
 script:
     - npm run build
     - npm run lint
-    - cd tests
     - npm test
