@@ -1,3 +1,4 @@
+/// <reference path="../ts-audit.d.ts" />
 import { assertIsType as aliasCheck } from 'ts-audit';
 import { ComplexInterface } from '../shared';
 

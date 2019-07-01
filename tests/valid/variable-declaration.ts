@@ -1,3 +1,4 @@
+/// <reference path="../ts-audit.d.ts" />
 import {
     ComplexInterface,
     GenericType,

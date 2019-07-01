@@ -1,3 +1,4 @@
+/// <reference path="../ts-audit.d.ts" />
 // TODO: This was copied from variable-declaration, could we autogenerate this?
 import {
     ComplexInterface,
