@@ -175,7 +175,7 @@ From the root directory:
 -   [ ] Add optional hooks into assertion function so that custom error
         reporting can be done; this would be used to partially accomodate the fact that the
         validate function can't be wrapped in a generic function.
--   [ ] Add tests for improper usage of API.
+-   [x] Add tests for improper usage of API.
 -   [ ] Test in browser
 -   [ ] Move config.ts to using user passed options instead.
 -   [ ] Use `dtslint` in tests

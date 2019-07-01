@@ -4,14 +4,7 @@ that will do what I want this to do.
 */
 import * as fs from 'fs';
 import * as path from 'path';
-// import * as ts from 'ttypescript';
 import { spawnSync } from 'child_process';
-
-// const output = ts.readConfigFile('./tsconfig.json', path => {
-//     return fs.readFileSync(path).toString();
-// });
-
-// const { compilerOptions } = output.config;
 
 function compileFile(path: string, suppressError: boolean): boolean {
     const result = spawnSync('ttsc', [path]);
