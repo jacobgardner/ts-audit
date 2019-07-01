@@ -1,17 +1,14 @@
-import * as path from 'path';
 import * as ts from 'typescript';
 import { ROOT_SCHEMA_ID, TYPE_ASSERTION_NAME } from './config';
 import { assertExists } from './utils/assert';
 import { convertObjToAST } from './utils/exportAst';
 import { emitErrorFromNode } from './errors';
-import { generateAssertIsTypeFn } from './astGenerators/assertIsType';
-import { generateIsTypeFn } from './astGenerators/isType';
-import { generateSchemaBoilerplate } from './astGenerators/schemaBoilerplate';
-import { generateValidationError } from './astGenerators/validationError';
-import { isRuntimeChecker } from './utils/typeMatch';
+import { isTypeTheValidateFunction } from './utils/typeMatch';
 import { JSONSchema7 } from 'json-schema';
 import pjson from 'pjson';
 import { SchemaDB } from './schemaDB';
+import { transformNamedImport } from './transforms/validationImport';
+import { writeRuntimeValidatorToFile } from './buildRuntimeValidator';
 
 // TODO: This can all be broken up/abstracted/fped quite a bit.
 // TODO: Organize this better in a way that makes more logical sense
@@ -20,8 +17,7 @@ import { SchemaDB } from './schemaDB';
     This is where most of the work occurs for discovering the validation
     functions and converting them to the usable types in the final build.
 */
-
-export class ValidationTransformer {
+export class ValidationVisitor {
     private schemaDb: SchemaDB;
     private typeChecker: ts.TypeChecker;
 
@@ -30,46 +26,11 @@ export class ValidationTransformer {
         this.typeChecker = program.getTypeChecker();
     }
 
-    public writeSchemaToFile() {
-        const {
-            outDir = '.',
-            outFile,
-            target = ts.ScriptTarget.ES3,
-        } = this.program.getCompilerOptions();
-
-        if (outFile) {
-            throw new Error(
-                `${pjson.name} does not work with outFile in tsconfig. Use a bundler with this transformer to bundle your output.`,
-            );
-        }
-
-        let fullPath;
-
-        if (path.isAbsolute(outDir)) {
-            fullPath = outDir;
-        } else {
-            fullPath = path.join(this.program.getCurrentDirectory(), outDir);
-        }
-
-        let sourceFile = ts.createSourceFile(
-            path.join(fullPath, 'runTimeValidations.js'),
-            '',
-            target,
-            undefined,
-            ts.ScriptKind.TS,
+    public writeRuntimeValidatorToFile() {
+        return writeRuntimeValidatorToFile(
+            this.program,
+            this.schemaDb.getDefinitions(),
         );
-
-        sourceFile = ts.updateSourceFileNode(sourceFile, [
-            ...generateSchemaBoilerplate(this.schemaDb.dump()),
-            ...generateIsTypeFn(),
-            ...generateAssertIsTypeFn(),
-            ...generateValidationError(),
-        ]);
-
-        const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
-        const result = printer.printFile(sourceFile);
-
-        ts.sys.writeFile(sourceFile.fileName, result);
     }
 
     /*
@@ -121,7 +82,6 @@ export class ValidationTransformer {
         }
 
         // TODO: Implement other types as figured out.
-
         return emitErrorFromNode(
             node,
             `validationFunction not used in a supported way.  Please see documentation for details on usage`,
@@ -145,7 +105,12 @@ export class ValidationTransformer {
                 );
             } else {
                 // {namedImports}
-                return this.transformNamedImport(node, namedBindings);
+                return transformNamedImport(
+                    this.typeChecker,
+                    this.baseDir,
+                    node,
+                    namedBindings,
+                );
             }
         } else if (name) {
             // defaultImport
@@ -169,89 +134,10 @@ export class ValidationTransformer {
                 node.expression,
             );
 
-            return this.isTypeTheValidateFunction(nodeType);
+            return isTypeTheValidateFunction(nodeType);
         }
 
         return false;
-    }
-
-    /*
-        This determines if the type passed in corresponds to the validation
-        function in our declaration file (index.d.ts).  It performs this check
-        by checking if the return value matches the unique name we have given
-        the validate function. (See isRuntimeChecker for that part)
-    */
-    private isTypeTheValidateFunction(nodeType: ts.Type): boolean {
-        // valueDeclaration is a reference to the first  line where the node
-        // is found in the AST. This  means it is where the node is declared
-        // and hopefully typed.  This **SHOULD** be the same as
-        // `.declarations[0]`.
-        if (!nodeType.symbol) {
-            return false;
-        }
-
-        // TODO: Figure out why this doesn't work with nodeType.symbol.valueDeclaration....
-        const valueDeclaration = nodeType.symbol.declarations[0];
-
-        // TODO: we can unify these two checks more...
-        if (ts.isFunctionDeclaration(valueDeclaration)) {
-            if (
-                valueDeclaration.typeParameters &&
-                valueDeclaration.typeParameters.length === 1
-            ) {
-                const firstTypeParam = valueDeclaration.typeParameters[0];
-
-                if (
-                    firstTypeParam.default &&
-                    isRuntimeChecker(firstTypeParam.default)
-                ) {
-                    return true;
-                }
-            } else if (
-                valueDeclaration.type &&
-                isRuntimeChecker(valueDeclaration.type)
-            ) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /*
-        This method attempts to find a named import function (e.g.
-            `import {namedExport} from 'ts-audit';`) which
-        where `namedExport` has the validate function signature.
-
-        If found, it then finds where this source file is relative to
-        `runtimeValidations.js` and modifies the original import accordingly
-        since the original input pointed to the module and not the generated
-        code which is where the function actually exists.
-    */
-    private transformNamedImport(
-        node: ts.ImportDeclaration,
-        namedBindings: ts.NamedImports,
-    ): ts.Node {
-        for (const element of namedBindings.elements) {
-            const type = this.typeChecker.getTypeAtLocation(element);
-
-            if (this.isTypeTheValidateFunction(type)) {
-                const sourceDir = path.dirname(
-                    path.normalize(node.getSourceFile().fileName),
-                );
-                const relative = path.relative(sourceDir, this.baseDir);
-
-                return ts.updateImportDeclaration(
-                    node,
-                    node.decorators,
-                    node.modifiers,
-                    node.importClause,
-                    ts.createLiteral(`${relative}/runTimeValidations`),
-                );
-            }
-        }
-
-        return node;
     }
 
     /*

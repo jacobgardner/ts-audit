@@ -33,6 +33,8 @@ function sanitizeId(id: string): string {
     return id.replace(/\//g, '_');
 }
 
+export type SchemaDefinitions = Record<string, schema.Definition>;
+
 /*
     This builds up a record of all the definitions in the project we've used so
     we can memoize the results and dump them all out at the end.
@@ -40,7 +42,7 @@ function sanitizeId(id: string): string {
 export class SchemaDB {
     private parser: schema.NodeParser;
     private formatter: schema.TypeFormatter;
-    private definitions: Record<string, schema.Definition> = {};
+    private definitions: SchemaDefinitions = {};
     private schemasByType = new Map<string, JSONSchema7>();
 
     public constructor(program: ts.Program, path: string) {
@@ -63,7 +65,7 @@ export class SchemaDB {
 
             // TODO: This is a heavily modified version of:
             // https://github.com/vega/ts-json-schema-generator/blob/master/src/SchemaGenerator.ts
-            // Make A PR to make this functionality public.
+            // We should make A PR to make this functionality public.
             const children = this.formatter
                 .getChildren(baseType)
                 .filter(
@@ -123,7 +125,8 @@ export class SchemaDB {
         return definition;
     }
 
-    public dump() {
+    // TODO: Just use `schemaDB.definitions` directly.
+    public getDefinitions() {
         return this.definitions;
     }
 }

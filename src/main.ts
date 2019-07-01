@@ -1,7 +1,7 @@
 import * as ts from 'typescript';
 import { determineBaseDirectory } from './utils/baseDir';
 import { errors } from './errors';
-import { ValidationTransformer } from './validationTransformer';
+import { ValidationVisitor } from './validationVisitor';
 
 function isTransformable(filename: string): boolean {
     return (
@@ -22,7 +22,7 @@ export default function transformer(program: ts.Program /*, config: Config*/) {
         .filter(isTransformable);
 
     let filesRemaining = filesToTransform.length;
-    const transformer = new ValidationTransformer(
+    const transformer = new ValidationVisitor(
         program,
         baseDir || program.getCurrentDirectory(),
     );
@@ -41,7 +41,7 @@ export default function transformer(program: ts.Program /*, config: Config*/) {
 
                 throw new Error(lines.join('\n'));
             } else {
-                transformer.writeSchemaToFile();
+                transformer.writeRuntimeValidatorToFile();
             }
         }
 

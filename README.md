@@ -87,7 +87,9 @@ indicating that the JSON returned does not match what we were expecting.
 
 This does not work for classes, functions, or pretty much anything else that's
 not supported by JSON-schema. The type sent to validateFunction must be a
-concrete type. This will NOT work if given a generic argument.
+concrete type. This will NOT work if given a generic argument. ALSO, this has
+only been tested in a node environment. This may require some additional work to
+get it working in the browser, but it should be pretty close already if not.
 
 ## Known Issues
 
@@ -101,19 +103,52 @@ These are some known issues. There may be more unknown...
 
 ## Other Similar Projects
 
--   [typescript-is](https://github.com/woutervh-/typescript-is)
+-   [typescript-is](https://github.com/woutervh-/typescript-is) - This project
+    currently only supports inline validations which means it replaces your
+    validation calls with conditionals checking in-line with your code. This
+    _MAY_ lead to more performant checking. I want to do some performance
+    analysis/code gen analysis against this project at some point.
 
 ## Directory Structure
 
+Overview of the project via directory structure. May help you understand how
+the code works.
+
 ```
-/src - Source for the transformer (details to come after refactor maybe)
+/src - Source for the transformer
+    /src/astGenerators - Functions that generate the AST to be output in the runtime.
+    /src/utils - Various utilities for making code more DRY and readable. This needs some love.
+    /src/buildRuntimeValidator.ts - Given the schema definitions, this is responsible
+        for actually building the generated javascript file used.
+    /src/config.ts - Global configuration values that should eventually be made user-config.
+    /src/errors.ts - Util for building up user-friendly error list for compile-time issues
+        from `ts-audit` that typescript doesn't report.
+    /src/main.ts - Entry point for typescript compiler to invoke the transformer
+    /src/schemaDB.ts - Class that contains all definitions of types being runtime-checked.
+        Ultimately dumps the schema definition list to the runtime.
+    /src/validationVisitor.ts - The code which visits all the nodes attemping to find
+        `ts-audit` functions/imports and transforming them correctly.
 /tests - Tests testing the transformer and schema validation
     /tests/valid - Tests that build and run to completio (including testing bad schemas)
     /tests/invalid - A series of files that should fail at build time.
 ```
 
+## Running Tests
+
+We have to set up tests slightly differently due to the unique nature of how the
+type declaration file does not match up with the generated javascript. There
+may be a way to fix this, but it's not a high priority ATM.
+
+From the root directory:
+
+    npm link
+    cd tests
+    npm install
+    npm link ts-audit
+
 ## TODO
 
+-   [ ] Move TODOs to github issues instead.
 -   [x] Add `matchesInterface` function which returns `true`/`false` instead of
         throwing assertions
 -   [ ] Minify schema output
@@ -142,3 +177,5 @@ These are some known issues. There may be more unknown...
         reporting can be done; this would be used to partially accomodate the fact that the
         validate function can't be wrapped in a generic function.
 -   [ ] Add tests for improper usage of API.
+-   [ ] Test in browser
+-   [ ] Move config.ts to using user passed options instead.
