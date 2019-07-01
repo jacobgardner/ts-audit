@@ -10,7 +10,7 @@
         "builder": "ttsc",
         "build": "npm run builder",
         "pretest": "npm run build",
-        "test": "node build/valid/aliasing.js",
+        "test": "node build/main.js",
         "build:errors": "npm run build -- errors.ts",
         "watch": "npm run build -- --watch"
     },
