@@ -10,13 +10,16 @@ function isTransformable(filename: string): boolean {
     );
 }
 
+/*
+    This is the function signature that typescript is expecting for transforms.
+    If we ever add plugin configuration, it'll be the second parameter.
+ */
 export default function transformer(program: ts.Program /*, config: Config*/) {
+    const baseDir = determineBaseDirectory(program);
     const filesToTransform = program
         .getSourceFiles()
         .map(sourceFile => sourceFile.fileName)
         .filter(isTransformable);
-
-    const baseDir = determineBaseDirectory(program);
 
     let filesRemaining = filesToTransform.length;
     const transformer = new ValidationTransformer(
@@ -29,6 +32,7 @@ export default function transformer(program: ts.Program /*, config: Config*/) {
         filesRemaining -= 1;
 
         if (filesRemaining === 0) {
+            // TODO: Move at least some of this into errors.ts
             if (errors.length) {
                 const lines = errors.map(
                     ({ message, file, line, character }) =>
@@ -37,7 +41,7 @@ export default function transformer(program: ts.Program /*, config: Config*/) {
 
                 throw new Error(lines.join('\n'));
             } else {
-                transformer.dumpSchemas();
+                transformer.writeSchemaToFile();
             }
         }
 

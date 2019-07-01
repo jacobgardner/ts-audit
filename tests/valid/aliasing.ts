@@ -1,4 +1,4 @@
-import { validateInterface as aliasCheck } from 'ts-audit';
+import { assertIsType as aliasCheck } from 'ts-audit';
 import { ComplexInterface } from '../shared';
 
 type AliasGeneric<T> = ComplexInterface<T>;

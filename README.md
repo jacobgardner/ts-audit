@@ -1,5 +1,8 @@
 # TS-AUDIT
 
+[![Build
+Status](https://travis-ci.com/jacobgardner/ts-audit.svg?branch=master)](https://travis-ci.com/jacobgardner/ts-audit)
+
 `ts-audit` is a Typescript transform plugin that verifies external data
 structures match what you expect them to be inside your typescript ecosystem.
 
@@ -44,11 +47,11 @@ And you're ready to go!!!!!!
 
 ## Usage
 
-All you have to do to use `ts-audit` is use `validateInterface` (TODO: change
+All you have to do to use `ts-audit` is use `assertIsType` (TODO: change
 name) from the library, making sure to annotate the type of the assigned value.
 
 ```typescript
-import { validateInterface } from 'ts-audit';
+import { assertIsType } from 'ts-audit';
 
 enum Animal {
     Cat = 'cat',
@@ -64,7 +67,14 @@ interface UserData {
     notes?: string;
 }
 
-const fredsData: UserData = validateInterface(await fetchUser('fred'));
+const fredsData: UserData = assertIsType(await fetchUser('fred'));
+
+// WIP: TypeGuarded Version
+const rawData: unknown = await fetchUser('jake');
+if (isType<UserData>(rawData)) {
+    // rawData is typeGuarded as UserData if true
+    assert(rawData.username === 'jake');
+}
 ```
 
 In this example `fetchUser` hits an API that returns a JSON object that we
@@ -76,7 +86,8 @@ indicating that the JSON returned does not match what we were expecting.
 ## Disclaimer
 
 This does not work for classes, functions, or pretty much anything else that's
-not supported by JSON-schema.
+not supported by JSON-schema. The type sent to validateFunction must be a
+concrete type. This will NOT work if given a generic argument.
 
 ## Known Issues
 
@@ -103,19 +114,20 @@ These are some known issues. There may be more unknown...
 
 ## TODO
 
--   [ ] Add `matchesInterface` function which returns `true`/`false` instead of
+-   [x] Add `matchesInterface` function which returns `true`/`false` instead of
         throwing assertions
 -   [ ] Minify schema output
 -   [ ] Performance test against typescript-is
 -   [ ] Allow namespace imports at least.
--   [ ] Make readme better
+-   [x] Make readme better
 -   [x] Add tests
 -   [x] Add CI pipeline so we don't screw up the project
 -   [ ] Support watch mode - I think the issue is we cache the types after the
         first pass and the second pass doesn't invalidate the cache so changes to
         types aren't propogated correctly.
--   [ ] Find better names for functions
+-   [x] Find better names for functions
 -   [ ] Support primitives
+-   [ ] Support root-level unions/intersections (will be solved similarly to primitives)
 -   [ ] Use custom error so that consumer can catch interface validations
 -   [ ] Allow option to disable additional properties being added to an object
         (possibly with a decorator)
@@ -124,3 +136,9 @@ These are some known issues. There may be more unknown...
 -   [ ] Refactor like crazy
 -   [ ] Build a tool like `Quote` in rust so that it's easier to build up the
         AST without building the AST.
+-   [ ] Replace all asserts with emitErrorFromNode for better user-error
+        reporting
+-   [ ] Add optional hooks into assertion function so that custom error
+        reporting can be done; this would be used to partially accomodate the fact that the
+        validate function can't be wrapped in a generic function.
+-   [ ] Add tests for improper usage of API.

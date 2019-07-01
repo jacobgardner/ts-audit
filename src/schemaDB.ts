@@ -3,6 +3,14 @@ import * as ts from 'typescript';
 import { JSONSchema7, JSONSchema7Definition } from 'json-schema';
 import { AliasType } from 'ts-json-schema-generator';
 
+// TODO: Make a PR against ts-json-schema-generator so I don't have to strip
+// these.
+// TODO: Make this configurable via a decorator.
+/*
+    The library I use to generate the schema attaches the `additionalProperties`
+    modifier to all object schemas.  That sort of wrecks TypeScripts structual
+    typing so we just strip it off.
+*/
 function stripAdditionalProperties(defn: JSONSchema7 | JSONSchema7Definition) {
     if (typeof defn === 'boolean') {
         return;
@@ -17,10 +25,18 @@ function stripAdditionalProperties(defn: JSONSchema7 | JSONSchema7Definition) {
     }
 }
 
+/*
+JSONSchema does not allow slashes as part of names so until we minify (which
+will just be numbers/letters, we're replacing slashes with underscores)
+*/
 function sanitizeId(id: string): string {
     return id.replace(/\//g, '_');
 }
 
+/*
+    This builds up a record of all the definitions in the project we've used so
+    we can memoize the results and dump them all out at the end.
+*/
 export class SchemaDB {
     private parser: schema.NodeParser;
     private formatter: schema.TypeFormatter;
@@ -38,23 +54,14 @@ export class SchemaDB {
     }
 
     public addSchema(node: ts.Node): JSONSchema7 {
-        // log(node);
         const baseType = this.parser.createType(node, new schema.Context());
         let definition = this.schemasByType.get(baseType.getId());
 
-        // log('Base:', util.inspect(baseType, false, 1000, true));
-        // log(' -', baseType.getName(), baseType.getId());
-        // if (definition) {
-        //     log(' -', definition);
-        // }
-
         if (definition === undefined) {
             definition = this.formatter.getDefinition(baseType);
-            // log(' -', definition);
-            // this.schemasByType.set(baseType.getId(), definition);
             const seen = new Set<string>();
 
-            // TODO: This was taken from
+            // TODO: This is a heavily modified version of:
             // https://github.com/vega/ts-json-schema-generator/blob/master/src/SchemaGenerator.ts
             // Make A PR to make this functionality public.
             const children = this.formatter
@@ -73,8 +80,6 @@ export class SchemaDB {
 
             children.reduce((definitions, child) => {
                 const name = sanitizeId(child.getName());
-                // log('childId', child.getId());
-                // log(child);
 
                 if (this.schemasByType.get(child.getId())) {
                     return definitions;
@@ -95,10 +100,6 @@ export class SchemaDB {
                 );
 
                 stripAdditionalProperties(childDefinition);
-
-                // log('ChildBase:', util.inspect(childBaseType, false, 1000, true));
-                // log(' -', childBaseType.getName(), childBaseType.getId());
-                // log(' -', childDefinition);
 
                 // TODO: This is an ugly hack which fixes the definition  having
                 // slashes and fucking up the json schema

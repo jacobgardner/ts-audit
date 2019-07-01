@@ -1,3 +1,7 @@
+/*
+  This file is just used for debugging.  It's for helping print AST nodes in a
+  very slightly more readable way.
+*/
 import * as ts from 'typescript';
 import colors from 'colors';
 
