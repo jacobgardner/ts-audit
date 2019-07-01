@@ -3,7 +3,6 @@ import { ComplexInterface } from '../shared';
 
 type AliasGeneric<T> = ComplexInterface<T>;
 
-// eslint-disable-next-line
 let t = aliasCheck<AliasGeneric<string>>({
     mixed: ['Coke'],
     genericType: {

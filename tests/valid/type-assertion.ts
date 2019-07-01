@@ -1,4 +1,3 @@
-/* eslint @typescript-eslint/no-angle-bracket-type-assertion: "off" */
 // TODO: This was copied from variable-declaration, could we autogenerate this?
 import {
     ComplexInterface,
@@ -12,7 +11,6 @@ import { expectValidationError } from '../utils';
 
 // TODO: Same comment as the others about inference
 
-// eslint-disable-next-line
 let enum1 = <StringEnum>assertIsType('apple');
 enum1 = <StringEnum>assertIsType('orange');
 
@@ -32,7 +30,6 @@ expectValidationError(() => {
     enum1 = <StringEnum>assertIsType({});
 });
 
-// eslint-disable-next-line
 let enum2 = <Mixed>assertIsType('Coke');
 enum2 = <Mixed>assertIsType('Pepsi');
 enum2 = <Mixed>assertIsType(29);
@@ -51,7 +48,6 @@ expectValidationError(() => {
     enum2 = <Mixed>assertIsType(-1);
 });
 
-// eslint-disable-next-line
 let obj = <ComplexInterface<GenericType<number>>>assertIsType({
     mixed: [],
     circular: { value: 12 },
@@ -93,11 +89,9 @@ expectValidationError(() => {
 
 // TODO: Make root level union work
 
-// // eslint-disable-next-line
 // let union: UnionType = assertIsType({nonExport1: 'astring', nonExport2: 132});
 // union = assertIsType({value: 5, circle: {value: 12}});
 
-// eslint-disable-next-line
 let iface = <UnionIntersectionInterface>assertIsType({
     union: { value: 5, circular: { value: 8 } },
     intersection: {

@@ -12,7 +12,6 @@ import { expectValidationError } from '../utils';
 // TODO: Right now, we require every line to be annotated with `as Type`, but we
 // should try to infer the type if we can after the first usage.
 
-// eslint-disable-next-line
 let enum1 = assertIsType('apple') as StringEnum;
 enum1 = assertIsType('orange') as StringEnum;
 
@@ -32,7 +31,6 @@ expectValidationError(() => {
     enum1 = assertIsType({}) as StringEnum;
 });
 
-// eslint-disable-next-line
 let enum2 = assertIsType('Coke') as Mixed;
 enum2 = assertIsType('Pepsi') as Mixed;
 enum2 = assertIsType(29) as Mixed;
@@ -51,7 +49,6 @@ expectValidationError(() => {
     enum2 = assertIsType(-1) as Mixed;
 });
 
-// eslint-disable-next-line
 let obj = assertIsType({
     mixed: [],
     circular: { value: 12 },
@@ -93,11 +90,9 @@ expectValidationError(() => {
 
 // TODO: Make root level union work
 
-// // eslint-disable-next-line
 // let union: UnionType = assertIsType({nonExport1: 'astring', nonExport2: 132});
 // union = assertIsType({value: 5, circle: {value: 12}});
 
-// eslint-disable-next-line
 let iface = assertIsType({
     union: { value: 5, circular: { value: 8 } },
     intersection: {

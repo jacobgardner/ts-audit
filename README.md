@@ -129,14 +129,14 @@ the code works.
     -   `/src/validationVisitor.ts` - The code which visits all the nodes
         attemping to find `ts-audit` functions/imports and transforming them correctly.
 -   `/tests` - Tests testing the transformer and schema validation
-    -   `/tests/valid` - Tests that build and run to completio (including testing bad schemas)
+    -   `/tests/valid` - Tests that build and run to completion (including testing bad schemas)
     -   `/tests/invalid` - A series of files that should fail at build time.
 
 ## Running Tests
 
 We have to set up tests slightly differently due to the unique nature of how the
 type declaration file does not match up with the generated javascript. There
-may be a way to fix this, but it's not a high priority ATM.
+may be a way to fix this, but it's not a high priority ATM. (See TODO below)
 
 From the root directory:
 
@@ -179,3 +179,6 @@ From the root directory:
 -   [ ] Test in browser
 -   [ ] Move config.ts to using user passed options instead.
 -   [ ] Use `dtslint` in tests
+-   [ ] Create `.d.ts` file in tests that overrides types in `/build` so we
+        don't need to install separately in tests and `link` against the parent.
+        It should provide a much smoother testing experience.

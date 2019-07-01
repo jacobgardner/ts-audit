@@ -8,7 +8,6 @@ import {
 import { assertIsType } from 'ts-audit';
 import { expectValidationError } from '../utils';
 
-// eslint-disable-next-line
 let enum1: StringEnum = assertIsType('apple');
 enum1 = assertIsType('orange');
 
@@ -28,7 +27,6 @@ expectValidationError(() => {
     enum1 = assertIsType({});
 });
 
-// eslint-disable-next-line
 let enum2: Mixed = assertIsType('Coke');
 enum2 = assertIsType('Pepsi');
 enum2 = assertIsType(29);
@@ -47,7 +45,6 @@ expectValidationError(() => {
     enum2 = assertIsType(-1);
 });
 
-// eslint-disable-next-line
 let obj: ComplexInterface<GenericType<number>> = assertIsType({
     mixed: [],
     circular: { value: 12 },
@@ -89,11 +86,9 @@ expectValidationError(() => {
 
 // TODO: Make root level union work
 
-// // eslint-disable-next-line
 // let union: UnionType = assertIsType({nonExport1: 'astring', nonExport2: 132});
 // union = assertIsType({value: 5, circle: {value: 12}});
 
-// eslint-disable-next-line
 let iface: UnionIntersectionInterface = assertIsType({
     union: { value: 5, circular: { value: 8 } },
     intersection: {
