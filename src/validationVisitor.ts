@@ -1,17 +1,21 @@
 import * as ts from 'typescript';
-import { ROOT_SCHEMA_ID, TYPE_ASSERTION_NAME } from './config';
-import { assertExists } from './utils/assert';
-import { convertObjToAST } from './utils/exportAst';
+import {
+    transformValidationCallFromAssignment,
+    transformValidationCallFromExplicitType,
+    transformValidationCallFromGeneric,
+} from './transforms/validationCall';
 import { emitErrorFromNode } from './errors';
 import { isTypeTheValidateFunction } from './utils/typeMatch';
-import { JSONSchema7 } from 'json-schema';
 import pjson from 'pjson';
 import { SchemaDB } from './schemaDB';
 import { transformNamedImport } from './transforms/validationImport';
+import { TYPE_ASSERTION_NAME } from './config';
 import { writeRuntimeValidatorToFile } from './buildRuntimeValidator';
 
 // TODO: This can all be broken up/abstracted/fped quite a bit.
 // TODO: Organize this better in a way that makes more logical sense
+// TODO: This function as it is on this comment is a fundamental failure of the
+//  single responsibility principle.
 
 /*
     This is where most of the work occurs for discovering the validation
@@ -65,7 +69,11 @@ export class ValidationVisitor {
         const parent = node.parent;
 
         if (node.typeArguments && node.typeArguments.length) {
-            return this.transformValidationCallFromGeneric(node);
+            return transformValidationCallFromGeneric(
+                this.typeChecker,
+                this.schemaDb,
+                node,
+            );
         } else if (
             ts.isVariableDeclaration(parent) ||
             ts.isAsExpression(parent) ||
@@ -74,11 +82,21 @@ export class ValidationVisitor {
             // const var: CheckedType = assertIsType({...});
             //  or
             // const var = assertIsType({...}) as CheckedType;
-            return this.transformValidationCallFromExplicitType(node, parent);
+            return transformValidationCallFromExplicitType(
+                this.typeChecker,
+                this.schemaDb,
+                node,
+                parent,
+            );
         } else if (ts.isBinaryExpression(parent)) {
             // const
 
-            return this.transformValidationCallFromAssignment(node, parent);
+            return transformValidationCallFromAssignment(
+                this.typeChecker,
+                this.schemaDb,
+                node,
+                parent,
+            );
         }
 
         // TODO: Implement other types as figured out.
@@ -138,132 +156,5 @@ export class ValidationVisitor {
         }
 
         return false;
-    }
-
-    /*
-        This is what ultimates converts the pseudo-function call with the type
-        information into the call we use at runtime which references the schema.
-    */
-    private transformValidateCallToRuntimeForm(
-        node: ts.CallExpression,
-        typeNode: ts.TypeNode,
-        type: ts.Type,
-    ) {
-        assertExists(
-            type,
-            "This was null at some point during development, even though it's typed as required.",
-        );
-
-        // NOTE: This is undefined when the type is a primitive OR union/intersection
-        if (!type.symbol) {
-            return emitErrorFromNode(
-                node,
-                'The type associated with this variable cannot currently be validated. Make sure you are performing this operation on interface or enum',
-            );
-        }
-
-        const definition = this.schemaDb.addSchema(typeNode);
-        const referenceSchema: JSONSchema7 = {
-            $ref: `${ROOT_SCHEMA_ID}${definition['$ref']}`,
-        };
-
-        return ts.updateCall(node, node.expression, node.typeArguments, [
-            ...node.arguments,
-            convertObjToAST(referenceSchema),
-        ]);
-    }
-
-    /*
-        The three functions below work to find the appropriate type to pass to
-        the function above which ultimately transforms it.  The type is stored
-        differently for various declaration formats, so we have to approach it
-        different ways depending on the kind of node is is.
-    */
-
-    private transformValidationCallFromGeneric(node: ts.CallExpression) {
-        const [arg] = assertExists(
-            node.typeArguments,
-            'This should be called after we already checked if this existed.',
-        );
-
-        const refType = this.typeChecker.getTypeFromTypeNode(arg);
-
-        return this.transformValidateCallToRuntimeForm(node, arg, refType);
-    }
-
-    private transformValidationCallFromExplicitType(
-        node: ts.CallExpression,
-        containingExpression:
-            | ts.AsExpression
-            | ts.VariableDeclaration
-            | ts.TypeAssertion,
-    ) {
-        if (containingExpression.type) {
-            const refType = this.typeChecker.getTypeAtLocation(
-                containingExpression.type,
-            );
-
-            return this.transformValidateCallToRuntimeForm(
-                node,
-                containingExpression.type,
-                refType,
-            );
-        } else {
-            return emitErrorFromNode(
-                node,
-                'No type was found to be associated with variable; make sure type is annotated',
-            );
-        }
-    }
-
-    private transformValidationCallFromAssignment(
-        node: ts.CallExpression,
-        containingExpression: ts.BinaryExpression,
-    ) {
-        if (
-            containingExpression.operatorToken.kind !==
-            ts.SyntaxKind.EqualsToken
-        ) {
-            return emitErrorFromNode(node, 'Was expecting assignment here.');
-        }
-
-        const assignedNode = containingExpression.left;
-        const refType = this.typeChecker.getTypeAtLocation(assignedNode);
-
-        if (ts.isIdentifier(assignedNode)) {
-            const sym = this.typeChecker.getSymbolAtLocation(assignedNode);
-
-            if (!sym) {
-                // TODO: This error makes no sense to a user
-                return emitErrorFromNode(
-                    node,
-                    'A symbol must be attached to an assigned node',
-                );
-            }
-
-            if (ts.isVariableDeclaration(sym.valueDeclaration)) {
-                const type = sym.valueDeclaration.type;
-
-                if (!type) {
-                    return emitErrorFromNode(
-                        node,
-                        'Type must exist on variable declaration node',
-                    );
-                }
-
-                return this.transformValidateCallToRuntimeForm(
-                    node,
-                    type,
-                    refType,
-                );
-            }
-
-            return emitErrorFromNode(
-                node,
-                'Value declaration of assignment must be a variable declaration',
-            );
-        }
-
-        return emitErrorFromNode(node, 'Assigned Node must be an identifier');
     }
 }

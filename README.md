@@ -20,7 +20,8 @@ clear indicators of where a mismatch occured and why.
 ## Installation
 
 You'll need to install two packages, `ts-audit` and `ttypescript` which is used
-to run the transform plugin.
+to run the transform plugin. (You'll still need `typescript` as `ttypescript`
+uses whatever version of `typescript` you have installed)
 
     npm install -S ts-audit ttypescript
 
@@ -69,7 +70,6 @@ interface UserData {
 
 const fredsData: UserData = assertIsType(await fetchUser('fred'));
 
-// WIP: TypeGuarded Version
 const rawData: unknown = await fetchUser('jake');
 if (isType<UserData>(rawData)) {
     // rawData is typeGuarded as UserData if true
