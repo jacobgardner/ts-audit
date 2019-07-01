@@ -1,7 +1,10 @@
 import * as ts from 'typescript';
-import { AnyObj } from '../utils';
+import { AnyObj } from './typeMatch';
 import { MULTILINE_LITERALS } from '../config';
 
+/*
+    Generates AST node for export.
+*/
 export function generateNamedExport(identifier: ts.Identifier) {
     return ts.createStatement(
         ts.createAssignment(

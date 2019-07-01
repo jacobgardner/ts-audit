@@ -10,6 +10,7 @@ function countSeparators(fullPath: string): number {
 
 // TODO: Add tests for this
 // TODO: Test interaction with baseUrl
+// TODO: Add docs
 export function determineBaseDirectory(program: ts.Program): string {
     const { baseUrl } = program.getCompilerOptions();
 

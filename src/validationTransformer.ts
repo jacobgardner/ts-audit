@@ -8,12 +8,13 @@ import { generateAssertIsTypeFn } from './astGenerators/assertIsType';
 import { generateIsTypeFn } from './astGenerators/isType';
 import { generateSchemaBoilerplate } from './astGenerators/schemaBoilerplate';
 import { generateValidationError } from './astGenerators/validationError';
-import { isRuntimeChecker } from './utils';
+import { isRuntimeChecker } from './utils/typeMatch';
 import { JSONSchema7 } from 'json-schema';
 import pjson from 'pjson';
 import { SchemaDB } from './schemaDB';
 
 // TODO: This can all be broken up/abstracted/fped quite a bit.
+// TODO: Organize this better in a way that makes more logical sense
 
 /*
     This is where most of the work occurs for discovering the validation
@@ -93,104 +94,17 @@ export class ValidationTransformer {
         if (ts.isImportDeclaration(node)) {
             return this.visitImport(node);
         } else if (this.isCallToValidateFunction(node)) {
-            return this.visitValateFunctionCall(node);
+            return this.visitValidateFunctionCall(node);
         }
 
         return node;
     }
 
-    private transformValidationFromGeneric(node: ts.CallExpression) {
-        const [arg] = assertExists(
-            node.typeArguments,
-            'This should be called after we already checked if this existed.',
-        );
-
-        const refType = this.typeChecker.getTypeFromTypeNode(arg);
-
-        return this.transformValidateCallToRuntimeForm(node, arg, refType);
-    }
-
-    private transformValidationFromExplicitType(
-        node: ts.CallExpression,
-        containingExpression:
-            | ts.AsExpression
-            | ts.VariableDeclaration
-            | ts.TypeAssertion,
-    ) {
-        if (containingExpression.type) {
-            const refType = this.typeChecker.getTypeAtLocation(
-                containingExpression.type,
-            );
-
-            return this.transformValidateCallToRuntimeForm(
-                node,
-                containingExpression.type,
-                refType,
-            );
-        } else {
-            return emitErrorFromNode(
-                node,
-                'No type was found to be associated with variable; make sure type is annotated',
-            );
-        }
-    }
-
-    private transformValidationFromAssignment(
-        node: ts.CallExpression,
-        containingExpression: ts.BinaryExpression,
-    ) {
-        if (
-            containingExpression.operatorToken.kind !==
-            ts.SyntaxKind.EqualsToken
-        ) {
-            return emitErrorFromNode(node, 'Was expecting assignment here.');
-        }
-
-        const assignedNode = containingExpression.left;
-        const refType = this.typeChecker.getTypeAtLocation(assignedNode);
-
-        if (ts.isIdentifier(assignedNode)) {
-            const sym = this.typeChecker.getSymbolAtLocation(assignedNode);
-
-            if (!sym) {
-                // TODO: This error makes no sense to a user
-                return emitErrorFromNode(
-                    node,
-                    'A symbol must be attached to an assigned node',
-                );
-            }
-
-            if (ts.isVariableDeclaration(sym.valueDeclaration)) {
-                const type = sym.valueDeclaration.type;
-
-                if (!type) {
-                    return emitErrorFromNode(
-                        node,
-                        'Type must exist on variable declaration node',
-                    );
-                }
-
-                return this.transformValidateCallToRuntimeForm(
-                    node,
-                    type,
-                    refType,
-                );
-            }
-
-            return emitErrorFromNode(
-                node,
-                'Value declaration of assignment must be a variable declaration',
-            );
-        }
-
-        return emitErrorFromNode(node, 'Assigned Node must be an identifier');
-    }
-
-    private visitValateFunctionCall(node: ts.CallExpression) {
+    private visitValidateFunctionCall(node: ts.CallExpression) {
         const parent = node.parent;
 
         if (node.typeArguments && node.typeArguments.length) {
-            return this.transformValidationFromGeneric(node);
+            return this.transformValidationCallFromGeneric(node);
         } else if (
             ts.isVariableDeclaration(parent) ||
             ts.isAsExpression(parent) ||
@@ -199,11 +113,11 @@ export class ValidationTransformer {
             // const var: CheckedType = assertIsType({...});
             //  or
             // const var = assertIsType({...}) as CheckedType;
-            return this.transformValidationFromExplicitType(node, parent);
+            return this.transformValidationCallFromExplicitType(node, parent);
         } else if (ts.isBinaryExpression(parent)) {
             // const
 
-            return this.transformValidationFromAssignment(node, parent);
+            return this.transformValidationCallFromAssignment(node, parent);
         }
 
         // TODO: Implement other types as figured out.
@@ -279,6 +193,7 @@ export class ValidationTransformer {
         // TODO: Figure out why this doesn't work with nodeType.symbol.valueDeclaration....
         const valueDeclaration = nodeType.symbol.declarations[0];
 
+        // TODO: we can unify these two checks more...
         if (ts.isFunctionDeclaration(valueDeclaration)) {
             if (
                 valueDeclaration.typeParameters &&
@@ -370,5 +285,99 @@ export class ValidationTransformer {
             ...node.arguments,
             convertObjToAST(referenceSchema),
         ]);
+    }
+
+    /*
+        The three functions below work to find the appropriate type to pass to
+        the function above which ultimately transforms it.  The type is stored
+        differently for various declaration formats, so we have to approach it
+        different ways depending on the kind of node is is.
+    */
+
+    private transformValidationCallFromGeneric(node: ts.CallExpression) {
+        const [arg] = assertExists(
+            node.typeArguments,
+            'This should be called after we already checked if this existed.',
+        );
+
+        const refType = this.typeChecker.getTypeFromTypeNode(arg);
+
+        return this.transformValidateCallToRuntimeForm(node, arg, refType);
+    }
+
+    private transformValidationCallFromExplicitType(
+        node: ts.CallExpression,
+        containingExpression:
+            | ts.AsExpression
+            | ts.VariableDeclaration
+            | ts.TypeAssertion,
+    ) {
+        if (containingExpression.type) {
+            const refType = this.typeChecker.getTypeAtLocation(
+                containingExpression.type,
+            );
+
+            return this.transformValidateCallToRuntimeForm(
+                node,
+                containingExpression.type,
+                refType,
+            );
+        } else {
+            return emitErrorFromNode(
+                node,
+                'No type was found to be associated with variable; make sure type is annotated',
+            );
+        }
+    }
+
+    private transformValidationCallFromAssignment(
+        node: ts.CallExpression,
+        containingExpression: ts.BinaryExpression,
+    ) {
+        if (
+            containingExpression.operatorToken.kind !==
+            ts.SyntaxKind.EqualsToken
+        ) {
+            return emitErrorFromNode(node, 'Was expecting assignment here.');
+        }
+
+        const assignedNode = containingExpression.left;
+        const refType = this.typeChecker.getTypeAtLocation(assignedNode);
+
+        if (ts.isIdentifier(assignedNode)) {
+            const sym = this.typeChecker.getSymbolAtLocation(assignedNode);
+
+            if (!sym) {
+                // TODO: This error makes no sense to a user
+                return emitErrorFromNode(
+                    node,
+                    'A symbol must be attached to an assigned node',
+                );
+            }
+
+            if (ts.isVariableDeclaration(sym.valueDeclaration)) {
+                const type = sym.valueDeclaration.type;
+
+                if (!type) {
+                    return emitErrorFromNode(
+                        node,
+                        'Type must exist on variable declaration node',
+                    );
+                }
+
+                return this.transformValidateCallToRuntimeForm(
+                    node,
+                    type,
+                    refType,
+                );
+            }
+
+            return emitErrorFromNode(
+                node,
+                'Value declaration of assignment must be a variable declaration',
+            );
+        }
+
+        return emitErrorFromNode(node, 'Assigned Node must be an identifier');
     }
 }

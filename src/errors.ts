@@ -1,5 +1,10 @@
 import * as ts from 'typescript';
 
+/*
+Instead of just throwing an exception we use this to generate a list of usable
+errors for the user at completion.
+*/
+
 interface ErrorData {
     file: string;
     line: number;
