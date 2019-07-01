@@ -47,11 +47,11 @@ And you're ready to go!!!!!!
 
 ## Usage
 
-All you have to do to use `ts-audit` is use `validateInterface` (TODO: change
+All you have to do to use `ts-audit` is use `assertIsType` (TODO: change
 name) from the library, making sure to annotate the type of the assigned value.
 
 ```typescript
-import { validateInterface } from 'ts-audit';
+import { assertIsType } from 'ts-audit';
 
 enum Animal {
     Cat = 'cat',
@@ -67,7 +67,7 @@ interface UserData {
     notes?: string;
 }
 
-const fredsData: UserData = validateInterface(await fetchUser('fred'));
+const fredsData: UserData = assertIsType(await fetchUser('fred'));
 ```
 
 In this example `fetchUser` hits an API that returns a JSON object that we
@@ -79,7 +79,8 @@ indicating that the JSON returned does not match what we were expecting.
 ## Disclaimer
 
 This does not work for classes, functions, or pretty much anything else that's
-not supported by JSON-schema.
+not supported by JSON-schema. The type sent to validateFunction must be a
+concrete type. This will NOT work if given a generic argument.
 
 ## Known Issues
 
@@ -128,4 +129,8 @@ These are some known issues. There may be more unknown...
 -   [ ] Refactor like crazy
 -   [ ] Build a tool like `Quote` in rust so that it's easier to build up the
         AST without building the AST.
--   [ ] Replace all asserts with emiteErrorFromNode for better user-error reporting
+-   [ ] Replace all asserts with emiteErrorFromNode for better user-error
+        reporting
+-   [ ] Add optional hooks into assertion function so that custom error
+        reporting can be done; this would be used to partially accomodate the fact that the
+        validate function can't be wrapped in a generic function.

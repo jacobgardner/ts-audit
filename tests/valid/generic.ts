@@ -6,59 +6,59 @@ import {
     StringEnum,
     UnionIntersectionInterface,
 } from '../shared';
+import { assertIsType } from 'ts-audit';
 import { expectValidationError } from '../utils';
-import { validateInterface } from 'ts-audit';
 
 // TODO: Same issue as in `as Type`.  We should preserve the type after the
 // first call
 
 // eslint-disable-next-line
-let enum1 = validateInterface<StringEnum>('apple');
-enum1 = validateInterface<StringEnum>('orange');
+let enum1 = assertIsType<StringEnum>('apple');
+enum1 = assertIsType<StringEnum>('orange');
 
 expectValidationError(() => {
-    enum1 = validateInterface<StringEnum>('ooooooooo');
+    enum1 = assertIsType<StringEnum>('ooooooooo');
 });
 
 expectValidationError(() => {
-    enum1 = validateInterface<StringEnum>(12);
+    enum1 = assertIsType<StringEnum>(12);
 });
 
 expectValidationError(() => {
-    enum1 = validateInterface<StringEnum>([]);
+    enum1 = assertIsType<StringEnum>([]);
 });
 
 expectValidationError(() => {
-    enum1 = validateInterface<StringEnum>({});
-});
-
-// eslint-disable-next-line
-let enum2 = validateInterface<Mixed>('Coke');
-enum2 = validateInterface<Mixed>('Pepsi');
-enum2 = validateInterface<Mixed>(29);
-enum2 = validateInterface<Mixed>(24);
-enum2 = validateInterface<Mixed>(25);
-
-expectValidationError(() => {
-    enum2 = validateInterface<Mixed>(23);
-});
-
-expectValidationError(() => {
-    enum2 = validateInterface<Mixed>(26);
-});
-
-expectValidationError(() => {
-    enum2 = validateInterface<Mixed>(-1);
+    enum1 = assertIsType<StringEnum>({});
 });
 
 // eslint-disable-next-line
-let obj = validateInterface<ComplexInterface<GenericType<number>>>({
+let enum2 = assertIsType<Mixed>('Coke');
+enum2 = assertIsType<Mixed>('Pepsi');
+enum2 = assertIsType<Mixed>(29);
+enum2 = assertIsType<Mixed>(24);
+enum2 = assertIsType<Mixed>(25);
+
+expectValidationError(() => {
+    enum2 = assertIsType<Mixed>(23);
+});
+
+expectValidationError(() => {
+    enum2 = assertIsType<Mixed>(26);
+});
+
+expectValidationError(() => {
+    enum2 = assertIsType<Mixed>(-1);
+});
+
+// eslint-disable-next-line
+let obj = assertIsType<ComplexInterface<GenericType<number>>>({
     mixed: [],
     circular: { value: 12 },
     tuple: [5, { value: 55 }],
 });
 
-obj = validateInterface<ComplexInterface<GenericType<number>>>({
+obj = assertIsType<ComplexInterface<GenericType<number>>>({
     mixed: ['Coke', 25],
     genericType: {
         value: {
@@ -78,11 +78,11 @@ obj = validateInterface<ComplexInterface<GenericType<number>>>({
 });
 
 expectValidationError(() => {
-    obj = validateInterface<ComplexInterface<GenericType<number>>>({});
+    obj = assertIsType<ComplexInterface<GenericType<number>>>({});
 });
 
 expectValidationError(() => {
-    obj = validateInterface<ComplexInterface<GenericType<number>>>({
+    obj = assertIsType<ComplexInterface<GenericType<number>>>({
         mixed: [],
         circular: {
             value: '5',
@@ -94,11 +94,11 @@ expectValidationError(() => {
 // TODO: Make root level union work
 
 // // eslint-disable-next-line
-// let union: UnionType = validateInterface({nonExport1: 'astring', nonExport2: 132});
-// union = validateInterface({value: 5, circle: {value: 12}});
+// let union: UnionType = assertIsType({nonExport1: 'astring', nonExport2: 132});
+// union = assertIsType({value: 5, circle: {value: 12}});
 
 // eslint-disable-next-line
-let iface = validateInterface<UnionIntersectionInterface>({
+let iface = assertIsType<UnionIntersectionInterface>({
     union: { value: 5, circular: { value: 8 } },
     intersection: {
         nonExport1: 'astring',
@@ -109,7 +109,7 @@ let iface = validateInterface<UnionIntersectionInterface>({
     },
 });
 
-iface = validateInterface<UnionIntersectionInterface>({
+iface = assertIsType<UnionIntersectionInterface>({
     union: { nonExport1: 'astring', nonExport2: 132 },
     intersection: {
         nonExport1: 'astring',
@@ -123,7 +123,7 @@ iface = validateInterface<UnionIntersectionInterface>({
 // Even though the union has parts of both, it technically works because it
 // meets the critera for at least one of them.  This could be corrected by
 // disabling additional properties on the schema.
-iface = validateInterface<UnionIntersectionInterface>({
+iface = assertIsType<UnionIntersectionInterface>({
     union: { nonExport1: 'astring', nonExport2: 132, value: 6 },
     intersection: {
         nonExport1: 'astring',
@@ -135,7 +135,7 @@ iface = validateInterface<UnionIntersectionInterface>({
 });
 
 expectValidationError(() => {
-    iface = validateInterface<UnionIntersectionInterface>({
+    iface = assertIsType<UnionIntersectionInterface>({
         union: { nonExport1: 'astring', nonExport2: 132 },
         intersection: {
             shallow1: 5,
@@ -146,7 +146,7 @@ expectValidationError(() => {
 });
 
 expectValidationError(() => {
-    iface = validateInterface<UnionIntersectionInterface>({
+    iface = assertIsType<UnionIntersectionInterface>({
         union: { nonExport1: 'astring', nonExport2: 132 },
         intersection: {
             nonExport1: 'astring',

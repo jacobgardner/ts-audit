@@ -176,9 +176,9 @@ export class ValidationTransformer {
             ts.isAsExpression(parent) ||
             ts.isTypeAssertion(parent)
         ) {
-            // const var: CheckedType = validateInterface({...});
+            // const var: CheckedType = assertIsType({...});
             //  or
-            // const var = validateInterface({...}) as CheckedType;
+            // const var = assertIsType({...}) as CheckedType;
             return this.transformValidationFromExplicitType(node, parent);
         } else if (ts.isBinaryExpression(parent)) {
             // const

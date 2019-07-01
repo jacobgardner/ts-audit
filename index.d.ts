@@ -1,7 +1,11 @@
 // eslint-disable-next-line
 type _RUNTIME_CHECK_ANY = any;
 
-export function validateInterface<T = _RUNTIME_CHECK_ANY>(
+export function assertIsType<T = _RUNTIME_CHECK_ANY>(
+    data: unknown,
+): _RUNTIME_CHECK_ANY;
+
+export function isType<T = _RUNTIME_CHECK_ANY>(
     data: unknown,
 ): _RUNTIME_CHECK_ANY;
 

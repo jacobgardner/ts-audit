@@ -22,7 +22,7 @@ var validator = new Validator({
         },
     ],
 });
-function validateInterface(raw, definitionReference) {
+function assertIsType(raw, definitionReference) {
     if (validator.validate(definitionReference, raw)) {
         return raw;
     } else {
@@ -120,7 +120,7 @@ export function generateSchemaValidator(
         [definitionReferenceArg, rawArg],
     );
 
-    const validateInterfaceFunction = ts.createFunctionDeclaration(
+    const assertIsTypeFunction = ts.createFunctionDeclaration(
         [],
         [],
         undefined,
@@ -183,5 +183,5 @@ export function generateSchemaValidator(
         ]),
     );
 
-    return [validateImport, ajvInit, validateInterfaceFunction, exportValidate];
+    return [validateImport, ajvInit, assertIsTypeFunction, exportValidate];
 }

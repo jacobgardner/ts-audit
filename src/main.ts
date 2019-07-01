@@ -10,6 +10,10 @@ function isTransformable(filename: string): boolean {
     );
 }
 
+/*
+    This is the function signature that typescript is expecting for transforms.
+    If we ever add plugin configuration, it'll be the second parameter.
+ */
 export default function transformer(program: ts.Program /*, config: Config*/) {
     const baseDir = determineBaseDirectory(program);
     const filesToTransform = program
