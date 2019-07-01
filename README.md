@@ -48,8 +48,7 @@ And you're ready to go!!!!!!
 
 ## Usage
 
-All you have to do to use `ts-audit` is use `assertIsType` (TODO: change
-name) from the library, making sure to annotate the type of the assigned value.
+All you have to do to use `ts-audit` is use `assertIsType` or `isType` from the library, making sure to annotate the type of the assigned value.
 
 ```typescript
 import { assertIsType } from 'ts-audit';
