@@ -68,6 +68,13 @@ interface UserData {
 }
 
 const fredsData: UserData = assertIsType(await fetchUser('fred'));
+
+// WIP: TypeGuarded Version
+const rawData: unknown = await fetchUser('jake');
+if (isType<UserData>(rawData)) {
+    // rawData is typeGuarded as UserData if true
+    assert(rawData.username === 'jake');
+}
 ```
 
 In this example `fetchUser` hits an API that returns a JSON object that we

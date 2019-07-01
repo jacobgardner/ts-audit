@@ -11,6 +11,7 @@ import { generateValidationError } from './astGenerators/validationError';
 import { JSONSchema7 } from 'json-schema';
 import pjson from 'pjson';
 import { SchemaDB } from './schemaDB';
+import { formatNode } from './utils/printTS';
 
 export class ValidationTransformer {
     private schemaDb: SchemaDB;
@@ -264,11 +265,24 @@ export class ValidationTransformer {
         const valueDeclaration = nodeType.symbol.declarations[0];
 
         if (ts.isFunctionDeclaration(valueDeclaration)) {
-            return (
-                (valueDeclaration.type &&
-                    isRuntimeChecker(valueDeclaration.type)) ||
-                false
-            );
+            if (
+                valueDeclaration.typeParameters &&
+                valueDeclaration.typeParameters.length === 1
+            ) {
+                const firstTypeParam = valueDeclaration.typeParameters[0];
+
+                if (
+                    firstTypeParam.default &&
+                    isRuntimeChecker(firstTypeParam.default)
+                ) {
+                    return true;
+                }
+            } else if (
+                valueDeclaration.type &&
+                isRuntimeChecker(valueDeclaration.type)
+            ) {
+                return true;
+            }
         }
 
         return false;
