@@ -1,9 +1,14 @@
 import * as ts from 'typescript';
 import { MULTILINE_LITERALS, VALIDATION_ERROR_NAME } from '../config';
+import { generateNamedExport } from '../utils/exportAst';
 
 // TODO: Add import for `ts-audit/validationError` so we can use the actual
 // package and not have to generate this code.  Seems safer and easier to
 // reference.
+
+export const validationErrorIdentifier = ts.createIdentifier(
+    VALIDATION_ERROR_NAME,
+);
 
 /*
 
@@ -20,16 +25,9 @@ exports.ValidationError = ValidationError;
 
 */
 export function generateValidationError() {
-    const exportValidationError = ts.createStatement(
-        ts.createAssignment(
-            ts.createPropertyAccess(
-                ts.createIdentifier('exports'),
-                VALIDATION_ERROR_NAME,
-            ),
-            ts.createIdentifier(VALIDATION_ERROR_NAME),
-        ),
+    const exportValidationError = generateNamedExport(
+        validationErrorIdentifier,
     );
-
     const thisId = ts.createIdentifier('this');
     const messageArg = ts.createIdentifier('message');
 
@@ -37,7 +35,7 @@ export function generateValidationError() {
         [],
         [],
         undefined,
-        VALIDATION_ERROR_NAME,
+        validationErrorIdentifier,
         [],
         [ts.createParameter([], [], undefined, messageArg)],
         undefined,
@@ -81,10 +79,7 @@ export function generateValidationError() {
 
     const errorPrototypeExtend = ts.createStatement(
         ts.createAssignment(
-            ts.createPropertyAccess(
-                ts.createIdentifier(VALIDATION_ERROR_NAME),
-                'prototype',
-            ),
+            ts.createPropertyAccess(validationErrorIdentifier, 'prototype'),
             ts.createNew(ts.createIdentifier('Error'), [], undefined),
         ),
     );

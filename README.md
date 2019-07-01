@@ -107,7 +107,7 @@ These are some known issues. There may be more unknown...
 
 ## TODO
 
--   [ ] Add `matchesInterface` function which returns `true`/`false` instead of
+-   [x] Add `matchesInterface` function which returns `true`/`false` instead of
         throwing assertions
 -   [ ] Minify schema output
 -   [ ] Performance test against typescript-is
@@ -118,7 +118,7 @@ These are some known issues. There may be more unknown...
 -   [ ] Support watch mode - I think the issue is we cache the types after the
         first pass and the second pass doesn't invalidate the cache so changes to
         types aren't propogated correctly.
--   [ ] Find better names for functions
+-   [x] Find better names for functions
 -   [ ] Support primitives
 -   [ ] Support root-level unions/intersections (will be solved similarly to primitives)
 -   [ ] Use custom error so that consumer can catch interface validations

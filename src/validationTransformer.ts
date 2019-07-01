@@ -1,10 +1,12 @@
 import * as path from 'path';
 import * as ts from 'typescript';
 import { convertObjToAST, isRuntimeChecker } from './utils';
-import { INTERFACE_ASSERTION_NAME, ROOT_SCHEMA_ID } from './config';
+import { ROOT_SCHEMA_ID, TYPE_ASSERTION_NAME } from './config';
 import { assertExists } from './utils/assert';
 import { emitErrorFromNode } from './errors';
-import { generateSchemaValidator } from './astGenerators/schemaValidator';
+import { generateAssertIsTypeFn } from './astGenerators/assertIsType';
+import { generateIsTypeFn } from './astGenerators/isType';
+import { generateSchemaBoilerplate } from './astGenerators/schemaBoilerplate';
 import { generateValidationError } from './astGenerators/validationError';
 import { JSONSchema7 } from 'json-schema';
 import pjson from 'pjson';
@@ -49,7 +51,9 @@ export class ValidationTransformer {
         );
 
         sourceFile = ts.updateSourceFileNode(sourceFile, [
-            ...generateSchemaValidator(this.schemaDb.dump()),
+            ...generateSchemaBoilerplate(this.schemaDb.dump()),
+            ...generateIsTypeFn(),
+            ...generateAssertIsTypeFn(),
             ...generateValidationError(),
         ]);
 
@@ -207,7 +211,7 @@ export class ValidationTransformer {
                 // TODO: Implement
                 return emitErrorFromNode(
                     node,
-                    `Namespace import is not yet supported.  Please use \`import { ${INTERFACE_ASSERTION_NAME} } from '${pjson.name}';\``,
+                    `Namespace import is not yet supported.  Please use \`import { ${TYPE_ASSERTION_NAME} } from '${pjson.name}';\``,
                 );
             } else {
                 // {namedImports}
@@ -218,7 +222,7 @@ export class ValidationTransformer {
             // TODO: Implement
             return emitErrorFromNode(
                 node,
-                `Default import is not yet supported.  Please use \`import { ${INTERFACE_ASSERTION_NAME} } from '${pjson.name}';\``,
+                `Default import is not yet supported.  Please use \`import { ${TYPE_ASSERTION_NAME} } from '${pjson.name}';\``,
             );
         }
 
