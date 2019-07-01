@@ -92,6 +92,15 @@ These are some known issues. There may be more unknown...
 
 -   [typescript-is](https://github.com/woutervh-/typescript-is)
 
+## Directory Structure
+
+```
+/src - Source for the transformer (details to come after refactor maybe)
+/tests - Tests testing the transformer and schema validation
+    /tests/valid - Tests that build and run to completio (including testing bad schemas)
+    /tests/invalid - A series of files that should fail at build time.
+```
+
 ## TODO
 
 -   [ ] Add `matchesInterface` function which returns `true`/`false` instead of
@@ -110,3 +119,6 @@ These are some known issues. There may be more unknown...
 -   [ ] Use custom error so that consumer can catch interface validations
 -   [ ] Allow option to disable additional properties being added to an object
         (possibly with a decorator)
+-   [ ] Add realistic, useful example instead of the pseudo-test-like examples
+        we had before.
+        [ ] Refactor like crazy
