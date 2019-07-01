@@ -173,3 +173,4 @@ the code works.
 -   [x] Create `.d.ts` file in tests that overrides types in `/build` so we
         don't need to install separately in tests and `link` against the parent.
         It should provide a much smoother testing experience.
+-   [ ] Make sure failing tests are failing for the reasons we're expecting
