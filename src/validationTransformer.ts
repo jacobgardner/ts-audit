@@ -11,7 +11,6 @@ import { generateValidationError } from './astGenerators/validationError';
 import { JSONSchema7 } from 'json-schema';
 import pjson from 'pjson';
 import { SchemaDB } from './schemaDB';
-import { formatNode } from './utils/printTS';
 
 export class ValidationTransformer {
     private schemaDb: SchemaDB;
