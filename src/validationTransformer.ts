@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as ts from 'typescript';
 import { convertObjToAST, isRuntimeChecker } from './utils';
 import { INTERFACE_ASSERTION_NAME, ROOT_SCHEMA_ID } from './config';
-import { assertExists, assert } from './utils/assert';
+import { assertExists } from './utils/assert';
 import { emitErrorFromNode } from './errors';
 import { generateSchemaValidator } from './astGenerators/schemaValidator';
 import { generateValidationError } from './astGenerators/validationError';

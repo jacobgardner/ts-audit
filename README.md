@@ -1,5 +1,8 @@
 # TS-AUDIT
 
+[![Build
+Status](https://travis-ci.com/jacobgardner/ts-audit.svg?branch=master)](https://travis-ci.com/jacobgardner/ts-audit)
+
 `ts-audit` is a Typescript transform plugin that verifies external data
 structures match what you expect them to be inside your typescript ecosystem.
 
