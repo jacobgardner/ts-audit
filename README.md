@@ -82,13 +82,15 @@ safely in our system using the power of the typescript type-system. If there's
 a mispelling, missing required key, or type-mismatch we'll throw a runtime error
 indicating that the JSON returned does not match what we were expecting.
 
-## Disclaimer
+## Limitations
 
 This does not work for classes, functions, or pretty much anything else that's
 not supported by JSON-schema. The type sent to validateFunction must be a
 concrete type. This will NOT work if given a generic argument. ALSO, this has
 only been tested in a node environment. This may require some additional work to
 get it working in the browser, but it should be pretty close already if not.
+JSON schema allow some forms of validation (such as string length) that this
+tool currently (TODO?) does not.
 
 ## Known Issues
 
@@ -107,6 +109,11 @@ These are some known issues. There may be more unknown...
     validation calls with conditionals checking in-line with your code. This
     _MAY_ lead to more performant checking. I want to do some performance
     analysis/code gen analysis against this project at some point.
+-   There are some code-gen tools that will take somelike like a Swagger or API
+    Blueprint doc and generate typescript interfaces in your codebase; Then use
+    swagger validate to validate against the API. If you're using Swagger or
+    similar API documentation framework to drive out your serialized structures,
+    then this is probably a better way to go.
 
 ## Directory Structure
 
@@ -173,3 +180,4 @@ the code works.
         don't need to install separately in tests and `link` against the parent.
         It should provide a much smoother testing experience.
 -   [ ] Make sure failing tests are failing for the reasons we're expecting
+-   [ ] Allow generation of external JSON file for lazy loading...
