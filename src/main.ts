@@ -36,7 +36,7 @@ export default function transformer(program: ts.Program /*, config: Config*/) {
             if (errors.length) {
                 const lines = errors.map(
                     ({ message, file, line, character }) =>
-                        `Error [runtime-check transform]: ${message}. This error occured in ${file}, Line: ${line}:${character}`,
+                        `Error [runtime-check transform]: ${message}. This error occured in ${file}:${line}:${character}`,
                 );
 
                 throw new Error(lines.join('\n'));

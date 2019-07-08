@@ -15,6 +15,18 @@ import { writeRuntimeValidatorToFile } from './buildRuntimeValidator';
 // TODO: This can all be broken up/abstracted/fped quite a bit.
 // TODO: Organize this better in a way that makes more logical sense
 
+function isImportThisModule(node: ts.ImportDeclaration): boolean {
+    const { moduleSpecifier } = node;
+
+    if (ts.isStringLiteral(moduleSpecifier)) {
+        if (moduleSpecifier.text === pjson.name) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 /*
     This is where most of the work occurs for discovering the validation
     functions and converting them to the usable types in the final build.
@@ -114,11 +126,16 @@ export class ValidationVisitor {
         if (namedBindings) {
             if (ts.isNamespaceImport(namedBindings)) {
                 // * as something
-                // TODO: Implement
-                return emitErrorFromNode(
-                    node,
-                    `Namespace import is not yet supported.  Please use \`import { ${TYPE_ASSERTION_NAME} } from '${pjson.name}';\``,
-                );
+
+                if (isImportThisModule(node)) {
+                    // TODO: Implement
+                    return emitErrorFromNode(
+                        node,
+                        `Namespace import is not yet supported.  Please use \`import { ${TYPE_ASSERTION_NAME} } from '${pjson.name}';\``,
+                    );
+                }
+
+                return node;
             } else {
                 // {namedImports}
                 return transformNamedImport(
@@ -130,11 +147,17 @@ export class ValidationVisitor {
             }
         } else if (name) {
             // defaultImport
-            // TODO: Implement
-            return emitErrorFromNode(
-                node,
-                `Default import is not yet supported.  Please use \`import { ${TYPE_ASSERTION_NAME} } from '${pjson.name}';\``,
-            );
+
+            // TODO: Add regression tests making sure to test files where other
+            // modules are being imported....
+            if (isImportThisModule(node)) {
+                return emitErrorFromNode(
+                    node,
+                    `Default import is not yet supported.  Please use \`import { ${TYPE_ASSERTION_NAME} } from '${pjson.name}';\``,
+                );
+            }
+
+            return node;
         }
 
         return node;
