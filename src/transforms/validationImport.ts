@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as ts from 'typescript';
 import { isTypeTheValidateFunction } from '../utils/typeMatch';
 import { VALIDATIONS_GENERATED_FILENAME } from '../config';
+import { formatNode } from '../utils/printTS';
 
 /*
     This method attempts to find a named import function (e.g.
@@ -18,11 +19,20 @@ export function transformNamedImport(
     baseDir: string,
     node: ts.ImportDeclaration,
     namedBindings: ts.NamedImports,
+    isTsNode: boolean,
 ): ts.Node {
+    const isTsAudit = node.moduleSpecifier.getText().includes('ts-audit');
+
     for (const element of namedBindings.elements) {
         const type = typeChecker.getTypeAtLocation(element);
 
-        if (isTypeTheValidateFunction(type)) {
+        if (
+            isTypeTheValidateFunction(type) ||
+            (isTsNode &&
+                isTsAudit &&
+                type &&
+                (type as any).intrinsicName === 'error') // TODO: This occurs with ts-node for some reason.  Investigate
+        ) {
             const sourceDir = path.dirname(
                 path.normalize(node.getSourceFile().fileName),
             );

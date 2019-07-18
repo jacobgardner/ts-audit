@@ -15,9 +15,7 @@ export function determineBaseDirectory(program: ts.Program): string {
     const { baseUrl } = program.getCompilerOptions();
 
     if (baseUrl) {
-        return path.normalize(
-            path.join(program.getCurrentDirectory(), baseUrl),
-        );
+        return baseUrl;
     }
 
     let baseDir: string | undefined;
