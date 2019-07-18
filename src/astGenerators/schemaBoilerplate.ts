@@ -11,7 +11,6 @@ export function generateSchemaBoilerplate(
 ) {
     const schema = {
         $id: ROOT_SCHEMA_ID,
-        $schema: 'http://json-schema.org/draft-07/schema#',
         definitions: schemaDefinitions,
     };
 
