@@ -35,11 +35,7 @@ export class ValidationVisitor {
     private schemaDb: SchemaDB;
     private typeChecker: ts.TypeChecker;
 
-    public constructor(
-        private program: ts.Program,
-        private baseDir: string,
-        private isTsNode = false,
-    ) {
+    public constructor(private program: ts.Program, private baseDir: string) {
         this.schemaDb = new SchemaDB(program, '.');
         this.typeChecker = program.getTypeChecker();
     }
@@ -147,7 +143,6 @@ export class ValidationVisitor {
                     this.baseDir,
                     node,
                     namedBindings,
-                    this.isTsNode,
                 );
             }
         } else if (name) {

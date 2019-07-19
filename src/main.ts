@@ -15,25 +15,16 @@ function isTransformable(filename: string): boolean {
     If we ever add plugin configuration, it'll be the second parameter.
  */
 export default function transformer(program: ts.Program /*, config: Config*/) {
-    let baseDir = determineBaseDirectory(program);
+    const baseDir = determineBaseDirectory(program);
     const filesToTransform = program
         .getSourceFiles()
         .map(sourceFile => sourceFile.fileName)
         .filter(isTransformable);
 
     let filesRemaining = filesToTransform.length;
-    const { outDir } = program.getCompilerOptions();
-    let isTsNode = false;
-
-    if (outDir && outDir.toLowerCase().endsWith('$$ts-node$$')) {
-        isTsNode = true;
-        baseDir = outDir;
-    }
-
     const transformer = new ValidationVisitor(
         program,
         baseDir || program.getCurrentDirectory(),
-        isTsNode,
     );
 
     return (context: ts.TransformationContext) => (file: ts.SourceFile) => {
