@@ -13,7 +13,8 @@
         "prebuild": "rimraf build",
         "build": "tsc",
         "test": "cd tests && ts-node test.ts",
-        "prepublish": "npm run build",
+        "postversion": "npm run build",
+        "release": "np",
         "lint:base": "eslint --ext ts,tsx",
         "lint:fix": "npm run lint:base -- --fix src tests",
         "lint": "npm run lint:base -- src tests",
@@ -31,12 +32,13 @@
         "eslint": "^6.0.1",
         "eslint-config-prettier": "^6.0.0",
         "husky": "^2.7.0",
+        "np": "^5.0.3",
         "prettier": "^1.18.2",
         "pretty-quick": "^1.11.1",
         "rimraf": "^2.6.3",
         "ts-node": "^8.3.0",
         "ttypescript": "^1.5.7",
-        "typescript": "^3.5.1"
+        "typescript": "^3.5.3"
     },
     "peerDependencies": {
         "typescript": ">3.0"
