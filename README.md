@@ -96,7 +96,7 @@ concrete type. This will NOT work if given a generic argument. ALSO, this has
 only been tested in a node environment. This may require some additional work to
 get it working in the browser, but it should be pretty close already if not.
 JSON schema allow some forms of validation (such as string length) that this
-tool currently (TODO?) does not.
+tool currently does not.
 
 ## Known Issues
 
