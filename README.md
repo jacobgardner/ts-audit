@@ -17,6 +17,12 @@ doesn't match your expections. We can't stop mismatched expectations from
 occurring at runtime, but we can do is isolate where they can occur and provide
 clear indicators of where a mismatch occured and why.
 
+## Before Using
+
+Please read and understand the known issues before consuming. We're working to
+fix these issues, but in the meantime, you may have to adapt your project's
+workflow to utilize this project effectively.
+
 ## Installation
 
 You'll need to install two packages, `ts-audit` and `ttypescript` which is used
@@ -96,11 +102,17 @@ tool currently (TODO?) does not.
 
 These are some known issues. There may be more unknown...
 
--   This also does not support primitive types unless they are aliased.
+-   This does not support primitive types unless they are aliased.
 -   Importing as a named import is the only way to currently interact with
     `ts-audit`.
 -   Watch mode does not appear to work correctly on the consuming project when
     altering code using the `ts-audit` library.
+-   The validations file does not update properly when using `incremental` mode.
+-   There appear to be `typechecker` issues when using ts-node.
+    -   If you wish to test your project using something like mocha, then instead
+        of relying on ts-node, you can build a tsconfig.test.json (if necessary) or
+        just use `ttsc --outDir=.test` and then run your test framework from there.
+        For example: `ttsc --outDir=.test && nyc mocha --reporter=dot ".test/**/*.spec.js"`
 
 ## Other Similar Projects
 
@@ -141,43 +153,3 @@ the code works.
 ## Running Tests
 
     npm test
-
-## TODO
-
--   [ ] Move TODOs to github issues instead.
--   [x] Add `matchesInterface` function which returns `true`/`false` instead of
-        throwing assertions
--   [ ] Minify schema output
--   [ ] Performance test against typescript-is
--   [ ] Allow namespace imports at least.
--   [x] Make readme better
--   [x] Add tests
--   [x] Add CI pipeline so we don't screw up the project
--   [ ] Support watch mode - I think the issue is we cache the types after the
-        first pass and the second pass doesn't invalidate the cache so changes to
-        types aren't propogated correctly.
--   [x] Find better names for functions
--   [ ] Support primitives
--   [ ] Support root-level unions/intersections (will be solved similarly to primitives)
--   [ ] Use custom error so that consumer can catch interface validations
--   [ ] Allow option to disable additional properties being added to an object
-        (possibly with a decorator)
--   [ ] Add realistic, useful example instead of the pseudo-test-like examples
-        we had before.
--   [ ] Refactor like crazy
--   [ ] Build a tool like `Quote` in rust so that it's easier to build up the
-        AST without building the AST.
--   [ ] Replace all asserts with emitErrorFromNode for better user-error
-        reporting
--   [ ] Add optional hooks into assertion function so that custom error
-        reporting can be done; this would be used to partially accomodate the fact that the
-        validate function can't be wrapped in a generic function.
--   [x] Add tests for improper usage of API.
--   [ ] Test in browser
--   [ ] Move config.ts to using user passed options instead.
--   [ ] Use `dtslint` in tests
--   [x] Create `.d.ts` file in tests that overrides types in `/build` so we
-        don't need to install separately in tests and `link` against the parent.
-        It should provide a much smoother testing experience.
--   [ ] Make sure failing tests are failing for the reasons we're expecting
--   [ ] Allow generation of external JSON file for lazy loading...
