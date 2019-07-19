@@ -17,6 +17,12 @@ doesn't match your expections. We can't stop mismatched expectations from
 occurring at runtime, but we can do is isolate where they can occur and provide
 clear indicators of where a mismatch occured and why.
 
+## Before Using
+
+Please read and understand the known issues before consuming. We're working to
+fix these issues, but in the meantime, you may have to adapt your project's
+workflow to utilize this project effectively.
+
 ## Installation
 
 You'll need to install two packages, `ts-audit` and `ttypescript` which is used
@@ -96,11 +102,17 @@ tool currently (TODO?) does not.
 
 These are some known issues. There may be more unknown...
 
--   This also does not support primitive types unless they are aliased.
+-   This does not support primitive types unless they are aliased.
 -   Importing as a named import is the only way to currently interact with
     `ts-audit`.
 -   Watch mode does not appear to work correctly on the consuming project when
     altering code using the `ts-audit` library.
+-   The validations file does not update properly when using `incremental` mode.
+-   There appear to be `typechecker` issues when using ts-node.
+    -   If you wish to test your project using something like mocha, then instead
+        of relying on ts-node, you can build a tsconfig.test.json (if necessary) or
+        just use `ttsc --outDir=.test` and then run your test framework from there.
+        For example: `ttsc --outDir=.test && nyc mocha --reporter=dot ".test/**/*.spec.js"`
 
 ## Other Similar Projects
 
@@ -181,3 +193,5 @@ the code works.
         It should provide a much smoother testing experience.
 -   [ ] Make sure failing tests are failing for the reasons we're expecting
 -   [ ] Allow generation of external JSON file for lazy loading...
+-   [ ] Diagnose and fix ts-node issues
+-   [ ] Diagnone and fix ts-incremental issues (if possible)
