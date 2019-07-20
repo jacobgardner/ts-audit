@@ -26,7 +26,7 @@ export function transformNamedImport(
             const sourceDir = path.dirname(
                 path.normalize(node.getSourceFile().fileName),
             );
-            const relative = path.relative(sourceDir, baseDir);
+            const relative = path.relative(sourceDir, baseDir) || '.';
 
             return ts.updateImportDeclaration(
                 node,
