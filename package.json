@@ -49,7 +49,7 @@
         "debug": "^4.1.1",
         "json-schema": "^0.2.3",
         "pjson": "^1.0.9",
-        "ts-json-schema-generator": "^0.50.2"
+        "ts-json-schema-generator": "^0.52.9"
     },
     "husky": {
         "hooks": {
