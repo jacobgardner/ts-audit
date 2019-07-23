@@ -41,7 +41,7 @@
         "typescript": "^3.5.3"
     },
     "peerDependencies": {
-        "typescript": ">3.0"
+        "typescript": ">3.5"
     },
     "dependencies": {
         "ajv": "^6.10.0",
