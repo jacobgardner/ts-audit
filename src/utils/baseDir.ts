@@ -3,9 +3,21 @@ import * as ts from 'typescript';
 import { assertExists } from './assert';
 import pjson from 'pjson';
 
-const SEPARATOR_REGEX = new RegExp(`/\\${path.sep}/`, 'g');
-function countSeparators(fullPath: string): number {
-    return (fullPath.match(SEPARATOR_REGEX) || []).length;
+// TODO: Unit test this
+function commonRoot(dirA: string, dirB: string) {
+    const partsA = dirA.split(path.sep);
+    const partsB = dirB.split(path.sep);
+
+    const minPart = Math.min(partsA.length, partsB.length);
+
+    let partCount;
+    for (partCount = 0; partCount < minPart; partCount += 1) {
+        if (partsA[partCount] !== partsB[partCount]) {
+            break;
+        }
+    }
+
+    return partsA.slice(0, partCount).join(path.sep);
 }
 
 // TODO: Add tests for this
@@ -41,9 +53,7 @@ export function determineBaseDirectory(program: ts.Program): string {
                 } else {
                     // TODO: Not sure this logic holds if importing outside of
                     // normal directory structure (e.g. ../../.. behind the tsconfig)
-                    if (countSeparators(dir) < countSeparators(baseDir)) {
-                        baseDir = dir;
-                    }
+                    baseDir = commonRoot(baseDir, dir);
                 }
             });
     }
